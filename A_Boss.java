@@ -1,8 +1,6 @@
 package dungeons;
 
-public class A_Entity 
-{
-	
+public class A_Boss {
 	private int health;
 	private int attackModifier;
 	private int damageModifier;
@@ -10,7 +8,7 @@ public class A_Entity
 	private int damageReduction;
 	private String armor;
 	
-	public A_Entity(){
+	public A_Boss(){
 		this.setHealth(0);
 		this.setAttackModifier(0);
 		this.setDamageModifier(0);
