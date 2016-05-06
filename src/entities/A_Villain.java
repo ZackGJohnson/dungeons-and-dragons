@@ -1,5 +1,7 @@
 package entities;
 
+import encounter.RollManager;
+
 public abstract class A_Villain
 {
 	protected int health;
@@ -17,7 +19,8 @@ public abstract class A_Villain
 	public abstract int getArmorClass();
 	public void turn()
 	{
-		System.out.println("The evil creature attacks!");
+		
+		System.out.printf("The evil creature attacks with a(n) %d, dealing %d damage!\n", RollManager.getInstance().roll("1d20+" + getAtkMod()), RollManager.getInstance().roll("" + getDmgDice() + "+" + getDmgMod()));
 		
 	}
 }

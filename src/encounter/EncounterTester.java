@@ -45,6 +45,7 @@ public class EncounterTester
 		EncounterManager.getInstance().addRanger(ranger2);
 		EncounterManager.getInstance().addRanger(ranger3);
 		EncounterManager.getInstance().addRanger(ranger4);
+		
 		EncounterManager.getInstance().round();
 		
 		

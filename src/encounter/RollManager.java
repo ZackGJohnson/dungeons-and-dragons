@@ -8,6 +8,7 @@ package encounter;
 
 
 import java.math.*;
+import java.util.regex.Pattern;
 
 public final class RollManager 
 {
@@ -24,19 +25,22 @@ public final class RollManager
       return _instance;
    }
    
-   protected int Roll(String parameters)
+   public int roll(String parameters)
    {
-      return Generate(Parse(parameters));
+      return Generate(parse(parameters));
    }
    
-   protected int[] Parse(String parameters)
+   protected int[] parse(String parameters)
    {
+	  //System.out.println(parameters);
       int [] result = new int[3];
       String[] seperated = parameters.split("d");
       result[0] = Integer.parseInt(seperated[0]);
-      seperated = seperated[1].split("+");
-      result[1] = Integer.parseInt(seperated[1]);
-      result[2] = Integer.parseInt(seperated[2]);
+      seperated = seperated[1].split(Pattern.quote("+"));
+      result[1] = Integer.parseInt(seperated[0]);
+      result[2] = Integer.parseInt(seperated[1]);
+      
+      
       return result;
    }
    
