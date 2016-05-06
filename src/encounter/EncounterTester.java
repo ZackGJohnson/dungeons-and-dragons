@@ -1,7 +1,11 @@
 package encounter;
 
 import entities.A_Ranger;
+import entities.A_Villain;
+import entities.BigPutty;
 import entities.Blue;
+import entities.Boss;
+import entities.IvanOoze;
 import entities.Wolf;
 
 public class EncounterTester
@@ -22,12 +26,26 @@ public class EncounterTester
 		A_Ranger ranger4 = new Blue();
 		ranger4 = new Wolf(ranger4);
 		
+		A_Villain v1 = new BigPutty();
+		A_Villain v3 = new BigPutty();
+		A_Villain v4 = new BigPutty();
 		
-		EncounterManager.getInstance().Add(ranger1);
-		EncounterManager.getInstance().Add(ranger2);
-		EncounterManager.getInstance().Add(ranger3);
-		EncounterManager.getInstance().Add(ranger4);
-		EncounterManager.getInstance().Round();
+		A_Villain v2 = new Boss();
+		v2 = new IvanOoze(v2);
+		
+		EncounterManager.getInstance().addEnemy(v1);
+		EncounterManager.getInstance().addEnemy(v2);
+		EncounterManager.getInstance().addEnemy(v3);
+		EncounterManager.getInstance().addEnemy(v4);
+		
+		
+		
+		
+		EncounterManager.getInstance().addRanger(ranger1);
+		EncounterManager.getInstance().addRanger(ranger2);
+		EncounterManager.getInstance().addRanger(ranger3);
+		EncounterManager.getInstance().addRanger(ranger4);
+		EncounterManager.getInstance().round();
 		
 		
 		

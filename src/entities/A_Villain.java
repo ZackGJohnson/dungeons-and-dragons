@@ -15,4 +15,9 @@ public abstract class A_Villain
 	public abstract String getDmgDice();
 	public abstract int getDmgReduction();
 	public abstract int getArmorClass();
+	public void turn()
+	{
+		System.out.println("The evil creature attacks!");
+		
+	}
 }
