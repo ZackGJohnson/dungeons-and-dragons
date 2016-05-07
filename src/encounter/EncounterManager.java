@@ -64,4 +64,9 @@ public final class EncounterManager
    {
 	   return _enemies;
    }
+   
+   public LinkedList<A_Ranger> getRangers()
+   {
+	   return _rangers;
+   }
 }
