@@ -13,6 +13,11 @@ public class Crane extends A_RangerDecorator
 		return ranger.getHealth() - 1;
 	}
 	
+	public int getMaxHealth()
+	{
+		return ranger.getMaxHealth() - 1;
+	}
+	
 	public int getAtkMod() 
 	{		
 		return 2 + ranger.getAtkMod();

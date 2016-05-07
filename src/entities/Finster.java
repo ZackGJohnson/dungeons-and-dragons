@@ -13,6 +13,11 @@ public class Finster extends A_BadGuyDecorator
 		return villain.getHealth();
 	}
 	
+	public int getMaxHealth()
+	{
+		return villain.getMaxHealth();
+	}
+	
 	public int getAtkMod() 
 	{		
 		return villain.getAtkMod() - 1;

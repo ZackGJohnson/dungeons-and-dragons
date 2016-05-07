@@ -12,6 +12,11 @@ public class Frog extends A_RangerDecorator
 	{
 		return ranger.getHealth();
 	}
+	
+	public int getMaxHealth()
+	{
+		return ranger.getMaxHealth();
+	}
 
 	public int getAtkMod() 
 	{

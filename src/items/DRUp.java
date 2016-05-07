@@ -1,13 +1,15 @@
-package entities;
+package items;
 
-public class Wolf extends A_RangerDecorator
-{
+import entities.A_Ranger;
+import entities.A_RangerDecorator;
 
-	public Wolf(A_Ranger r) 
+public class DRUp extends A_RangerDecorator
+{//Only increases max health, not current
+	public DRUp(A_Ranger r) 
 	{
 		super(r);
 	}
-	
+
 	public int getHealth() 
 	{		
 		return ranger.getHealth();
@@ -20,7 +22,7 @@ public class Wolf extends A_RangerDecorator
 	
 	public int getAtkMod() 
 	{		
-		return 1 + ranger.getAtkMod();
+		return ranger.getAtkMod();
 	}
 	
 	public int getDmgMod() 
@@ -35,13 +37,11 @@ public class Wolf extends A_RangerDecorator
 	
 	public int getDmgReduction() 
 	{		
-		return ranger.getDmgReduction() - 1;
+		return ranger.getDmgReduction() + 1;
 	}
 	
 	public int getArmorClass() 
 	{		
-		return 2 + ranger.getArmorClass();
+		return ranger.getArmorClass();
 	}
-
 }
-

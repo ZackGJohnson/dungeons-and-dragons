@@ -8,6 +8,11 @@ public class Red extends A_Ranger
 		return 13;
 	}
 	
+	public int getMaxHealth()
+	{
+		return 13;
+	}
+	
 	public int getAtkMod() 
 	{		
 		return 2;

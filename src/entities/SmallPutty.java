@@ -8,6 +8,11 @@ public class SmallPutty extends A_Villain
 		return 16;
 	}
 	
+	public int getMaxHealth()
+	{
+		return 16;
+	}
+	
 	public int getAtkMod() 
 	{		
 		return 1;

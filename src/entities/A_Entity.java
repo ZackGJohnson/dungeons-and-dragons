@@ -5,6 +5,7 @@ import encounter.RollManager;
 public abstract class A_Entity implements Comparable<A_Entity>
 {
 	protected int health;
+	protected int maxHealth;
 	protected int attackMod;
 	protected int dmgMod;
 	protected String dmgDice;
@@ -13,6 +14,8 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	protected int init;
 
 	public abstract int getHealth();
+	
+	public abstract int getMaxHealth();
 
 	public abstract int getAtkMod();
 

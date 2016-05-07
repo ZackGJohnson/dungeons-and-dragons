@@ -13,6 +13,11 @@ public class Falcon extends A_RangerDecorator
 		return ranger.getHealth();
 	}
 	
+	public int getMaxHealth()
+	{
+		return ranger.getMaxHealth();
+	}
+	
 	public int getAtkMod() 
 	{		
 		return 2 + ranger.getAtkMod();

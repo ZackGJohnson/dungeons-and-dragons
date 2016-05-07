@@ -8,6 +8,11 @@ public class White extends A_Ranger
 		return 14;
 	}
 	
+	public int getMaxHealth()
+	{
+		return 14;
+	}
+	
 	public int getAtkMod() 
 	{		
 		return 2;

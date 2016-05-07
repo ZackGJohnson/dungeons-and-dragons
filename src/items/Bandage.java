@@ -1,11 +1,50 @@
 package items;
 
-public class Bandage extends A_Item
+import entities.A_Ranger;
+import entities.A_RangerDecorator;
+
+public class Bandage extends A_RangerDecorator
 {
-   public Bandage()
-   {
-      super();
-      this.setName("Bandage");
-      this.setCurrentHealth(10);
-   }
+	public Bandage(A_Ranger r) 
+	{
+		super(r);
+	}
+
+	public int getHealth() 
+	{		
+		if(ranger.getHealth() + 10 > ranger.getMaxHealth())
+			return ranger.getMaxHealth();
+		else
+			return ranger.getHealth() + 10;
+	}
+	
+	public int getMaxHealth()
+	{
+		return ranger.getMaxHealth();
+	}
+	
+	public int getAtkMod() 
+	{		
+		return ranger.getAtkMod();
+	}
+	
+	public int getDmgMod() 
+	{		
+		return ranger.getDmgMod();
+	}
+	
+	public String getDmgDice() 
+	{		
+		return ranger.getDmgDice();
+	}
+	
+	public int getDmgReduction() 
+	{		
+		return ranger.getDmgReduction();
+	}
+	
+	public int getArmorClass() 
+	{		
+		return ranger.getArmorClass();
+	}
 }

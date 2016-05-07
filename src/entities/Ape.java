@@ -13,6 +13,11 @@ public class Ape extends A_RangerDecorator
 		return 1 + ranger.getHealth();
 	}
 	
+	public int getMaxHealth()
+	{
+		return ranger.getMaxHealth();
+	}
+	
 	public int getAtkMod() 
 	{		
 		return ranger.getAtkMod() - 1;

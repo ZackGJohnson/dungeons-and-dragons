@@ -12,6 +12,11 @@ public class Pink extends A_Ranger
 	{
 		return 2;
 	}
+	
+	public int getMaxHealth()
+	{
+		return 12;
+	}
 
 	public int getDmgMod() 
 	{

@@ -13,6 +13,11 @@ public class Scorpina extends A_BadGuyDecorator
 		return 2 + villain.getHealth();
 	}
 	
+	public int getMaxHealth()
+	{
+		return 2 + villain.getMaxHealth();
+	}
+	
 	public int getAtkMod() 
 	{		
 		return 2 + villain.getAtkMod();

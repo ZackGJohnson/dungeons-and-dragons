@@ -1,5 +1,6 @@
 //package dungeons;
 
+import items.*;
 import entities.*;
 
 
@@ -20,6 +21,13 @@ public class BenTester
 		System.out.println("Ranger's initiative is: " + ranger.getInit());
 		
 		System.out.println("=====================================================");
+		
+		ranger = new Bandage(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HealthUp(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new Bandage(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
 		
 		A_Villain villain = new General();
 		villain = new Goldar(villain);
