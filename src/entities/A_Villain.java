@@ -10,6 +10,7 @@ public abstract class A_Villain
 	protected String dmgDice;
 	protected int dmgReduction;
 	protected int armorClass;
+	protected String name;
 	
 	public abstract int getHealth();
 	public abstract int getAtkMod();
@@ -17,6 +18,11 @@ public abstract class A_Villain
 	public abstract String getDmgDice();
 	public abstract int getDmgReduction();
 	public abstract int getArmorClass();
+	public String getName()
+	{
+		return "Test Name";
+	}
+	
 	public void turn()
 	{
 		

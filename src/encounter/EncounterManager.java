@@ -59,4 +59,9 @@ public final class EncounterManager
          _enemies.get(i).turn();
       }
    }
+   
+   public LinkedList<A_Villain> getEnemies()
+   {
+	   return _enemies;
+   }
 }
