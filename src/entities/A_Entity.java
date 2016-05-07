@@ -1,0 +1,41 @@
+package entities;
+
+import encounter.RollManager;
+
+public abstract class A_Entity implements Comparable<A_Entity>
+{
+	protected int health;
+	protected int attackMod;
+	protected int dmgMod;
+	protected String dmgDice;
+	protected int dmgReduction;
+	protected int armorClass;
+	protected int init;
+
+	public abstract int getHealth();
+
+	public abstract int getAtkMod();
+
+	public abstract int getDmgMod();
+
+	public abstract String getDmgDice();
+
+	public abstract int getDmgReduction();
+
+	public abstract int getArmorClass();
+
+	public abstract String getName();
+
+	public int getInit()
+	{
+		return RollManager.getInstance().roll("1d20+0");
+	}
+
+	public abstract void turn();
+	
+	public int compareTo(A_Entity target)
+	{
+		return this.getInit() - target.getInit();
+	}
+
+}

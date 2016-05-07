@@ -4,38 +4,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
-
 import encounter.EncounterManager;
 import encounter.RollManager;
 
-public abstract class A_Ranger
+public abstract class A_Ranger extends A_Entity
 {
-	protected int health;
-	protected int attackMod;
-	protected int dmgMod;
-	protected String dmgDice;
-	protected int dmgReduction;
-	protected int armorClass;
-	protected int init;
-
-	public abstract int getHealth();
-	public abstract int getAtkMod();
-	public abstract int getDmgMod();
-	public abstract String getDmgDice();
-	public abstract int getDmgReduction();
-	public abstract int getArmorClass();
-
+	
 	public String getName()
 	{
 		return "Test Ranger";
 	}
-	
-	public int getInit()
-	{
-		return 1;
-	}
-	
 
 	public void turn()
 	{

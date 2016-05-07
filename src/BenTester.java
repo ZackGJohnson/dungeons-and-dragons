@@ -17,6 +17,7 @@ public class BenTester
 		System.out.println("Ranger's dmgDice is: " + ranger.getDmgDice());
 		System.out.println("Ranger's dmgReduction is: " + ranger.getDmgReduction());
 		System.out.println("Ranger's AC is: " + ranger.getArmorClass());
+		System.out.println("Ranger's initiative is: " + ranger.getInit());
 		
 		System.out.println("=====================================================");
 		
@@ -29,6 +30,7 @@ public class BenTester
 		System.out.println("Villain's dmgDice is: " + villain.getDmgDice());
 		System.out.println("Villain's dmgReduction is: " + villain.getDmgReduction());
 		System.out.println("Villain's AC is: " + villain.getArmorClass());
+		System.out.println("Villain's initiative is: " + villain.getInit());
 
 	}
 

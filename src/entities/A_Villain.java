@@ -3,43 +3,22 @@ package entities;
 import encounter.EncounterManager;
 import encounter.RollManager;
 
-public abstract class A_Villain
+public abstract class A_Villain extends A_Entity
 {
-	protected int health;
-	protected int attackMod;
-	protected int dmgMod;
-	protected String dmgDice;
-	protected int dmgReduction;
-	protected int armorClass;
-	protected String name;
-	protected int init;
-	
-	public abstract int getHealth();
-	public abstract int getAtkMod();
-	public abstract int getDmgMod();
-	public abstract String getDmgDice();
-	public abstract int getDmgReduction();
-	public abstract int getArmorClass();
-	
-	public int getInit()
-	{
-		return 1;
-	}
-	
+
 	public String getName()
 	{
 		return "Test Villain";
 	}
-	
+
 	public void turn()
 	{
 		System.out.println("Monsters turn");
-		int target = RollManager.getInstance().roll("1d"+ EncounterManager.getInstance().getRangers().size() + "+0");
+		int target = RollManager.getInstance().roll("1d" + EncounterManager.getInstance().getRangers().size() + "+0");
 		attack(target);
-		
-		
+
 	}
-	
+
 	private void attack(int target)
 	{
 		A_Ranger enemy = EncounterManager.getInstance().getRangers().get(target);
