@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
+
 import encounter.EncounterManager;
 import encounter.RollManager;
 
@@ -16,18 +17,25 @@ public abstract class A_Ranger
 	protected String dmgDice;
 	protected int dmgReduction;
 	protected int armorClass;
+	protected int init;
 
 	public abstract int getHealth();
-
 	public abstract int getAtkMod();
-
 	public abstract int getDmgMod();
-
 	public abstract String getDmgDice();
-
 	public abstract int getDmgReduction();
-
 	public abstract int getArmorClass();
+
+	public String getName()
+	{
+		return "Test Ranger";
+	}
+	
+	public int getInit()
+	{
+		return 1;
+	}
+	
 
 	public void turn()
 	{
@@ -92,12 +100,12 @@ public abstract class A_Ranger
 
 		if (attackRoll >= enemy.getArmorClass())
 		{
-			System.out.printf("You hit with a(n) %d, dealing %d damage!\n\n", attackRoll, damageRoll);
+			System.out.printf("You hit %s with a(n) %d, dealing %d damage!\n\n", enemy.getName(), attackRoll, damageRoll);
 			// Insert actual method of damage enemy here
 		}
 		else
 		{
-			System.out.printf("You miss with a(n) %d, dealing no damage!\n\n", attackRoll);
+			System.out.printf("You miss %s with a(n) %d, dealing no damage!\n\n", enemy.getName(), attackRoll);
 		}
 	}
 

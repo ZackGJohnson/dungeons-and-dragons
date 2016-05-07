@@ -17,6 +17,7 @@ public final class EncounterManager
    private static EncounterManager _instance = null;
    private static LinkedList<A_Ranger> _rangers;
    private static LinkedList<A_Villain> _enemies;
+   private static LinkedList _init;
    
    private EncounterManager(){}
    
@@ -27,6 +28,7 @@ public final class EncounterManager
          _instance = new EncounterManager();
          _rangers = new LinkedList<A_Ranger>();
          _enemies = new LinkedList<A_Villain>();
+         _init = new LinkedList();
       }
       return _instance;
    }
@@ -53,6 +55,11 @@ public final class EncounterManager
    
    public void round()
    {
+	   //for(A_Ranger ranger : _rangers)
+		   //_init.add(ranger);
+	   //for(A_Villain villain : _enemies)
+		   //_init.add(villain);
+	   //_init.sort()
       for(int i= 0; i < _rangers.size(); i++)
       {
          _rangers.get(i).turn();

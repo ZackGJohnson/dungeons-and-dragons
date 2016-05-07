@@ -12,6 +12,7 @@ public abstract class A_Villain
 	protected int dmgReduction;
 	protected int armorClass;
 	protected String name;
+	protected int init;
 	
 	public abstract int getHealth();
 	public abstract int getAtkMod();
@@ -19,15 +20,21 @@ public abstract class A_Villain
 	public abstract String getDmgDice();
 	public abstract int getDmgReduction();
 	public abstract int getArmorClass();
+	
+	public int getInit()
+	{
+		return 1;
+	}
+	
 	public String getName()
 	{
-		return "Test Name";
+		return "Test Villain";
 	}
 	
 	public void turn()
 	{
 		System.out.println("Monsters turn");
-		int target = (int) (Math.random()) * EncounterManager.getInstance().getRangers().size();
+		int target = RollManager.getInstance().roll("1d"+ EncounterManager.getInstance().getRangers().size() + "+0");
 		attack(target);
 		
 		
@@ -41,12 +48,12 @@ public abstract class A_Villain
 
 		if (attackRoll >= enemy.getArmorClass())
 		{
-			System.out.printf("%s hits with a(n) %d, dealing %d damage!\n\n", getName(), attackRoll, damageRoll);
+			System.out.printf("%s hits %s with a(n) %d, dealing %d damage!\n\n", getName(), enemy.getName(), attackRoll, damageRoll);
 			// Insert actual method of damage enemy here
 		}
 		else
 		{
-			System.out.printf("%s misses with a(n) %d, dealing no damage!\n\n", getName(), attackRoll);
+			System.out.printf("%s misses %s with a(n) %d, dealing no damage!\n\n", getName(), enemy.getName(), attackRoll);
 		}
 	}
 }
