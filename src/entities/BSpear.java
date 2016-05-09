@@ -1,9 +1,9 @@
 package entities;
 
-public class Wolf extends A_RangerDecorator
+public class BSpear extends A_RangerDecorator
 {
 
-	public Wolf(A_Ranger r) 
+	protected BSpear(A_Ranger r) 
 	{
 		super(r);
 	}
@@ -13,14 +13,14 @@ public class Wolf extends A_RangerDecorator
 		return ranger.getHealth();
 	}
 	
-	public int getMaxHealth()
+	public int getMaxHealth() 
 	{
 		return ranger.getMaxHealth();
 	}
 	
 	public int getAtkMod() 
 	{		
-		return 1 + ranger.getAtkMod();
+		return ranger.getAtkMod();
 	}
 	
 	public int getDmgMod() 
@@ -35,19 +35,12 @@ public class Wolf extends A_RangerDecorator
 	
 	public int getDmgReduction() 
 	{		
-		int result = ranger.getDmgReduction()-1;
-		if(result < 0)
-		{
-			return 0;
-		}else
-		{
-			return result;
-		}
+		return ranger.getDmgReduction();
 	}
 	
 	public int getArmorClass() 
 	{		
-		return 2 + ranger.getArmorClass();
+		return ranger.getArmorClass();
 	}
 
 }

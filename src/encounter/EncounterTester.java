@@ -1,13 +1,7 @@
 package encounter;
 import items.*;
 
-import entities.A_Ranger;
-import entities.A_Villain;
-import entities.BigPutty;
-import entities.Blue;
-import entities.Boss;
-import entities.IvanOoze;
-import entities.Wolf;
+import entities.*;
 
 public class EncounterTester
 {

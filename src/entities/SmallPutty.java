@@ -5,12 +5,12 @@ public class SmallPutty extends A_Villain
 	
 	public int getHealth() 
 	{		
-		return 16;
+		return 10;
 	}
 	
 	public int getMaxHealth()
 	{
-		return 16;
+		return 10;
 	}
 	
 	public int getAtkMod() 
@@ -20,7 +20,7 @@ public class SmallPutty extends A_Villain
 	
 	public int getDmgMod() 
 	{		
-		return 3;
+		return 2;
 	}
 	
 	public String getDmgDice() 

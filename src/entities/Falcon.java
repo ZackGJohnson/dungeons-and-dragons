@@ -35,7 +35,14 @@ public class Falcon extends A_RangerDecorator
 	
 	public int getDmgReduction() 
 	{		
-		return ranger.getDmgReduction() - 1;
+		int result = ranger.getDmgReduction()-1;
+		if(result < 0)
+		{
+			return 0;
+		}else
+		{
+			return result;
+		}
 	}
 	
 	public int getArmorClass() 
