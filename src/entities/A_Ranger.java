@@ -26,7 +26,9 @@ public abstract class A_Ranger extends A_Entity
 			int choice = -1;
 			do
 			{
-				System.out.printf("%s turn, type 1 to attack: \n", this.getName());
+				System.out.println(getStats());
+				System.out.printf("%s turn, type 1 to attack or 0 to see stats: \n", this.getName());
+				
 
 				try
 				{
@@ -42,7 +44,7 @@ public abstract class A_Ranger extends A_Entity
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} while (choice != 1);
+			} while (choice != 1 && choice != 0);
 
 			if (choice == 1)
 			{
@@ -76,6 +78,10 @@ public abstract class A_Ranger extends A_Entity
 				} while (choice < 0 && choice > EncounterManager.getInstance().getEnemies().size() && EncounterManager.getInstance().getEnemies().get(choice).isAlive());
 				attack(choice);
 			}
+			else if(choice == 0)
+			{
+				EncounterManager.getInstance().stats();
+			}
 		}
 		
 
@@ -91,10 +97,8 @@ public abstract class A_Ranger extends A_Entity
 		if (attackRoll >= enemy.getArmorClass())
 		{
 			System.out.printf("You hit %s with a(n) %d, dealing %d damage!\n", enemy.getName(), attackRoll, damageRoll);
-			for(int i = 0; i < damageRoll; i++)
-			{
-				damagedEnemy = new HurtEnemy(damagedEnemy);
-			}
+			damagedEnemy = new HurtEnemy(damagedEnemy, damageRoll);
+			
 			EncounterManager.getInstance().replaceEnemy(enemy, damagedEnemy);
 			// Insert actual method of damage enemy here
 		}

@@ -137,4 +137,23 @@ public final class EncounterManager
 	   }
 	   return false;
    }
+   
+   public void stats()
+   {
+	   if(_rangers != null)
+	   {
+		   for(A_Ranger ranger :_rangers)
+		   {
+			   System.out.println(ranger.getStats());
+		   }
+	   }
+	   
+	   if(_enemies != null)
+	   {
+		   for(A_Ranger ranger :_rangers)
+		   {
+			   System.out.println(ranger.getStats());
+		   }
+	   }
+   }
 }

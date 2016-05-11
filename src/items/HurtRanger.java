@@ -5,16 +5,23 @@ import entities.A_RangerDecorator;
 
 public class HurtRanger extends A_RangerDecorator
 {
+	private int _damage = 0;
 	public HurtRanger(A_Ranger r) 
 	{
 		super(r);
 	}
+	
+	public HurtRanger(A_Ranger r, int damage) 
+	{
+		super(r);
+		_damage = damage - getDmgReduction();
+	}
 
 	public int getHealth() 
 	{		
-		if(ranger.getHealth() - 1  < 0)
+		if(ranger.getHealth() - _damage  < 0)
 			ranger.die();
-		return ranger.getHealth() - 1;
+		return ranger.getHealth() - _damage;
 	}
 	
 	public int getMaxHealth()

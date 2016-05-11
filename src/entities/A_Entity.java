@@ -44,6 +44,13 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	{
 		return RollManager.getInstance().roll("1d20+0");
 	}
+	
+	public String getStats()
+	{
+		return (getName() + ":Health: " + getHealth() + "/" + getMaxHealth() + ", Attack: +" + getAtkMod() + " for " + getDmgDice() + "+" + getDmgMod() + 
+				"\nDefense: AC " + getArmorClass() + " DR " + getDmgReduction());
+					
+	}
 
 	public abstract void turn();
 	

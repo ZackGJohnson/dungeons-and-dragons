@@ -25,6 +25,17 @@ public class EncounterTester
 		ranger1 = new AttackUp(ranger1);
 		ranger1 = new AttackUp(ranger1);
 		ranger1 = new AttackUp(ranger1);
+		
+		
+		ranger1 = new HealthUp(ranger1);
+		ranger1 = new HealthUp(ranger1);
+		ranger1 = new HealthUp(ranger1);
+		ranger1 = new HealthUp(ranger1);
+		ranger1 = new HealthUp(ranger1);
+		ranger1 = new HealthUp(ranger1);
+		ranger1 = new HealthUp(ranger1);
+		ranger1 = new HealthUp(ranger1);
+		ranger1 = new HealthUp(ranger1);
 
 		A_Ranger ranger2 = new Blue();
 		ranger2 = new Wolf(ranger2);
@@ -52,6 +63,8 @@ public class EncounterTester
 		// EncounterManager.getInstance().addRanger(ranger3);
 		// EncounterManager.getInstance().addRanger(ranger4);
 
+		EncounterManager.getInstance().stats();
+		
 		while (EncounterManager.getInstance().enemiesAreAlive() && EncounterManager.getInstance().rangersAreAlive())
 		{
 			EncounterManager.getInstance().round();

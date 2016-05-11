@@ -1,22 +1,29 @@
 package items;
 
 import entities.A_BadGuyDecorator;
-import entities.A_Ranger;
-import entities.A_RangerDecorator;
+import entities.A_Villain;
+import entities.A_BadGuyDecorator;
 import entities.A_Villain;
 
 public class HurtEnemy extends A_BadGuyDecorator
 {
-	public HurtEnemy(A_Villain v) 
+	private int _damage = 0;
+	public HurtEnemy(A_Villain r) 
 	{
-		super(v);
+		super(r);
+	}
+	
+	public HurtEnemy(A_Villain r, int damage) 
+	{
+		super(r);
+		_damage = damage - getDmgReduction();
 	}
 
 	public int getHealth() 
 	{		
-		if(villain.getHealth() - 1  < 0)
+		if(villain.getHealth() - _damage  < 0)
 			villain.die();
-		return villain.getHealth() - 1;
+		return villain.getHealth() - _damage;
 	}
 	
 	public int getMaxHealth()

@@ -34,12 +34,10 @@ public abstract class A_Villain extends A_Entity
 		if (attackRoll >= enemy.getArmorClass())
 		{
 			System.out.printf("%s hits %s with a(n) %d, dealing %d damage!\n", getName(), enemy.getName(), attackRoll, damageRoll);
-			for(int i = 0; i < damageRoll; i++)
-			{
-				damagedEnemy = new HurtRanger(damagedEnemy);
-			}
+			damagedEnemy = new HurtRanger(damagedEnemy, damageRoll);
+			
 			EncounterManager.getInstance().replaceRanger(enemy, damagedEnemy);
-			// Insert actual method of damage enemy here
+			
 		}
 		else
 		{

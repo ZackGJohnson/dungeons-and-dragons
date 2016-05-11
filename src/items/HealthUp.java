@@ -12,7 +12,7 @@ public class HealthUp extends A_RangerDecorator
 
 	public int getHealth() 
 	{		
-		return ranger.getHealth();
+		return ranger.getHealth() + 5;
 	}
 	
 	public int getMaxHealth()
