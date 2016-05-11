@@ -29,6 +29,25 @@ public class BenTester
 		ranger = new Bandage(ranger);
 		System.out.println("Ranger's health is: " + ranger.getHealth());
 		
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		
+		//I hate how health reduction has to be implemented, but I see no other way
+		
+		
+		
 		A_Villain villain = new General();
 		villain = new Goldar(villain);
 

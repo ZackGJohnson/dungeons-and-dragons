@@ -43,6 +43,28 @@ public final class EncounterManager
       _rangers.remove(creature);
    }
    
+   public void replaceRanger(A_Ranger old, A_Ranger replacement)
+   {
+	   int initiative = _init.indexOf(old);
+	   int order = _rangers.indexOf(old);
+	   _rangers.remove(old);
+	   _rangers.add(order, replacement);
+	   
+	   _init.remove(initiative);
+	   _init.add(initiative, replacement);
+   }
+   
+   public void replaceEnemy(A_Villain old, A_Villain replacement)
+   {
+	   int initiative = _init.indexOf(old);
+	   int order = _enemies.indexOf(old);
+	   _enemies.remove(old);
+	   _enemies.add(order, replacement);
+	   
+	   _init.remove(initiative);
+	   _init.add(initiative, replacement);
+   }
+   
    public void addEnemy (A_Villain creature)
    {  
 	   _enemies.add(creature);
@@ -64,8 +86,26 @@ public final class EncounterManager
       for(int i= 0; i < _init.size(); i++)
       {
          _init.get(i).turn();
+         
         
       }
+      
+      for(A_Ranger ranger : _rangers)
+      {
+    	  if(!ranger.isAlive())
+    	  {
+    		  _rangers.remove(ranger);
+    	  }
+      }
+	   for(A_Villain villain : _enemies)
+	   {
+	    	  if(!villain.isAlive())
+	    	  {
+	    		  _enemies.remove(villain);
+	    	  }
+	   }
+	   
+	   _init.clear();
    }
    
    public LinkedList<A_Villain> getEnemies()
@@ -76,5 +116,25 @@ public final class EncounterManager
    public LinkedList<A_Ranger> getRangers()
    {
 	   return _rangers;
+   }
+   
+   public boolean enemiesAreAlive()
+   {
+	   for(A_Villain enemy: _enemies)
+	   {
+		   if(enemy.getHealth() > 0)
+			   return true;
+	   }
+	   return false;
+   }
+   
+   public boolean rangersAreAlive()
+   {
+	   for(A_Ranger ranger: _rangers)
+	   {
+		   if(ranger.getHealth() > 0)
+			   return true;
+	   }
+	   return false;
    }
 }

@@ -6,6 +6,7 @@ public abstract class A_Entity implements Comparable<A_Entity>
 {
 	protected int health;
 	protected int maxHealth;
+	protected boolean isAlive = true;
 	protected int attackMod;
 	protected int dmgMod;
 	protected String dmgDice;
@@ -28,6 +29,16 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	public abstract int getArmorClass();
 
 	public abstract String getName();
+	
+	public boolean isAlive()
+	{
+		return isAlive;
+	}
+	
+	public void die()
+	{
+		isAlive = false;
+	}
 
 	public int getInit()
 	{
