@@ -12,7 +12,7 @@ import entities.Wolf;
 public class EncounterTester
 {
 
-	public static void main(String[] args)
+	public static void encounterTester()
 	{
 
 		A_Ranger ranger1 = new Blue();
