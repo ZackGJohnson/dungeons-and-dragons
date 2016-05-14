@@ -1,8 +1,12 @@
 package map;
 
 import entities.*;
+import gui.DungeonGame;
 
 import java.util.LinkedList;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import encounter.*;
 
@@ -10,6 +14,8 @@ public class Room
 {
 	private boolean _upExit, _rightExit, _downExit, _leftExit;
 	private LinkedList<A_Villain> _enemies;
+	public static Texture _wallTexture;
+	public static Texture _floorTexture;
 	
 	public Room()
 	{
@@ -29,6 +35,45 @@ public class Room
 		}
 
 		EncounterManager.getInstance().round();
+	}
+	
+	/*
+	 * Draws the room with startX and startY being the top left corner.
+	 */
+	public void draw(int startX, int startY, SpriteBatch batch)
+	{
+		int drawX;
+		int drawY;
+		
+		for (int y = 0; y < 7; y++)
+		{
+			for (int x = 0; x < 7; x++)
+			{
+				drawX = startX + (DungeonGame.TEXTURE_SIZE * x);
+				drawY = startY + (DungeonGame.TEXTURE_SIZE * y);
+				
+				if (y == 0 && (x != 3 || !_upExit))
+				{
+					batch.draw(_wallTexture, drawX, drawY, DungeonGame.TEXTURE_SIZE, DungeonGame.TEXTURE_SIZE);
+				}
+				else if (y == 6 && (x != 3 || !_downExit))
+				{
+					batch.draw(_wallTexture, drawX, drawY, DungeonGame.TEXTURE_SIZE, DungeonGame.TEXTURE_SIZE);
+				}
+				else if (x == 0 && (y != 3 || !_leftExit))
+				{
+					batch.draw(_wallTexture, drawX, drawY, DungeonGame.TEXTURE_SIZE, DungeonGame.TEXTURE_SIZE);
+				}
+				else if (x == 6 && (y != 3 || !_rightExit))
+				{
+					batch.draw(_wallTexture, drawX, drawY, DungeonGame.TEXTURE_SIZE, DungeonGame.TEXTURE_SIZE);
+				}
+				else
+				{
+					batch.draw(_floorTexture, drawX, drawY, DungeonGame.TEXTURE_SIZE, DungeonGame.TEXTURE_SIZE);
+				}
+			}
+		}
 	}
 	
 	public boolean getUpExit()

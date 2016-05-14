@@ -1,8 +1,15 @@
 package map;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import gui.DungeonGame;
+
 public class Map
 {
 	private Room[][] _rooms;
+	public static final int ROOM_SIZE = DungeonGame.TEXTURE_SIZE * 7;
+	public static final int HALLWAY_SIZE = DungeonGame.TEXTURE_SIZE * 0;
+	public static final int ROOM_SPACE = ROOM_SIZE + (HALLWAY_SIZE * 2);
 	
 	public Map(int maxWidth, int maxHeight)
 	{
@@ -33,77 +40,17 @@ public class Map
 		_rooms[x][y] = room;
 	}
 	
-	/*
-	 * This method prints a graphical representation of the map in the console.
-	 * It is purely for testing purposes.
-	 * Asterisks represent rooms without encounters. Xs represent rooms with encounters.
-	 * Lines represent hallways.
-	 */
-	public void displayMap()
+	public void displayMap(SpriteBatch batch)
 	{
-		String topLine = "";
-		String midLine = "";
-		String bottomLine = "";
 		for (int y = 0; y < _rooms[0].length; y++)
 		{
 			for (int x = 0; x < _rooms.length; x++)
 			{
 				if (this.getRoom(x, y) != null)
 				{
-					if (this.getRoom(x, y).getUpExit())
-					{
-						topLine += " | ";
-					}
-					else
-					{
-						topLine += "   ";
-					}
-					if (this.getRoom(x, y).getLeftExit())
-					{
-						midLine += "-";
-					}
-					else
-					{
-						midLine += " ";
-					}
-					if (_rooms[x][y].hasEncounter())
-					{
-						midLine += "X";
-					}
-					else
-					{
-						midLine += "*";
-					}
-					if (this.getRoom(x, y).getRightExit())
-					{
-						midLine += "-";
-					}
-					else
-					{
-						midLine += " ";
-					}
-					if (this.getRoom(x, y).getDownExit())
-					{
-						bottomLine += " | ";
-					}
-					else
-					{
-						bottomLine += "   ";
-					}
-				}
-				else
-				{
-					topLine += "   ";
-					midLine += "   ";
-					bottomLine += "   ";
+					_rooms[x][y].draw(x * ROOM_SPACE, y * ROOM_SPACE, batch);
 				}
 			}
-			System.out.println(topLine);
-			topLine = "";
-			System.out.println(midLine);
-			midLine = "";
-			System.out.println(bottomLine);
-			bottomLine = "";
 		}
 	}
 	

@@ -1,4 +1,7 @@
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+
+import gui.DungeonGame;
 
 /*
  * This class can be safely ignored. It just creates a new LibGDX window/application.
@@ -8,6 +11,11 @@ public class DesktopGame
 {
 	public static void main (String[] args)
 	{
-        new LwjglApplication(new Game(), "Power Rangers", 800, 600);
+		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.fullscreen = false;
+		config.width = 800;
+		config.height = 600;
+		config.title = "Power Ranger Dungeon";
+        new LwjglApplication(new DungeonGame(), config);
     }
 }
