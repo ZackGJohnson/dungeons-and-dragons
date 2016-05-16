@@ -13,11 +13,6 @@ import encounter.RollManager;
 public abstract class A_Ranger extends A_Entity
 {
 
-	public String getName()
-	{
-		return "Test Ranger";
-	}
-
 	public void turn()
 	{
 		if (this.getHealth() > 0)

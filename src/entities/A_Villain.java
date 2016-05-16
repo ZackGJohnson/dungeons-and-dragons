@@ -1,17 +1,11 @@
 package entities;
 
-import items.HurtEnemy;
 import items.HurtRanger;
 import encounter.EncounterManager;
 import encounter.RollManager;
 
 public abstract class A_Villain extends A_Entity
 {
-
-	public String getName()
-	{
-		return "Test Villain";
-	}
 
 	public void turn()
 	{

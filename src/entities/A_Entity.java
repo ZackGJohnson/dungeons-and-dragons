@@ -13,6 +13,18 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	protected int dmgReduction;
 	protected int armorClass;
 	protected int init;
+	protected String _name;
+	
+	public String getName()
+	{
+		return _name;
+	}
+	
+	public void setName(String name)
+	{
+		_name = name;
+	}
+	
 
 	public abstract int getHealth();
 	
@@ -27,8 +39,6 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	public abstract int getDmgReduction();
 
 	public abstract int getArmorClass();
-
-	public abstract String getName();
 	
 	public boolean isAlive()
 	{
