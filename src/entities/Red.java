@@ -1,7 +1,10 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class Red extends A_Ranger
 {
+	public static Texture redRangerTexture;
 	
 	public int getHealth() 
 	{		

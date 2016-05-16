@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import entities.Red;
 import map.Room;
 
 public class DungeonGame extends Game
@@ -23,6 +24,7 @@ public class DungeonGame extends Game
 		_font = new BitmapFont();
 		Room._wallTexture = new Texture("wallTexture.png");
 		Room._floorTexture = new Texture("floorTexture.png");
+		Red.redRangerTexture = new Texture("redRangerTexture.png");
 		_currentScreen = new PlayScreen(this);
 		setScreen(_currentScreen);
     }

@@ -13,6 +13,7 @@ import encounter.*;
 public class Room
 {
 	private boolean _upExit, _rightExit, _downExit, _leftExit;
+	private LinkedList<A_Ranger> _party;
 	private LinkedList<A_Villain> _enemies;
 	public static Texture _wallTexture;
 	public static Texture _floorTexture;
@@ -20,6 +21,7 @@ public class Room
 	public Room()
 	{
 		_enemies = new LinkedList<A_Villain>();
+		_party = new LinkedList<A_Ranger>();
 	}
 
 	/*
@@ -74,6 +76,11 @@ public class Room
 				}
 			}
 		}
+		// Draws a red ranger sprite near the center of the room if the party is at this location.
+		if (!_party.isEmpty())
+		{
+			batch.draw(Red.redRangerTexture, startX + (Map.ROOM_SIZE / 2), startY + (Map.ROOM_SIZE / 2));
+		}
 	}
 	
 	public boolean getUpExit()
@@ -124,6 +131,11 @@ public class Room
 	public void setEnemies(LinkedList<A_Villain> enemyList)
 	{
 		_enemies = enemyList;
+	}
+	
+	public void setParty(LinkedList<A_Ranger> rangerList)
+	{
+		_party = rangerList;
 	}
 	
 	public boolean hasEncounter()

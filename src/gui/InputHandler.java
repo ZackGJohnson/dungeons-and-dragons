@@ -1,7 +1,9 @@
 package gui;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Vector3;
 
 /*
  * Whenever the user presses something on their keyboard or mouse the signal is
@@ -82,6 +84,13 @@ public class InputHandler implements InputProcessor
 	
 	public boolean touchDown(int x, int y, int pointer, int button)
 	{
+		Vector3 mousePosition = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+		if (button == Input.Buttons.LEFT)
+		{
+			_screen.getCamera().unproject(mousePosition);
+			_screen.click((int)mousePosition.x, (int)mousePosition.y);
+			return true;
+		}
 		return false;
 	}
 	

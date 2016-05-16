@@ -6,6 +6,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
+import map.Map;
+
 /*
  * The game is separated into different "screens". An example would be the screen for character select
  * or the screen for playing the game. Each screen has many similarities such as needing to render
@@ -76,4 +78,9 @@ public abstract class A_GameScreen implements Screen
     {
     	return _camera;
     }
+	
+	public void click(int mouseX, int mouseY)
+	{
+		
+	}
 }
