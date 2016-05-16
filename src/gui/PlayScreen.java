@@ -46,4 +46,9 @@ public class PlayScreen extends A_GameScreen
 			_camera.translate((mouseX / Map.ROOM_SPACE) * Map.ROOM_SPACE, (mouseY / Map.ROOM_SPACE) * Map.ROOM_SPACE, 0);
 		}
 	}
+	
+	public void createNewParty(LinkedList<A_Ranger> rangers)
+	{
+		_party = new Party(rangers, _map.getRoom(0, 0));
+	}
 }

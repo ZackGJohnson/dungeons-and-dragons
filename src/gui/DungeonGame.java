@@ -25,7 +25,7 @@ public class DungeonGame extends Game
 		Room._wallTexture = new Texture("wallTexture.png");
 		Room._floorTexture = new Texture("floorTexture.png");
 		Red.redRangerTexture = new Texture("redRangerTexture.png");
-		_currentScreen = new PlayScreen(this);
+		_currentScreen = new CharacterSelectScreen(this);
 		setScreen(_currentScreen);
     }
 

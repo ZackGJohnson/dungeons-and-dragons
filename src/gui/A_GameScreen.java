@@ -5,8 +5,8 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-
-import map.Map;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 /*
  * The game is separated into different "screens". An example would be the screen for character select
@@ -19,6 +19,8 @@ public abstract class A_GameScreen implements Screen
 	protected InputMultiplexer _multiplexer;
 	protected OrthographicCamera _camera;
 	protected DungeonGame _game;
+	protected Stage _stage;
+	protected Skin _skin;
 	
 	public A_GameScreen(DungeonGame game)
 	{
@@ -30,8 +32,12 @@ public abstract class A_GameScreen implements Screen
 		
 		_inputHandler = new InputHandler(this);
 		_multiplexer = new InputMultiplexer();
+		_stage = new Stage();
 		Gdx.input.setInputProcessor(_multiplexer);
+		_multiplexer.addProcessor(_stage);
 		_multiplexer.addProcessor(_inputHandler);
+		
+		_skin = new Skin(Gdx.files.internal("uiskin.json"));
 	}
 
 	public void render(float delta)
@@ -47,11 +53,14 @@ public abstract class A_GameScreen implements Screen
 		_camera.viewportWidth = 30f;
         _camera.viewportHeight = 30f * height / width;
         _camera.update();
+        
+        _stage.getViewport().update(width, height, true);
 	}
 	
 	public void dispose()
 	{
-
+		_stage.dispose();
+		_skin.dispose();
 	}
 
 	public void hide()
