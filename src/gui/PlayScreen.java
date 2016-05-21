@@ -1,6 +1,11 @@
 package gui;
 
 import java.util.LinkedList;
+import java.util.Random;
+
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 
 import entities.A_Ranger;
 import entities.Party;
@@ -12,6 +17,11 @@ public class PlayScreen extends A_GameScreen
 {
 	private Map _map;
 	private Party _party;
+	Table _playScreenUI;
+	TextArea _textBox;
+	// The total amount of lines the textBox will store
+	int _textBoxMaxLines = 10;
+	ScrollPane _textScroll;
 	
 	public PlayScreen(DungeonGame game)
 	{
@@ -21,8 +31,25 @@ public class PlayScreen extends A_GameScreen
 		_map = MapGenerator.getInstance().generateMap(5, 5, 15, 3);
 		rangers.add(testRanger);
 		_party = new Party(rangers, _map.getRoom(0, 0));
-		// Camera is adjusted to be centered on a room.
+		// Camera is adjusted to be centered on rooms.
 		_camera.position.set(Map.ROOM_SPACE / 2, Map.ROOM_SPACE / 2,0);
+		
+		_playScreenUI = new Table();
+		_playScreenUI.setFillParent(true);
+		_stage.addActor(_playScreenUI);
+		_textBox = new TextArea("", _skin);
+		_textBox.setPrefRows(_textBoxMaxLines);
+		_textBox.clearListeners();
+		_textScroll = new ScrollPane(_textBox, _skin);
+		_textScroll.setFadeScrollBars(false);
+		// Calculates the height of 3 lines of text
+		float _textBoxHeight = _textBox.getStyle().font.getLineHeight() * 3 + _textBox.getStyle().background.getBottomHeight() * 6;
+		_playScreenUI.add(_textScroll).expand().fillX().maxHeight(_textBoxHeight).bottom();
+		// Makes the text box start printing from the bottom instead of the top
+		for (int i = 0; i < _textBoxMaxLines; i++)
+		{
+			_textBox.appendText("\n");
+		}
 	}
 	
 	public void render(float delta)
@@ -31,6 +58,8 @@ public class PlayScreen extends A_GameScreen
 		_game.getBatch().begin();
     	_map.displayMap(_game.getBatch());
     	_game.getBatch().end();
+    	_stage.act(delta);
+    	_stage.draw();
 	}
 	
 	/*
@@ -45,10 +74,18 @@ public class PlayScreen extends A_GameScreen
 			_camera.translate(-_camera.position.x + (Map.ROOM_SPACE / 2), -_camera.position.y + (Map.ROOM_SPACE / 2));
 			_camera.translate((mouseX / Map.ROOM_SPACE) * Map.ROOM_SPACE, (mouseY / Map.ROOM_SPACE) * Map.ROOM_SPACE, 0);
 		}
+		Random rand = new Random();
+		appendLineToTextBox("test" + rand.nextInt(10));
 	}
 	
 	public void createNewParty(LinkedList<A_Ranger> rangers)
 	{
 		_party = new Party(rangers, _map.getRoom(0, 0));
+	}
+	
+	public void appendLineToTextBox(String string)
+	{
+		_textBox.appendText("\n" + string);
+		_textScroll.setScrollPercentY(100);
 	}
 }

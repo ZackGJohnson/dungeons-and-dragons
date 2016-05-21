@@ -64,6 +64,11 @@ public class DungeonGame extends Game
     	setScreen(_currentScreen);
     }
     
+    public Screen getCurrentScreen()
+    {
+    	return _currentScreen;
+    }
+    
     public SpriteBatch getBatch()
     {
     	return _batch;
