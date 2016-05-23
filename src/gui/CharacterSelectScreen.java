@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 import entities.*;
@@ -20,24 +21,32 @@ public class CharacterSelectScreen extends A_GameScreen
 	TextButton _finishButton;
 	// Character one widgets
 	Label _characterOneLabel;
+	Label _characterOneNameLabel;
+	TextField _characterOneNameField;
 	Label _characterOneColorLabel;
 	SelectBox<String> _characterOneColorSelectBox;
 	Label _characterOneZordLabel;
 	SelectBox<String> _characterOneZordSelectBox;
 	// Character two widgets
 	Label _characterTwoLabel;
+	Label _characterTwoNameLabel;
+	TextField _characterTwoNameField;
 	Label _characterTwoColorLabel;
 	SelectBox<String> _characterTwoColorSelectBox;
 	Label _characterTwoZordLabel;
 	SelectBox<String> _characterTwoZordSelectBox;
 	// Character three widgets
 	Label _characterThreeLabel;
+	Label _characterThreeNameLabel;
+	TextField _characterThreeNameField;
 	Label _characterThreeColorLabel;
 	SelectBox<String> _characterThreeColorSelectBox;
 	Label _characterThreeZordLabel;
 	SelectBox<String> _characterThreeZordSelectBox;
 	// Character four widgets
 	Label _characterFourLabel;
+	Label _characterFourNameLabel;
+	TextField _characterFourNameField;
 	Label _characterFourColorLabel;
 	SelectBox<String> _characterFourColorSelectBox;
 	Label _characterFourZordLabel;
@@ -59,6 +68,11 @@ public class CharacterSelectScreen extends A_GameScreen
 		_characterOneLabel = new Label("Ranger One", _skin);
 		_characterSelectionWindow.add(_characterOneLabel).expand().top().left().colspan(_totalColumns);
 		_characterSelectionWindow.row();
+		_characterOneNameLabel = new Label("Name:" , _skin);
+		_characterSelectionWindow.add(_characterOneNameLabel).left();
+		_characterOneNameField = new TextField("", _skin);
+		_characterSelectionWindow.add(_characterOneNameField).left();
+		_characterSelectionWindow.row();
 		_characterOneColorLabel = new Label("Color:", _skin);
 		_characterSelectionWindow.add(_characterOneColorLabel).left();
 		_characterOneColorSelectBox = new SelectBox<String>(_skin);
@@ -76,6 +90,11 @@ public class CharacterSelectScreen extends A_GameScreen
 		// Character Two
 		_characterTwoLabel = new Label("Ranger Two", _skin);
 		_characterSelectionWindow.add(_characterTwoLabel).expand().top().left().colspan(_totalColumns);
+		_characterSelectionWindow.row();
+		_characterTwoNameLabel = new Label("Name:" , _skin);
+		_characterSelectionWindow.add(_characterTwoNameLabel).left();
+		_characterTwoNameField = new TextField("", _skin);
+		_characterSelectionWindow.add(_characterTwoNameField).left();
 		_characterSelectionWindow.row();
 		_characterTwoColorLabel = new Label("Color:", _skin);
 		_characterSelectionWindow.add(_characterTwoColorLabel).left();
@@ -95,6 +114,11 @@ public class CharacterSelectScreen extends A_GameScreen
 		_characterThreeLabel = new Label("Ranger Three", _skin);
 		_characterSelectionWindow.add(_characterThreeLabel).expand().top().left().colspan(_totalColumns);
 		_characterSelectionWindow.row();
+		_characterThreeNameLabel = new Label("Name:" , _skin);
+		_characterSelectionWindow.add(_characterThreeNameLabel).left();
+		_characterThreeNameField = new TextField("", _skin);
+		_characterSelectionWindow.add(_characterThreeNameField).left();
+		_characterSelectionWindow.row();
 		_characterThreeColorLabel = new Label("Color:", _skin);
 		_characterSelectionWindow.add(_characterThreeColorLabel).left();
 		_characterThreeColorSelectBox = new SelectBox<String>(_skin);
@@ -112,6 +136,11 @@ public class CharacterSelectScreen extends A_GameScreen
 		// Character Four
 		_characterFourLabel = new Label("Ranger Four", _skin);
 		_characterSelectionWindow.add(_characterFourLabel).expand().top().left().colspan(_totalColumns);
+		_characterSelectionWindow.row();
+		_characterFourNameLabel = new Label("Name:" , _skin);
+		_characterSelectionWindow.add(_characterFourNameLabel).left();
+		_characterFourNameField = new TextField("", _skin);
+		_characterSelectionWindow.add(_characterFourNameField).left();
 		_characterSelectionWindow.row();
 		_characterFourColorLabel = new Label("Color:", _skin);
 		_characterSelectionWindow.add(_characterFourColorLabel).left();
@@ -185,6 +214,7 @@ public class CharacterSelectScreen extends A_GameScreen
 						{
 							rangerOne = new Wolf(rangerOne);
 						}
+						rangerOne.setName(_characterOneNameField.getText());
 						
 						A_Ranger rangerTwo = new Red();
 						if (_characterTwoColorSelectBox.equals("Red"))
@@ -235,6 +265,7 @@ public class CharacterSelectScreen extends A_GameScreen
 						{
 							rangerTwo = new Wolf(rangerTwo);
 						}
+						rangerTwo.setName(_characterTwoNameField.getText());
 						
 						A_Ranger rangerThree = new Red();
 						if (_characterThreeColorSelectBox.equals("Red"))
@@ -285,6 +316,7 @@ public class CharacterSelectScreen extends A_GameScreen
 						{
 							rangerThree = new Wolf(rangerThree);
 						}
+						rangerThree.setName(_characterThreeNameField.getText());
 						
 						A_Ranger rangerFour = new Red();
 						if (_characterFourColorSelectBox.equals("Red"))
@@ -335,6 +367,7 @@ public class CharacterSelectScreen extends A_GameScreen
 						{
 							rangerFour = new Wolf(rangerFour);
 						}
+						rangerFour.setName(_characterFourNameField.getText());
 						
 						rangers.add(rangerOne);
 						rangers.add(rangerTwo);

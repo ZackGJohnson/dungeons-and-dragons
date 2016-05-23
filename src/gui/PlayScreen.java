@@ -1,8 +1,6 @@
 package gui;
 
 import java.util.LinkedList;
-import java.util.Random;
-
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
@@ -74,8 +72,6 @@ public class PlayScreen extends A_GameScreen
 			_camera.translate(-_camera.position.x + (Map.ROOM_SPACE / 2), -_camera.position.y + (Map.ROOM_SPACE / 2));
 			_camera.translate((mouseX / Map.ROOM_SPACE) * Map.ROOM_SPACE, (mouseY / Map.ROOM_SPACE) * Map.ROOM_SPACE, 0);
 		}
-		Random rand = new Random();
-		appendLineToTextBox("test" + rand.nextInt(10));
 	}
 	
 	public void createNewParty(LinkedList<A_Ranger> rangers)
