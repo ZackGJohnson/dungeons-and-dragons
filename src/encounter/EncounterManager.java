@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
+
 import entities.*;
 
 public final class EncounterManager
@@ -23,6 +26,9 @@ public final class EncounterManager
 	private static LinkedList<A_Villain> _enemies;
 	private static LinkedList<A_Entity> _init;
 	private static LinkedList<String> _items;
+	private TextArea _textBox;
+	private ScrollPane _textScroll;
+	private int _points = 0;
 
 	private EncounterManager()
 	{
@@ -88,16 +94,23 @@ public final class EncounterManager
 		_rangers = rangers;
 		_enemies = enemies;
 	}
+	
+	public void addRangers(LinkedList<A_Ranger> rangers)
+	{
+		_rangers = rangers;
+	}
 
 	public void addEncounter(LinkedList<A_Villain> enemies)
 	{
 		_enemies = enemies;
 	}
 
-	public void addItem(String itemName)
+	public String addItem(String itemName)
 	{
-		System.out.println("You found:" + itemName);
+		//If you want to print out to textbox use the return to get the name maybe
+		//appendLineToTextBox("You found:" + itemName);
 		_items.add(itemName);
+		return itemName;
 	}
 
 	public void giveItem(int index, String itemName)
@@ -145,14 +158,14 @@ public final class EncounterManager
 			}
 			default:
 			{
-				System.out.println("Invalid item name, please check");
+				appendLineToTextBox("Invalid item name, please check");
 			}
 
 		}
 	}
 
 	public void useItem()
-	{
+	{//Replace with buttons, this will probably be moved to PlayScreen? ###
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 		int itemIndex = 0;
 		int rangerIndex = 0;
@@ -162,12 +175,14 @@ public final class EncounterManager
 			for (int i = 0; i < _items.size(); i++)
 			{
 				System.out.printf("Type %d to use %s on a ranger", i, _items.get(i));
+				//Any parseInt should be swapped with a button ###
 				itemIndex = (Integer.parseInt(input.readLine())) - 1;
 			}
 			
 			for (int i = 0; i < _rangers.size(); i++)
 			{
 				System.out.printf("Type %d to use %s on ranger %s", i, _items.get(itemIndex), _rangers.get(i).getName());
+				//Any parseInt should be swapped with a button ###
 				rangerIndex = (Integer.parseInt(input.readLine())) - 1;
 			}
 			giveItem(rangerIndex, _items.get(itemIndex));
@@ -195,8 +210,17 @@ public final class EncounterManager
 		}
 	}
 
-	public void round()
+	public void appendLineToTextBox(String string)
 	{
+		_textBox.appendText("\n" + string);
+		_textScroll.setScrollPercentY(100);
+	}
+	
+	public void round(TextArea textBox, ScrollPane textScroll)
+	{
+		_textBox = textBox;
+		_textScroll = textScroll;
+		
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
 		for (A_Ranger ranger : _rangers)
@@ -207,9 +231,11 @@ public final class EncounterManager
 
 		if (_items.size() > 0)
 		{
-			System.out.println("You have items available, enter 1 if you would like to use one");
+			//Rather than prompting once a round, this should be attached to a button ###
+			appendLineToTextBox("You have items available, enter 1 if you would like to use one");
 			try
 			{
+				//Any parseInt should be swapped with a button ###
 				if (Integer.parseInt(input.readLine()) == 1)
 				{
 					useItem();
@@ -271,6 +297,13 @@ public final class EncounterManager
 			if (enemy.getHealth() > 0)
 				return true;
 		}
+		//Encounter win, add points
+		for (A_Villain enemy : _enemies)
+		{
+			_points += enemy.getPoint();
+		}
+		
+		
 		return false;
 	}
 
@@ -284,22 +317,24 @@ public final class EncounterManager
 		return false;
 	}
 
-	public void stats()
+	public String stats()
 	{
+		String result = "";
 		if (_rangers != null)
 		{
 			for (A_Ranger ranger : _rangers)
 			{
-				System.out.println(ranger.getStats());
+				result = result + ranger.getStats() + "\n";
 			}
 		}
 
 		if (_enemies != null)
 		{
-			for (A_Ranger ranger : _rangers)
+			for (A_Villain enemy : _enemies)
 			{
-				System.out.println(ranger.getStats());
+				result = result + enemy.getStats() + "\n";
 			}
 		}
+		return result;
 	}
 }

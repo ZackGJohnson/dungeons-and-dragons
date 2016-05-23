@@ -21,12 +21,14 @@ public abstract class A_Ranger extends A_Entity
 			int choice = -1;
 			do
 			{
-				System.out.println(getStats());
-				System.out.printf("%s turn, type 1 to attack or 0 to see stats: \n", this.getName());
+				
+				EncounterManager.getInstance().appendLineToTextBox(this.getName() + " turn, type 1 to attack or 0 to see stats: \n");
+				System.out.println(this.getName() + " turn, type 1 to attack or 0 to see stats: ");
 				
 
 				try
 				{
+					//Button zone ###
 					choice = Integer.parseInt(input.readLine());
 				}
 				catch (NumberFormatException e)
@@ -46,7 +48,10 @@ public abstract class A_Ranger extends A_Entity
 				choice = -1;
 				do
 				{
-					System.out.printf("Who do you want to attack, %s?: \n", this.getName());
+					
+					EncounterManager.getInstance().appendLineToTextBox(this.getName() + "Who do you want to attack, %s?: \n");
+					System.out.println(this.getName() + "Who do you want to attack, %s?: ");
+					
 					for (int i = 0; i < EncounterManager.getInstance().getEnemies().size(); i++)
 					{
 						A_Villain option = EncounterManager.getInstance().getEnemies().get(i);
@@ -58,6 +63,7 @@ public abstract class A_Ranger extends A_Entity
 
 					try
 					{
+						//Button zone ###
 						choice = Integer.parseInt(input.readLine());
 					}
 					catch (NumberFormatException e)
@@ -75,7 +81,7 @@ public abstract class A_Ranger extends A_Entity
 			}
 			else if(choice == 0)
 			{
-				EncounterManager.getInstance().stats();
+				EncounterManager.getInstance().appendLineToTextBox(EncounterManager.getInstance().stats());
 			}
 		}
 		
@@ -92,6 +98,7 @@ public abstract class A_Ranger extends A_Entity
 		if (attackRoll >= enemy.getArmorClass())
 		{
 			System.out.printf("You hit %s with a(n) %d, dealing %d damage!\n", enemy.getName(), attackRoll, damageRoll);
+			EncounterManager.getInstance().appendLineToTextBox("Note to self, add printf version of this for ease of use");
 			damagedEnemy = new HurtEnemy(damagedEnemy, damageRoll);
 			
 			EncounterManager.getInstance().replaceEnemy(enemy, damagedEnemy);

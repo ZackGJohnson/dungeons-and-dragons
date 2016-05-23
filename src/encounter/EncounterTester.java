@@ -61,7 +61,7 @@ public class EncounterTester
 		
 		while (EncounterManager.getInstance().enemiesAreAlive() && EncounterManager.getInstance().rangersAreAlive())
 		{
-			EncounterManager.getInstance().round();
+			//EncounterManager.getInstance().round();
 		}
 		if(!EncounterManager.getInstance().enemiesAreAlive())
 			System.out.println("All enemies defeated!");

@@ -33,10 +33,10 @@ public class Room
 	{
 		for (int i = 0; i < _enemies.size(); i++)
 		{
-			EncounterManager.getInstance().addEnemy(_enemies.get(i));
+			//EncounterManager.getInstance().addEnemy(_enemies.get(i));
 		}
 
-		EncounterManager.getInstance().round();
+		//EncounterManager.getInstance().round();
 	}
 	
 	/*

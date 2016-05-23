@@ -14,6 +14,12 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	protected int armorClass;
 	protected int init;
 	protected String _name;
+	protected int _point;
+	
+	public int getPoint()
+	{
+		return 1;
+	}
 	
 	public String getName()
 	{
