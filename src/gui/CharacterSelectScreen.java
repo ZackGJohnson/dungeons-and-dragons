@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import encounter.EncounterManager;
 import entities.*;
 
 public class CharacterSelectScreen extends A_GameScreen
@@ -340,6 +341,10 @@ public class CharacterSelectScreen extends A_GameScreen
 						rangers.add(rangerTwo);
 						rangers.add(rangerThree);
 						rangers.add(rangerFour);
+						
+						//Adding party to encounter handler
+						EncounterManager.getInstance().addRangers(rangers);
+						
 						PlayScreen playScreen = new PlayScreen(_game);
 						playScreen.createNewParty(rangers);
 						_game.setScreen(playScreen);
