@@ -216,6 +216,15 @@ public final class EncounterManager
 		_textScroll.setScrollPercentY(100);
 	}
 	
+	public void initiative()
+	{
+		for (A_Ranger ranger : _rangers)
+			_init.add(ranger);
+		for (A_Villain villain : _enemies)
+			_init.add(villain);
+		Collections.sort(_init);
+	}
+	
 	public void round(TextArea textBox, ScrollPane textScroll)
 	{
 		_textBox = textBox;
@@ -223,12 +232,9 @@ public final class EncounterManager
 		
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
-		for (A_Ranger ranger : _rangers)
-			_init.add(ranger);
-		for (A_Villain villain : _enemies)
-			_init.add(villain);
-		Collections.sort(_init);
-
+		initiative();
+			
+			
 		if (_items.size() > 0)
 		{
 			//Rather than prompting once a round, this should be attached to a button ###
