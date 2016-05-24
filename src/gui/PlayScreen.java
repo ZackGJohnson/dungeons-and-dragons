@@ -93,6 +93,7 @@ public class PlayScreen extends A_GameScreen
 		A_Villain v2 = new BigPutty();
 		EncounterManager.getInstance().addEnemy(v1);
 		EncounterManager.getInstance().addEnemy(v2);
+		EncounterManager.getInstance().initiative();
 		
 		//runEncounter();
 		//Seems to be an issue with the gui while encounter is running, attempting to use threading
