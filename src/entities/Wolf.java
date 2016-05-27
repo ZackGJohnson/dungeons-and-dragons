@@ -13,6 +13,11 @@ public class Wolf extends A_RangerDecorator
 		return ranger.getHealth();
 	}
 	
+	public int getMaxHealth()
+	{
+		return ranger.getMaxHealth();
+	}
+	
 	public int getAtkMod() 
 	{		
 		return 1 + ranger.getAtkMod();
@@ -30,7 +35,14 @@ public class Wolf extends A_RangerDecorator
 	
 	public int getDmgReduction() 
 	{		
-		return ranger.getDmgReduction() - 1;
+		int result = ranger.getDmgReduction()-1;
+		if(result < 0)
+		{
+			return 0;
+		}else
+		{
+			return result;
+		}
 	}
 	
 	public int getArmorClass() 

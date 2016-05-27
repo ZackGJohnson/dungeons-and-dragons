@@ -7,6 +7,11 @@ public class Boss extends A_Villain
 	{
 		return 15;
 	}
+	
+	public int getMaxHealth()
+	{
+		return 15;
+	}
 
 	public int getAtkMod() 
 	{

@@ -12,6 +12,10 @@ public class Rita extends A_BadGuyDecorator
 	{		
 		return 3 + villain.getHealth();
 	}
+	public int getMaxHealth()
+	{
+		return 3 + villain.getMaxHealth();
+	}
 	
 	public int getAtkMod() 
 	{		

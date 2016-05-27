@@ -1,10 +1,18 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class Red extends A_Ranger
 {
+	public static Texture redRangerTexture;
 	
 	public int getHealth() 
 	{		
+		return 13;
+	}
+	
+	public int getMaxHealth()
+	{
 		return 13;
 	}
 	

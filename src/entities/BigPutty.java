@@ -5,17 +5,22 @@ public class BigPutty extends A_Villain
 	
 	public int getHealth() 
 	{		
-		return 16 + 3;
+		return 12;
+	}
+	
+	public int getMaxHealth()
+	{
+		return 12;
 	}
 	
 	public int getAtkMod() 
 	{		
-		return 1 + 2;
+		return 2;
 	}
 	
 	public int getDmgMod() 
 	{		
-		return 3 + 2;
+		return 2;
 	}
 	
 	public String getDmgDice() 
@@ -25,12 +30,12 @@ public class BigPutty extends A_Villain
 	
 	public int getDmgReduction() 
 	{		
-		return 0 + 1;
+		return 1;
 	}
 	
 	public int getArmorClass() 
 	{		
-		return 14 + 2;
+		return 14;
 	}
 
 }

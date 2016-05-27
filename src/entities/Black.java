@@ -8,6 +8,11 @@ public class Black extends A_Ranger
 		return 16;
 	}
 	
+	public int getMaxHealth()
+	{
+		return 16;
+	}
+	
 	public int getAtkMod() 
 	{		
 		return 1;

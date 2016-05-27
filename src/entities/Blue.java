@@ -7,6 +7,11 @@ public class Blue extends A_Ranger
 	{
 		return 10;
 	}
+	
+	public int getMaxHealth()
+	{
+		return 10;
+	}
 
 	public int getAtkMod() 
 	{

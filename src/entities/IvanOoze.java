@@ -10,7 +10,12 @@ public class IvanOoze extends A_BadGuyDecorator
 	
 	public int getHealth() 
 	{		
-		return 5 + villain.getHealth();
+		return 15 + villain.getHealth();
+	}
+	
+	public int getMaxHealth()
+	{
+		return 15 + villain.getMaxHealth();
 	}
 	
 	public int getAtkMod() 

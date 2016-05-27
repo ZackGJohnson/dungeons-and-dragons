@@ -1,5 +1,6 @@
 //package dungeons;
 
+import items.*;
 import entities.*;
 
 
@@ -17,8 +18,35 @@ public class BenTester
 		System.out.println("Ranger's dmgDice is: " + ranger.getDmgDice());
 		System.out.println("Ranger's dmgReduction is: " + ranger.getDmgReduction());
 		System.out.println("Ranger's AC is: " + ranger.getArmorClass());
+		System.out.println("Ranger's initiative is: " + ranger.getInit());
 		
 		System.out.println("=====================================================");
+		
+		ranger = new Bandage(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HealthUp(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new Bandage(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		ranger = new HurtRanger(ranger);
+		System.out.println("Ranger's health is: " + ranger.getHealth());
+		
+		//I hate how health reduction has to be implemented, but I see no other way
+		
+		
 		
 		A_Villain villain = new General();
 		villain = new Goldar(villain);
@@ -29,6 +57,7 @@ public class BenTester
 		System.out.println("Villain's dmgDice is: " + villain.getDmgDice());
 		System.out.println("Villain's dmgReduction is: " + villain.getDmgReduction());
 		System.out.println("Villain's AC is: " + villain.getArmorClass());
+		System.out.println("Villain's initiative is: " + villain.getInit());
 
 	}
 
