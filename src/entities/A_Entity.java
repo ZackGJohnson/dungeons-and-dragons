@@ -1,5 +1,7 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 import encounter.RollManager;
 
 public abstract class A_Entity implements Comparable<A_Entity>
@@ -75,4 +77,9 @@ public abstract class A_Entity implements Comparable<A_Entity>
 		return this.getInit() - target.getInit();
 	}
 
+	// Return a default texture. This method should be overrided and should return the proper texture for that entity.
+		public Texture getTexture()
+		{
+			return Red.redRangerTexture;
+		}
 }

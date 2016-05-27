@@ -84,6 +84,11 @@ public class PlayScreen extends A_GameScreen
 			_camera.translate((mouseX / Map.ROOM_SPACE) * Map.ROOM_SPACE, (mouseY / Map.ROOM_SPACE) * Map.ROOM_SPACE, 0);
 		}
 		
+		if (_party.getCurrentRoom().hasEncounter())
+		{
+			_game.switchScreens(new BattleScreen(_game, _party, _party.getCurrentRoom().getEnemies(), this));
+		}
+		
 		//Print Test ###
 		printStats();
 		

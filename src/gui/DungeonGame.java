@@ -24,6 +24,7 @@ public class DungeonGame extends Game
 		_font = new BitmapFont();
 		Room._wallTexture = new Texture("wallTexture.png");
 		Room._floorTexture = new Texture("floorTexture.png");
+		BattleScreen._battleBackground = new Texture("battleBackground.png");
 		Red.redRangerTexture = new Texture("redRangerTexture.png");
 		_currentScreen = new MainMenuScreen(this);
 		setScreen(_currentScreen);

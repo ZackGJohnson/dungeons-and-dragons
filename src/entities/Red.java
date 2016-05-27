@@ -41,4 +41,8 @@ public class Red extends A_Ranger
 		return 14;
 	}
 
+	public Texture getTexture()
+	{
+		return redRangerTexture;
+	}
 }

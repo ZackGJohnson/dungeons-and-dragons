@@ -7,12 +7,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.badlogic.gdx.graphics.Texture;
+
 import encounter.EncounterManager;
 import encounter.RollManager;
 
 public abstract class A_Ranger extends A_Entity
 {
-
+	protected Texture _texture;
+	
 	public void turn()
 	{
 		if (this.getHealth() > 0)
@@ -109,5 +112,4 @@ public abstract class A_Ranger extends A_Entity
 			System.out.printf("You miss %s with a(n) %d, dealing no damage!\n", enemy.getName(), attackRoll);
 		}
 	}
-
 }
