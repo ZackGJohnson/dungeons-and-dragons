@@ -380,7 +380,7 @@ public class CharacterSelectScreen extends A_GameScreen
 						
 						PlayScreen playScreen = new PlayScreen(_game);
 						playScreen.createNewParty(rangers);
-						_game.setScreen(playScreen);
+						_game.switchScreens(playScreen);
 					}
 				});
 	}
@@ -390,5 +390,14 @@ public class CharacterSelectScreen extends A_GameScreen
 		super.render(delta);
 		_stage.act(delta);
 		_stage.draw();
+	}
+	
+	@Override
+	public void resize(int width, int height)
+	{
+		super.resize(width, height);
+		_characterSelectionMenu.invalidateHierarchy();
+		_characterSelectionMenu.invalidate();
+		_stage.getViewport().apply();
 	}
 }

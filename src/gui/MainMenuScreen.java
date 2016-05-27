@@ -39,7 +39,7 @@ public class MainMenuScreen extends A_GameScreen
 					@Override
 					public void changed(ChangeEvent event, Actor actor)
 					{
-						_game.setScreen(new CharacterSelectScreen(_game));
+						_game.switchScreens(new CharacterSelectScreen(_game));
 					}
 				});
 		_mainMenuTable.add(_newGameButton).fillX().padBottom(_buttonPadding);

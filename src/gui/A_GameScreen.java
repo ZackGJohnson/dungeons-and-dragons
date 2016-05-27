@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 /*
  * The game is separated into different "screens". An example would be the screen for character select
@@ -21,6 +24,7 @@ public abstract class A_GameScreen implements Screen
 	protected DungeonGame _game;
 	protected Stage _stage;
 	protected Skin _skin;
+	protected Viewport _uiViewport;
 	
 	public A_GameScreen(DungeonGame game)
 	{
@@ -30,9 +34,12 @@ public abstract class A_GameScreen implements Screen
 		_camera.zoom = 30;
 		_camera.update();
 		
+		_uiViewport = new StretchViewport(800, 600);
+		
 		_inputHandler = new InputHandler(this);
 		_multiplexer = new InputMultiplexer();
 		_stage = new Stage();
+		_stage.setViewport(_uiViewport);
 		Gdx.input.setInputProcessor(_multiplexer);
 		_multiplexer.addProcessor(_stage);
 		_multiplexer.addProcessor(_inputHandler);
@@ -51,7 +58,7 @@ public abstract class A_GameScreen implements Screen
 	public void resize(int width, int height)
 	{
 		_camera.viewportWidth = 30f;
-        _camera.viewportHeight = 30f * height / width;
+        _camera.viewportHeight = 30f * (width / height);
         _camera.update();
         
         _stage.getViewport().update(width, height, true);

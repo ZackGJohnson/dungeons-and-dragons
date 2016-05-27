@@ -36,7 +36,7 @@ public class DungeonGame extends Game
 
     public void resize (int width, int height)
     {
-    	
+    	_currentScreen.resize(width, height);
     }
 
     public void pause ()
