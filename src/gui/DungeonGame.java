@@ -1,5 +1,7 @@
 package gui;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -61,8 +63,10 @@ public class DungeonGame extends Game
     
     public void switchScreens(A_GameScreen screen)
     {
+    	_currentScreen.pause();
     	_currentScreen = screen;
     	setScreen(_currentScreen);
+    	_currentScreen.resume();
     }
     
     public Screen getCurrentScreen()

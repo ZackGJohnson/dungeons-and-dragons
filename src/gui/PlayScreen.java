@@ -3,6 +3,9 @@ package gui;
 import java.util.LinkedList;
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
@@ -78,8 +81,6 @@ public class PlayScreen extends A_GameScreen
 	 */
 	public void click(int mouseX, int mouseY)
 	{
-		
-		
 		if (_map.moveParty(mouseX, mouseY, _party))
 		{
 			_camera.translate(-_camera.position.x + (Map.ROOM_SPACE / 2), -_camera.position.y + (Map.ROOM_SPACE / 2));
@@ -90,6 +91,7 @@ public class PlayScreen extends A_GameScreen
 		{
 			
 			_game.switchScreens(new BattleScreen(_game, _party, _party.getCurrentRoom().getEnemies(), this));
+			
 		}
 
 		printStats();
@@ -110,6 +112,4 @@ public class PlayScreen extends A_GameScreen
 		_textBox.appendText("\n" + string);
 		_textScroll.setScrollPercentY(100);
 	}
-	
-	
 }

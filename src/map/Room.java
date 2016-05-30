@@ -138,8 +138,17 @@ public class Room
 		_party = rangerList;
 	}
 	
+	// Returns true if there is both enemies in the room and at least one of them
+	// is alive.
 	public boolean hasEncounter()
 	{
-		return !_enemies.isEmpty();
+		for (int i = 0; i < _enemies.size(); i++)
+		{
+			if (_enemies.get(i).isAlive())
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }

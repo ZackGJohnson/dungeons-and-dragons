@@ -82,7 +82,11 @@ public abstract class A_GameScreen implements Screen
 
 	public void resume()
 	{
-		
+		_inputHandler = new InputHandler(this);
+		_multiplexer = new InputMultiplexer();
+		Gdx.input.setInputProcessor(_multiplexer);
+		_multiplexer.addProcessor(_stage);
+		_multiplexer.addProcessor(_inputHandler);
 	}
 
 	public void show()

@@ -84,6 +84,7 @@ public class InputHandler implements InputProcessor
 	
 	public boolean touchDown(int x, int y, int pointer, int button)
 	{
+		
 		Vector3 mousePosition = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
 		if (button == Input.Buttons.LEFT)
 		{
@@ -133,5 +134,10 @@ public class InputHandler implements InputProcessor
     	{
     		_screen.getCamera().translate(CAMERA_SCROLL_SPEED,0,0);
     	}
+    }
+    
+    public void setScreen(A_GameScreen screen)
+    {
+    	_screen = screen;
     }
 }
