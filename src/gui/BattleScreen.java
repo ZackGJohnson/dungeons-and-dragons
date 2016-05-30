@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 
 import encounter.EncounterManager;
@@ -36,7 +37,7 @@ public class BattleScreen extends A_GameScreen
 
 	Table _battleScreenUI;
 	TextButton _useItemButton;
-	SelectBox<A_RangerDecorator> _itemSelectBox;
+	SelectBox<String> _itemSelectBox;
 	TextArea _textBox;
 	// The total amount of lines the textBox will store
 	int _textBoxMaxLines = 10;
@@ -45,7 +46,6 @@ public class BattleScreen extends A_GameScreen
 	ArrayList<ImageButton> _enemyButtons;
 
 	boolean _usingItem = false;
-	A_RangerDecorator _itemToUse;
 
 	public BattleScreen(DungeonGame game, Party party, LinkedList<A_Villain> enemies, A_GameScreen previousScreen)
 	{
@@ -53,14 +53,14 @@ public class BattleScreen extends A_GameScreen
 		_party = party;
 		_enemies = enemies;
 		_previousScreen = previousScreen;
-
+		
 		EncounterManager.getInstance().addEncounter(enemies);
 		EncounterManager.getInstance().initiative();
 
 		_battleScreenUI = new Table();
 		_battleScreenUI.setFillParent(true);
 		_stage.addActor(_battleScreenUI);
-		_itemSelectBox = new SelectBox<A_RangerDecorator>(_skin);
+		_itemSelectBox = new SelectBox<String>(_skin);
 		_itemSelectBox.setItems(_party.getItemsAsArray());
 		_battleScreenUI.add(_itemSelectBox).padBottom(_stage.getHeight() / 5);;
 		_useItemButton = new TextButton("Use Item", _skin);
@@ -86,10 +86,15 @@ public class BattleScreen extends A_GameScreen
 				{
 					if (_usingItem)
 					{
-						// Use an item on a ranger. May have to use reflection
-						// here.
+						EncounterManager.getInstance().giveItem(_rangerNumber, _itemSelectBox.getSelected());
+						appendLineToTextBox("Used " + _itemSelectBox.getSelected() + " on " + party.getRangers().get(_rangerNumber).getName() + ".");
+						enemyTurn();
+						_usingItem = false;
+						// Remove the item from the list
+						// TODO: Item needs to be removed from the encounter manager item list.
+						_itemSelectBox.clearItems();
+						_itemSelectBox.setItems(_party.getItemsAsArray());
 					}
-					appendLineToTextBox("Clicked on ranger " + _rangerNumber);
 				}
 			});
 			_rangerButtons.add(_tempRangerButton);
@@ -105,7 +110,6 @@ public class BattleScreen extends A_GameScreen
 				@Override
 				public void changed(ChangeEvent event, Actor actor)
 				{
-					appendLineToTextBox("Clicked on enemy " + _enemyNumber);
 					A_Entity test = EncounterManager.getInstance().getCurr();
 
 					if (test != null)

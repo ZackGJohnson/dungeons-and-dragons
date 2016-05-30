@@ -3,6 +3,7 @@ package entities;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import encounter.EncounterManager;
 import map.Room;
 
 public class Party
@@ -37,17 +38,17 @@ public class Party
 		return _rangers;
 	}
 	
-	public ArrayList<A_RangerDecorator> getItems()
+	public LinkedList<String> getItems()
 	{
-		return _items;
+		return EncounterManager.getInstance().getItems();
 	}
 	
-	public A_RangerDecorator[] getItemsAsArray()
+	public String[] getItemsAsArray()
 	{
-		A_RangerDecorator[] temp = new A_RangerDecorator[_items.size()];
-		for (int i = 0; i < _items.size(); i++)
+		String[] temp = new String[EncounterManager.getInstance().getItems().size()];
+		for (int i = 0; i < EncounterManager.getInstance().getItems().size(); i++)
 		{
-			temp[i] = _items.get(i);
+			temp[i] = EncounterManager.getInstance().getItems().get(i);
 		}
 		
 		return temp;

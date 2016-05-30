@@ -126,36 +126,43 @@ public final class EncounterManager
 			{
 				modified = new ArmorUp(ranger);
 				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
 			}
 			case "attackup":
 			{
 				modified = new AttackUp(ranger);
 				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
 			}
 			case "damageup":
 			{
 				modified = new DamageUp(ranger);
 				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
 			}
 			case "drup":
 			{
 				modified = new DRUp(ranger);
 				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
 			}
 			case "healthup":
 			{
 				modified = new HealthUp(ranger);
 				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
 			}
 			case "initup":
 			{
 				modified = new InitUp(ranger);
 				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
 			}
 			case "bandage":
 			{
 				modified = new Bandage(ranger);
 				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
 			}
 			default:
 			{
@@ -370,5 +377,10 @@ public final class EncounterManager
 		else
 			result = result + "_enemies is null, were the rooms properly initilized?\n";
 		return result;
+	}
+	
+	public LinkedList<String> getItems()
+	{
+		return _items;
 	}
 }
