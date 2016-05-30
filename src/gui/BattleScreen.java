@@ -62,7 +62,7 @@ public class BattleScreen extends A_GameScreen
 		_stage.addActor(_battleScreenUI);
 		_itemSelectBox = new SelectBox<A_RangerDecorator>(_skin);
 		_itemSelectBox.setItems(_party.getItemsAsArray());
-		_battleScreenUI.add(_itemSelectBox);
+		_battleScreenUI.add(_itemSelectBox).padBottom(_stage.getHeight() / 5);;
 		_useItemButton = new TextButton("Use Item", _skin);
 		_useItemButton.addListener(new ChangeListener()
 		{
@@ -72,7 +72,7 @@ public class BattleScreen extends A_GameScreen
 				_usingItem = true;
 			}
 		});
-		_battleScreenUI.add(_useItemButton);
+		_battleScreenUI.add(_useItemButton).padBottom(_stage.getHeight() / 5);
 		_battleScreenUI.row();
 		_rangerButtons = new ArrayList<ImageButton>();
 		for (int i = 0; i < party.getRangers().size(); i++)
@@ -169,7 +169,7 @@ public class BattleScreen extends A_GameScreen
 		super.render(delta);
 		_game.getBatch().begin();
 		// TODO: Battle background will need to be scaled to screen
-		_game.getBatch().draw(_battleBackground, -400, -300);
+		_game.getBatch().draw(_battleBackground, -((_camera.viewportWidth * _camera.zoom) / 2), -((_camera.viewportHeight * _camera.zoom) / 2), _camera.viewportWidth * _camera.zoom, _camera.viewportHeight * _camera.zoom);
 		_game.getBatch().end();
 		_stage.act(delta);
 		_stage.draw();
