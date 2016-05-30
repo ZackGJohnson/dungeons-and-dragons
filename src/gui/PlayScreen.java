@@ -78,21 +78,6 @@ public class PlayScreen extends A_GameScreen
 	 */
 	public void click(int mouseX, int mouseY)
 	{
-		//Test enemies, make sure to delete
-		/*
-		A_Villain v1 = new BigPutty();
-		A_Villain v2 = new BigPutty();
-		A_Villain v3 = new BigPutty();
-		A_Villain v4 = new BigPutty();
-		LinkedList<A_Villain> testEnemies = new LinkedList<A_Villain>();
-		testEnemies.add(v1);
-		testEnemies.add(v2);
-		testEnemies.add(v3);
-		testEnemies.add(v4);
-		*/
-		//EncounterManager.getInstance().addEnemy(v1);
-		//EncounterManager.getInstance().addEnemy(v2);
-		//EncounterManager.getInstance().initiative();
 		
 		
 		if (_map.moveParty(mouseX, mouseY, _party))
@@ -103,31 +88,13 @@ public class PlayScreen extends A_GameScreen
 		
 		if (_party.getCurrentRoom().hasEncounter())
 		{
-			//Remove this test code later 
-			//_party.getCurrentRoom().setEnemies(testEnemies);
-			//end test code
 			
 			_game.switchScreens(new BattleScreen(_game, _party, _party.getCurrentRoom().getEnemies(), this));
 		}
-		
-		//Print Test ###
+
 		printStats();
 		
 	}
-	
-	//Move to room?
-	public void runEncounter()
-	{
-		while (EncounterManager.getInstance().enemiesAreAlive() && EncounterManager.getInstance().rangersAreAlive())
-		{
-			EncounterManager.getInstance().round(_textBox, _textScroll);
-		}
-		if(!EncounterManager.getInstance().enemiesAreAlive())
-			appendLineToTextBox("All enemies defeated!");
-		else if(!EncounterManager.getInstance().rangersAreAlive())
-			appendLineToTextBox("Mission Failure!");
-	}
-	
 	
 	public void printStats()
 	{//Prints the stats to text box, attach this to a button  ###
