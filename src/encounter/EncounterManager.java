@@ -23,6 +23,7 @@ public final class EncounterManager
 
 	private static EncounterManager _instance = null;
 	private static LinkedList<A_Ranger> _rangers;
+	private static A_Ranger _curr;
 	private static LinkedList<A_Villain> _enemies;
 	private static LinkedList<A_Entity> _init;
 	private static LinkedList<String> _items;
@@ -223,7 +224,29 @@ public final class EncounterManager
 		for (A_Villain villain : _enemies)
 			_init.add(villain);
 		Collections.sort(_init);
+		Collections.sort(_rangers);
+		_curr = _rangers.getFirst();
+			
+			
+		
 	}
+	
+	public A_Ranger getCurr()
+	{
+		return _curr;
+	}
+	
+	public A_Ranger nextRanger()
+	{
+		int i = _rangers.indexOf(_curr);
+		if(i >= _rangers.size() - 1)
+			i = 0;
+		_curr =  _rangers.get(i + 1);
+		
+		return _curr;
+		
+	}
+	
 	
 	public void round(TextArea textBox, ScrollPane textScroll)
 	{
@@ -338,9 +361,14 @@ public final class EncounterManager
 		{
 			for (A_Villain enemy : _enemies)
 			{
-				result = result + enemy.getStats() + "\n";
+				if(enemy != null)
+					result = result + enemy.getStats() + "\n";
+				else
+					result = result + "Enemy is null";
 			}
 		}
+		else
+			result = result + "_enemies is null, were the rooms properly initilized?\n";
 		return result;
 	}
 }

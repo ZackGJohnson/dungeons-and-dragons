@@ -1,16 +1,16 @@
 package entities;
 
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
-import org.junit.Test;
+//import org.junit.Test;
 
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.After;
+//import org.junit.Before;
+//import org.junit.Test;
 
-
+/*
 public class EntityTest {
 	
 	A_Ranger test;
@@ -782,3 +782,4 @@ public class EntityTest {
 		assertEquals(14, blue.getArmorClass());
 	}
 }
+*/

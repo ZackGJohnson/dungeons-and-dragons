@@ -50,7 +50,10 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	
 	public boolean isAlive()
 	{
-		return isAlive;
+		if(getHealth() <= 0)
+			return false;
+		else
+			return true;
 	}
 	
 	public void die()
@@ -65,8 +68,48 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	
 	public String getStats()
 	{
-		return (getName() + ":Health: " + getHealth() + "/" + getMaxHealth() + ", Attack: +" + getAtkMod() + " for " + getDmgDice() + "+" + getDmgMod() + 
-				"\nDefense: AC " + getArmorClass() + " DR " + getDmgReduction());
+		String stats = "";
+		
+		if(getName() != null)
+			stats = stats + getName();
+		else
+			stats = stats + "null";
+		
+		if(getHealth() > 0)
+			stats = stats + ": Health: " + getHealth();
+		else
+			stats = stats + ": Health: " + getHealth();
+		
+		if(getMaxHealth() > 0)
+			stats = stats + "/" + getMaxHealth();
+		else
+			stats = stats + "/" + getMaxHealth();
+		
+		if(getAtkMod() > 0)
+			stats = stats + ", Attack: +" + getAtkMod();
+		else
+			stats = stats + ", Attack: +" + getAtkMod();
+		
+		if(getDmgDice() != null)
+			stats = stats + " for " + getDmgDice();
+		else
+			stats = stats + "null";
+		
+		if(getDmgMod() > 0)
+			stats = stats + "+" + getDmgMod();
+		else
+			stats = stats + "+" + getDmgMod();
+		
+		if(getArmorClass() > 0)
+			stats = stats + "\nDefense: AC " + getArmorClass();
+		else
+			stats = stats + "\nDefense: AC " + getArmorClass();
+		
+		if(getDmgReduction() > 0)
+			stats = stats + " DR " + getDmgReduction();
+		else
+			stats = stats + " DR " + getDmgReduction();
+		return stats;
 					
 	}
 

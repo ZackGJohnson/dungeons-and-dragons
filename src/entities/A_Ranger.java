@@ -91,25 +91,50 @@ public abstract class A_Ranger extends A_Entity
 
 	}
 
-	private void attack(int target)
+	public String attack(int target)
 	{
+		
 		A_Villain enemy = EncounterManager.getInstance().getEnemies().get(target);
 		A_Villain damagedEnemy = EncounterManager.getInstance().getEnemies().get(target);
+		
+		if(enemy == null)
+		{
+			System.out.println("Enemy is null");
+			return "null";
+		}
+		
+		if(damagedEnemy == null)
+		{
+			System.out.println("Enemy is null");
+			return "null";
+		}
+		
+		if(!(enemy.isAlive()))
+		{
+			return "Selected enemy is dead!";
+		}
+		
 		int attackRoll = RollManager.getInstance().roll("1d20+" + getAtkMod());
 		int damageRoll = RollManager.getInstance().roll("" + getDmgDice() + "+" + getDmgMod());
 
 		if (attackRoll >= enemy.getArmorClass())
 		{
-			System.out.printf("You hit %s with a(n) %d, dealing %d damage!\n", enemy.getName(), attackRoll, damageRoll);
-			EncounterManager.getInstance().appendLineToTextBox("Note to self, add printf version of this for ease of use");
-			damagedEnemy = new HurtEnemy(damagedEnemy, damageRoll);
 			
+			//EncounterManager.getInstance().appendLineToTextBox("Note to self, add printf version of this for ease of use");
+			damagedEnemy = new HurtEnemy(damagedEnemy, damageRoll);
 			EncounterManager.getInstance().replaceEnemy(enemy, damagedEnemy);
+			EncounterManager.getInstance().nextRanger();
+			return ("You hit " + enemy.getName() + " with a(n) " + attackRoll + ", dealing " + damageRoll
+					 + " damage!\n");
+			
 			// Insert actual method of damage enemy here
 		}
 		else
 		{
-			System.out.printf("You miss %s with a(n) %d, dealing no damage!\n", enemy.getName(), attackRoll);
+			EncounterManager.getInstance().nextRanger();
+			return ("You miss " + enemy.getName() + " with a(n) " + attackRoll + ", dealing 0 damage!\n");
 		}
+		
+		
 	}
 }

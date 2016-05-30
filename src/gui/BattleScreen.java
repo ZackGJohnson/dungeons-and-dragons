@@ -19,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 
 import encounter.EncounterManager;
+import entities.A_Ranger;
 import entities.A_RangerDecorator;
 import entities.A_Villain;
 import entities.Party;
@@ -30,7 +31,7 @@ public class BattleScreen extends A_GameScreen
 	Party _party;
 	LinkedList<A_Villain> _enemies;
 	A_GameScreen _previousScreen;
-	
+
 	Table _battleScreenUI;
 	TextButton _useItemButton;
 	SelectBox<A_RangerDecorator> _itemSelectBox;
@@ -40,17 +41,20 @@ public class BattleScreen extends A_GameScreen
 	ScrollPane _textScroll;
 	ArrayList<ImageButton> _rangerButtons;
 	ArrayList<ImageButton> _enemyButtons;
-	
+
 	boolean _usingItem = false;
 	A_RangerDecorator _itemToUse;
-	
+
 	public BattleScreen(DungeonGame game, Party party, LinkedList<A_Villain> enemies, A_GameScreen previousScreen)
 	{
 		super(game);
 		_party = party;
 		_enemies = enemies;
 		_previousScreen = previousScreen;
-		
+
+		EncounterManager.getInstance().addEncounter(enemies);
+		EncounterManager.getInstance().initiative();
+
 		_battleScreenUI = new Table();
 		_battleScreenUI.setFillParent(true);
 		_stage.addActor(_battleScreenUI);
@@ -71,7 +75,7 @@ public class BattleScreen extends A_GameScreen
 		_rangerButtons = new ArrayList<ImageButton>();
 		for (int i = 0; i < party.getRangers().size(); i++)
 		{
-			int _rangerNumber = i;
+			final int _rangerNumber = i;
 			ImageButton _tempRangerButton = new ImageButton(new SpriteDrawable(new Sprite(party.getRangers().get(i).getTexture())));
 			_tempRangerButton.addListener(new ChangeListener()
 			{
@@ -80,7 +84,8 @@ public class BattleScreen extends A_GameScreen
 				{
 					if (_usingItem)
 					{
-						// Use an item on a ranger. May have to use reflection here.
+						// Use an item on a ranger. May have to use reflection
+						// here.
 					}
 					appendLineToTextBox("Clicked on ranger " + _rangerNumber);
 				}
@@ -91,7 +96,7 @@ public class BattleScreen extends A_GameScreen
 		_enemyButtons = new ArrayList<ImageButton>();
 		for (int i = 0; i < enemies.size(); i++)
 		{
-			int _enemyNumber = i;
+			final int _enemyNumber = i;
 			// TODO: The sprite will need to be changed to the enemy's sprite.
 			ImageButton _tempEnemyButton = new ImageButton(new SpriteDrawable(new Sprite(enemies.get(_enemyNumber).getTexture())));
 			_tempEnemyButton.addListener(new ChangeListener()
@@ -100,12 +105,28 @@ public class BattleScreen extends A_GameScreen
 				public void changed(ChangeEvent event, Actor actor)
 				{
 					appendLineToTextBox("Clicked on enemy " + _enemyNumber);
+					A_Ranger test = EncounterManager.getInstance().getCurr();
+
+					if (test != null)
+					{
+						String printStuff = test.attack(_enemyNumber);
+						appendLineToTextBox(printStuff);
+						//appendLineToTextBox(EncounterManager.getInstance().stats());
+						
+					}
+					else
+					{
+						appendLineToTextBox("Test is null");
+					}
+
+					// appendLineToTextBox(EncounterManager.getInstance().getCurr().attack(_enemyNumber));
 				}
 			});
 			_enemyButtons.add(_tempEnemyButton);
 		}
-		
-		// Do a "merge sort" and add rangers/enemy buttons with rangers on the left and enemies on the right.
+
+		// Do a "merge sort" and add rangers/enemy buttons with rangers on the
+		// left and enemies on the right.
 		int _rangerNumber = 0;
 		int _enemyNumber = 0;
 		while (_rangerNumber < _rangerButtons.size() || _enemyNumber < _enemyButtons.size())
@@ -122,8 +143,7 @@ public class BattleScreen extends A_GameScreen
 			}
 			_battleScreenUI.row();
 		}
-		
-		
+
 		_battleScreenUI.row();
 		_textBox = new TextArea("", _skin);
 		_textBox.setPrefRows(_textBoxMaxLines);
@@ -139,7 +159,7 @@ public class BattleScreen extends A_GameScreen
 			_textBox.appendText("\n");
 		}
 	}
-	
+
 	public void render(float delta)
 	{
 		super.render(delta);
@@ -149,32 +169,32 @@ public class BattleScreen extends A_GameScreen
 		_game.getBatch().end();
 		_stage.act(delta);
 		_stage.draw();
-		
+
 		if (!EncounterManager.getInstance().enemiesAreAlive())
 		{
 			_game.switchScreens(_previousScreen);
 		}
 		else
 		{
-			//runEncounter();
+			// runEncounter();
 		}
 	}
-	
+
 	public void appendLineToTextBox(String string)
 	{
 		_textBox.appendText("\n" + string);
 		_textScroll.setScrollPercentY(100);
 	}
-	
+
 	public void runEncounter()
 	{
 		while (EncounterManager.getInstance().enemiesAreAlive() && EncounterManager.getInstance().rangersAreAlive())
 		{
-			//EncounterManager.getInstance().round(_textBox, _textScroll);
+			// EncounterManager.getInstance().round(_textBox, _textScroll);
 		}
-		if(!EncounterManager.getInstance().enemiesAreAlive())
+		if (!EncounterManager.getInstance().enemiesAreAlive())
 			appendLineToTextBox("All enemies defeated!");
-		else if(!EncounterManager.getInstance().rangersAreAlive())
+		else if (!EncounterManager.getInstance().rangersAreAlive())
 			appendLineToTextBox("Mission Failure!");
 	}
 }
