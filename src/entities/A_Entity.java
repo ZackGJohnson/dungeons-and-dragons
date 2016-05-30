@@ -130,6 +130,6 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	// Return a default texture. This method should be overrided and should return the proper texture for that entity.
 		public Texture getTexture()
 		{
-			return Red.redRangerTexture;
+			return Red._redRangerTexture;
 		}
 }

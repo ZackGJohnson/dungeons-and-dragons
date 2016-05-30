@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Red extends A_Ranger
 {
-	public static Texture redRangerTexture;
+	public static Texture _redRangerTexture;
 	
 	public int getHealth() 
 	{		
@@ -43,6 +43,6 @@ public class Red extends A_Ranger
 
 	public Texture getTexture()
 	{
-		return redRangerTexture;
+		return _redRangerTexture;
 	}
 }

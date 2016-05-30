@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import entities.Red;
+import entities.SmallPutty;
 import map.Room;
 
 public class DungeonGame extends Game
@@ -27,7 +28,8 @@ public class DungeonGame extends Game
 		Room._wallTexture = new Texture("wallTexture.png");
 		Room._floorTexture = new Texture("floorTexture.png");
 		BattleScreen._battleBackground = new Texture("battleBackground.png");
-		Red.redRangerTexture = new Texture("redRangerTexture.png");
+		Red._redRangerTexture = new Texture("redRangerTexture.png");
+		SmallPutty._smallPuttyTexture = new Texture("puttyTexture.png");
 		_currentScreen = new MainMenuScreen(this);
 		setScreen(_currentScreen);
     }

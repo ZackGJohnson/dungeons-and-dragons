@@ -1,7 +1,10 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class SmallPutty extends A_Villain
 {
+	public static Texture _smallPuttyTexture;
 	
 	public int getHealth() 
 	{		
@@ -36,6 +39,11 @@ public class SmallPutty extends A_Villain
 	public int getArmorClass() 
 	{		
 		return 14;
+	}
+	
+	public Texture getTexture()
+	{
+		return _smallPuttyTexture;
 	}
 
 }
