@@ -16,6 +16,12 @@ public abstract class A_Ranger extends A_Entity
 {
 	protected Texture _texture;
 	
+	
+	public String getType()
+	{
+		return "Ranger";
+	}
+	
 	public void turn()
 	{
 		if (this.getHealth() > 0)
@@ -123,7 +129,7 @@ public abstract class A_Ranger extends A_Entity
 			//EncounterManager.getInstance().appendLineToTextBox("Note to self, add printf version of this for ease of use");
 			damagedEnemy = new HurtEnemy(damagedEnemy, damageRoll);
 			EncounterManager.getInstance().replaceEnemy(enemy, damagedEnemy);
-			EncounterManager.getInstance().nextRanger();
+			EncounterManager.getInstance().nextEntity();
 			return ("You hit " + enemy.getName() + " with a(n) " + attackRoll + ", dealing " + damageRoll
 					 + " damage!\n");
 			
@@ -131,7 +137,7 @@ public abstract class A_Ranger extends A_Entity
 		}
 		else
 		{
-			EncounterManager.getInstance().nextRanger();
+			EncounterManager.getInstance().nextEntity();
 			return ("You miss " + enemy.getName() + " with a(n) " + attackRoll + ", dealing 0 damage!\n");
 		}
 		

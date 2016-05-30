@@ -19,6 +19,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 
 import encounter.EncounterManager;
+import encounter.RollManager;
+import entities.A_Entity;
 import entities.A_Ranger;
 import entities.A_RangerDecorator;
 import entities.A_Villain;
@@ -105,14 +107,17 @@ public class BattleScreen extends A_GameScreen
 				public void changed(ChangeEvent event, Actor actor)
 				{
 					appendLineToTextBox("Clicked on enemy " + _enemyNumber);
-					A_Ranger test = EncounterManager.getInstance().getCurr();
+					A_Entity test = EncounterManager.getInstance().getCurr();
 
 					if (test != null)
 					{
 						String printStuff = test.attack(_enemyNumber);
 						appendLineToTextBox(printStuff);
-						//appendLineToTextBox(EncounterManager.getInstance().stats());
-						
+						enemyTurn();
+
+						// This doesn't work, maybe due to size of textbox?
+						// appendLineToTextBox(EncounterManager.getInstance().stats());
+
 					}
 					else
 					{
@@ -177,6 +182,23 @@ public class BattleScreen extends A_GameScreen
 		else
 		{
 			// runEncounter();
+		}
+	}
+
+	public void enemyTurn()
+	{
+		A_Entity curr = EncounterManager.getInstance().getCurr();
+		if (curr.getType().equalsIgnoreCase("Enemy"))
+		{
+			int target = RollManager.getInstance().roll("1d" + EncounterManager.getInstance().getRangers().size() + "+0");
+			String attackResult = curr.attack(target);
+			//String attackResult = "Enemy Attack";
+			appendLineToTextBox(attackResult);
+			EncounterManager.getInstance().nextEntity();
+			if (curr.getType().equalsIgnoreCase("Enemy"))
+			{//Scary recursion
+				enemyTurn();
+			}
 		}
 	}
 

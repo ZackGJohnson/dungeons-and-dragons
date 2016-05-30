@@ -18,6 +18,11 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	protected String _name;
 	protected int _point;
 	
+	public String getType()
+	{
+		return "Entity";
+	}
+	
 	public int getPoint()
 	{
 		return 1;
@@ -65,6 +70,8 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	{
 		return RollManager.getInstance().roll("1d20+0");
 	}
+	
+	public abstract String attack(int target);
 	
 	public String getStats()
 	{

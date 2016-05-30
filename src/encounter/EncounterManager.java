@@ -23,7 +23,7 @@ public final class EncounterManager
 
 	private static EncounterManager _instance = null;
 	private static LinkedList<A_Ranger> _rangers;
-	private static A_Ranger _curr;
+	private static A_Entity _curr;
 	private static LinkedList<A_Villain> _enemies;
 	private static LinkedList<A_Entity> _init;
 	private static LinkedList<String> _items;
@@ -225,23 +225,23 @@ public final class EncounterManager
 			_init.add(villain);
 		Collections.sort(_init);
 		Collections.sort(_rangers);
-		_curr = _rangers.getFirst();
+		_curr = _init.getFirst();
 			
 			
 		
 	}
 	
-	public A_Ranger getCurr()
+	public A_Entity getCurr()
 	{
 		return _curr;
 	}
 	
-	public A_Ranger nextRanger()
+	public A_Entity nextEntity()
 	{
-		int i = _rangers.indexOf(_curr);
-		if(i >= _rangers.size() - 1)
+		int i = _init.indexOf(_curr);
+		if(i >= _init.size() - 1)
 			i = 0;
-		_curr =  _rangers.get(i + 1);
+		_curr =  _init.get(i + 1);
 		
 		return _curr;
 		

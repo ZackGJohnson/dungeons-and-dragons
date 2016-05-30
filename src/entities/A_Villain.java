@@ -7,6 +7,11 @@ import encounter.RollManager;
 public abstract class A_Villain extends A_Entity
 {
 
+	public String getType()
+	{
+		return "Enemy";
+	}
+	
 	public void turn()
 	{
 		if (isAlive())
@@ -18,7 +23,7 @@ public abstract class A_Villain extends A_Entity
 
 	}
 
-	private void attack(int target)
+	public String attack(int target)
 	{
 		A_Ranger enemy = EncounterManager.getInstance().getRangers().get(target);
 		A_Ranger damagedEnemy = EncounterManager.getInstance().getRangers().get(target);
@@ -27,15 +32,20 @@ public abstract class A_Villain extends A_Entity
 
 		if (attackRoll >= enemy.getArmorClass())
 		{
-			System.out.printf("%s hits %s with a(n) %d, dealing %d damage!\n", getName(), enemy.getName(), attackRoll, damageRoll);
+			//System.out.printf("%s hits %s with a(n) %d, dealing %d damage!\n", getName(), enemy.getName(), attackRoll, damageRoll);
 			damagedEnemy = new HurtRanger(damagedEnemy, damageRoll);
 			
 			EncounterManager.getInstance().replaceRanger(enemy, damagedEnemy);
 			
+			
+			return (getName() + " hits " + enemy.getName() + " with a(n) " + attackRoll + ", dealing " + damageRoll
+					 + " damage!\n");
+			
 		}
 		else
 		{
-			System.out.printf("%s misses %s with a(n) %d, dealing no damage!\n", getName(), enemy.getName(), attackRoll);
+			
+			return (getName() + " misses " + enemy.getName() + " with a(n) " + attackRoll + ", dealing 0 damage!\n");
 		}
 		
 		
