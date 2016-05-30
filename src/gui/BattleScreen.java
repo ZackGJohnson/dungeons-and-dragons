@@ -99,7 +99,6 @@ public class BattleScreen extends A_GameScreen
 		for (int i = 0; i < enemies.size(); i++)
 		{
 			final int _enemyNumber = i;
-			// TODO: The sprite will need to be changed to the enemy's sprite.
 			ImageButton _tempEnemyButton = new ImageButton(new SpriteDrawable(new Sprite(enemies.get(_enemyNumber).getTexture())));
 			_tempEnemyButton.addListener(new ChangeListener()
 			{
@@ -182,6 +181,21 @@ public class BattleScreen extends A_GameScreen
 		else
 		{
 			// runEncounter();
+		}
+		
+		for (int j = 0; j < _enemyButtons.size(); j++)
+		{
+			if (!_enemies.get(j).isAlive())
+			{
+				_enemyButtons.get(j).setVisible(false);
+			}
+		}
+		for (int j = 0; j < _rangerButtons.size(); j++)
+		{
+			if (!_party.getRangers().get(j).isAlive())
+			{
+				_rangerButtons.get(j).setVisible(false);
+			}
 		}
 	}
 
