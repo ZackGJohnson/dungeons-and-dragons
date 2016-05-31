@@ -58,6 +58,18 @@ public final class EncounterManager
 		_rangers.remove(creature);
 	}
 
+	public void removeRangerAt(int index)
+	{
+		A_Ranger deadRanger = EncounterManager.getInstance().getRangers().get(index);
+		_init.remove(deadRanger);
+	}
+	
+	public void removeEnemyAt(int index)
+	{
+		A_Villain deadEnemy = EncounterManager.getInstance().getEnemies().get(index);
+		_init.remove(deadEnemy);
+	}
+	
 	public void replaceRanger(A_Ranger old, A_Ranger replacement)
 	{
 		int initiative = _init.indexOf(old);
@@ -65,8 +77,11 @@ public final class EncounterManager
 		_rangers.remove(old);
 		_rangers.add(order, replacement);
 
+		if(initiative >= 0)
+		{
 		_init.remove(initiative);
 		_init.add(initiative, replacement);
+		}
 	}
 
 	public void replaceEnemy(A_Villain old, A_Villain replacement)
@@ -249,7 +264,8 @@ public final class EncounterManager
 		int i = _init.indexOf(_curr);
 		if(i >= _init.size() - 1)
 			i = 0;
-		_curr =  _init.get(i + 1);
+		if(_init.size() > 1)
+			_curr =  _init.get(i + 1);
 		
 		return _curr;
 		

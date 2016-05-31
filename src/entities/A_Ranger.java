@@ -129,7 +129,12 @@ public abstract class A_Ranger extends A_Entity
 			//EncounterManager.getInstance().appendLineToTextBox("Note to self, add printf version of this for ease of use");
 			damagedEnemy = new HurtEnemy(damagedEnemy, damageRoll);
 			EncounterManager.getInstance().replaceEnemy(enemy, damagedEnemy);
+			if(EncounterManager.getInstance().getEnemies().get(target).getHealth() < 1)
+			{
+				EncounterManager.getInstance().removeEnemyAt(target);
+			}
 			EncounterManager.getInstance().nextEntity();
+			
 			return ("You hit " + enemy.getName() + " with a(n) " + attackRoll + ", dealing " + damageRoll
 					 + " damage!\n");
 			

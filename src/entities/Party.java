@@ -20,6 +20,12 @@ public class Party
 		_currentRoom.setParty(_rangers);
 	}
 
+	
+	public void setRangers(LinkedList<A_Ranger> rangers)
+	{
+		_rangers = rangers;
+	}
+	
 	public void setCurrentRoom(Room room)
 	{
 		// Give the old room an empty party list.

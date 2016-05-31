@@ -37,7 +37,10 @@ public abstract class A_Villain extends A_Entity
 			
 			EncounterManager.getInstance().replaceRanger(enemy, damagedEnemy);
 			
-			
+			if(EncounterManager.getInstance().getRangers().get(target).getHealth() < 1)
+			{
+				EncounterManager.getInstance().removeRangerAt(target);
+			}
 			return (getName() + " hits " + enemy.getName() + " with a(n) " + attackRoll + ", dealing " + damageRoll
 					 + " damage!\n");
 			

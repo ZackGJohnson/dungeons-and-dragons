@@ -53,7 +53,7 @@ public class BattleScreen extends A_GameScreen
 		_party = party;
 		_enemies = enemies;
 		_previousScreen = previousScreen;
-		
+
 		EncounterManager.getInstance().addEncounter(enemies);
 		EncounterManager.getInstance().initiative();
 
@@ -62,7 +62,8 @@ public class BattleScreen extends A_GameScreen
 		_stage.addActor(_battleScreenUI);
 		_itemSelectBox = new SelectBox<String>(_skin);
 		_itemSelectBox.setItems(_party.getItemsAsArray());
-		_battleScreenUI.add(_itemSelectBox).padBottom(_stage.getHeight() / 5);;
+		_battleScreenUI.add(_itemSelectBox).padBottom(_stage.getHeight() / 5);
+		;
 		_useItemButton = new TextButton("Use Item", _skin);
 		_useItemButton.addListener(new ChangeListener()
 		{
@@ -91,7 +92,8 @@ public class BattleScreen extends A_GameScreen
 						enemyTurn();
 						_usingItem = false;
 						// Remove the item from the list
-						// TODO: Item needs to be removed from the encounter manager item list.
+						// TODO: Item needs to be removed from the encounter
+						// manager item list.
 						_itemSelectBox.clearItems();
 						_itemSelectBox.setItems(_party.getItemsAsArray());
 					}
@@ -178,15 +180,14 @@ public class BattleScreen extends A_GameScreen
 		_stage.act(delta);
 		_stage.draw();
 
+		// We really shouldn't be using two separate lists of rangers
+		_party.setRangers(EncounterManager.getInstance().getRangers());
+
 		if (!EncounterManager.getInstance().enemiesAreAlive())
 		{
 			_game.switchScreens(_previousScreen);
 		}
-		else
-		{
-			// runEncounter();
-		}
-		
+
 		for (int j = 0; j < _enemyButtons.size(); j++)
 		{
 			if (!_enemies.get(j).isAlive())
@@ -194,11 +195,19 @@ public class BattleScreen extends A_GameScreen
 				_enemyButtons.get(j).setVisible(false);
 			}
 		}
-		for (int j = 0; j < _rangerButtons.size(); j++)
+
+		if (!EncounterManager.getInstance().rangersAreAlive())
 		{
-			if (!_party.getRangers().get(j).isAlive())
+			// _game.switchScreens(_endScreen);
+		}
+		else
+		{
+			for (int j = 0; j < _rangerButtons.size(); j++)
 			{
-				_rangerButtons.get(j).setVisible(false);
+				if (!_party.getRangers().get(j).isAlive())
+				{
+					_rangerButtons.get(j).setVisible(false);
+				}
 			}
 		}
 	}
@@ -206,16 +215,24 @@ public class BattleScreen extends A_GameScreen
 	public void enemyTurn()
 	{
 		A_Entity curr = EncounterManager.getInstance().getCurr();
-		if (curr.getType().equalsIgnoreCase("Enemy"))
+		if (EncounterManager.getInstance().rangersAreAlive())
 		{
-			int target = RollManager.getInstance().roll("1d" + EncounterManager.getInstance().getRangers().size() + "+0");
-			String attackResult = curr.attack(target);
-			//String attackResult = "Enemy Attack";
-			appendLineToTextBox(attackResult);
-			EncounterManager.getInstance().nextEntity();
 			if (curr.getType().equalsIgnoreCase("Enemy"))
-			{//Scary recursion
-				enemyTurn();
+			{
+				int target = RollManager.getInstance().roll("1d" + EncounterManager.getInstance().getRangers().size() + "+0");
+				while(!EncounterManager.getInstance().getRangers().get(target).isAlive())
+				{
+					target = RollManager.getInstance().roll("1d" + EncounterManager.getInstance().getRangers().size() + "+0");
+				}
+				
+				String attackResult = curr.attack(target);
+				// String attackResult = "Enemy Attack";
+				appendLineToTextBox(attackResult);
+				EncounterManager.getInstance().nextEntity();
+				if (curr.getType().equalsIgnoreCase("Enemy"))
+				{// Scary recursion
+					enemyTurn();
+				}
 			}
 		}
 	}
