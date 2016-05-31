@@ -18,7 +18,6 @@ import entities.Red;
 import map.Map;
 import map.MapGenerator;
 import encounter.EncounterManager;
-import encounter.encounterRunnable;
 
 public class PlayScreen extends A_GameScreen
 {

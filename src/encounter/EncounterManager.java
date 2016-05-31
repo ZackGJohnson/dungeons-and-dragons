@@ -168,6 +168,7 @@ public final class EncounterManager
 			{
 				appendLineToTextBox("Invalid item name, please check");
 			}
+			_items.remove(itemName);
 
 		}
 	}
@@ -254,67 +255,6 @@ public final class EncounterManager
 		
 	}
 	
-	
-	public void round(TextArea textBox, ScrollPane textScroll)
-	{
-		_textBox = textBox;
-		_textScroll = textScroll;
-		
-		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-
-		initiative();
-			
-			
-		if (_items.size() > 0)
-		{
-			//Rather than prompting once a round, this should be attached to a button ###
-			appendLineToTextBox("You have items available, enter 1 if you would like to use one");
-			try
-			{
-				//Any parseInt should be swapped with a button ###
-				if (Integer.parseInt(input.readLine()) == 1)
-				{
-					useItem();
-
-				}
-			}
-			catch (NumberFormatException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			catch (IOException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
-
-		
-		for (int i = 0; i < _init.size(); i++)
-		{
-			_init.get(i).turn();
-
-		}
-
-		for (A_Ranger ranger : _rangers)
-		{
-			if (!ranger.isAlive())
-			{
-				_rangers.remove(ranger);
-			}
-		}
-		for (A_Villain villain : _enemies)
-		{
-			if (!villain.isAlive())
-			{
-				_enemies.remove(villain);
-			}
-		}
-
-		_init.clear();
-	}
 
 	public LinkedList<A_Villain> getEnemies()
 	{

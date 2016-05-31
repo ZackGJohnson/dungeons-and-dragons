@@ -75,7 +75,7 @@ public class BattleScreen extends A_GameScreen
 		_battleScreenUI.add(_useItemButton).padBottom(_stage.getHeight() / 5);
 		_battleScreenUI.row();
 		_rangerButtons = new ArrayList<ImageButton>();
-		for (int i = 0; i < party.getRangers().size(); i++)
+		for (int i = 0; i < _party.getRangers().size(); i++)
 		{
 			final int _rangerNumber = i;
 			ImageButton _tempRangerButton = new ImageButton(new SpriteDrawable(new Sprite(party.getRangers().get(i).getTexture())));
@@ -87,7 +87,7 @@ public class BattleScreen extends A_GameScreen
 					if (_usingItem)
 					{
 						EncounterManager.getInstance().giveItem(_rangerNumber, _itemSelectBox.getSelected());
-						appendLineToTextBox("Used " + _itemSelectBox.getSelected() + " on " + party.getRangers().get(_rangerNumber).getName() + ".");
+						appendLineToTextBox("Used " + _itemSelectBox.getSelected() + " on " + _party.getRangers().get(_rangerNumber).getName() + ".");
 						enemyTurn();
 						_usingItem = false;
 						// Remove the item from the list
