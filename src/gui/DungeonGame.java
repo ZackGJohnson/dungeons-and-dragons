@@ -3,6 +3,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,6 +18,7 @@ public class DungeonGame extends Game
 	public static final int TEXTURE_SIZE = 32;
 	Screen _currentScreen;
 	private BitmapFont _font;
+	Music _currentMusic;
 	
 	/*
 	 * Run when the game is first started.
@@ -61,6 +63,10 @@ public class DungeonGame extends Game
     {
     	_batch.dispose();
     	_font.dispose();
+    	if (_currentMusic != null)
+    	{
+    		_currentMusic.dispose();
+    	}
     }
     
     public void switchScreens(A_GameScreen screen)
@@ -79,5 +85,17 @@ public class DungeonGame extends Game
     public SpriteBatch getBatch()
     {
     	return _batch;
+    }
+    
+    public void playMusic(Music music, boolean loop)
+    {
+    	if (_currentMusic != null)
+    	{
+    		_currentMusic.stop();
+    	}
+    	
+    	_currentMusic = music;
+    	_currentMusic.setLooping(loop);
+    	_currentMusic.play();
     }
 }

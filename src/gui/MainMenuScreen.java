@@ -44,17 +44,6 @@ public class MainMenuScreen extends A_GameScreen
 				});
 		_mainMenuTable.add(_newGameButton).fillX().padBottom(_buttonPadding);
 		_mainMenuTable.row();
-		_loadGameButton = new TextButton("Load Game", _skin);
-		_loadGameButton.addListener(new ChangeListener()
-		{
-			@Override
-			public void changed(ChangeEvent event, Actor actor)
-			{
-				// Load game
-			}
-		});
-		_mainMenuTable.add(_loadGameButton).fillX().padBottom(_buttonPadding);
-		_mainMenuTable.row();
 		_highscoresButton = new TextButton("Highscores", _skin);
 		_highscoresButton.addListener(new ChangeListener()
 		{
@@ -77,7 +66,7 @@ public class MainMenuScreen extends A_GameScreen
 		});
 		_mainMenuTable.add(_exitGameButton).fillX();
 		
-		_themeMusic.play();
+		_game.playMusic(_themeMusic, true);
 	}
 	
 	public void render(float delta)

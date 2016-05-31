@@ -174,7 +174,6 @@ public class BattleScreen extends A_GameScreen
 	{
 		super.render(delta);
 		_game.getBatch().begin();
-		// TODO: Battle background will need to be scaled to screen
 		_game.getBatch().draw(_battleBackground, -((_camera.viewportWidth * _camera.zoom) / 2), -((_camera.viewportHeight * _camera.zoom) / 2), _camera.viewportWidth * _camera.zoom, _camera.viewportHeight * _camera.zoom);
 		_game.getBatch().end();
 		_stage.act(delta);
@@ -198,7 +197,7 @@ public class BattleScreen extends A_GameScreen
 
 		if (!EncounterManager.getInstance().rangersAreAlive())
 		{
-			// _game.switchScreens(_endScreen);
+			_game.switchScreens(new EndScreen(_game));
 		}
 		else
 		{

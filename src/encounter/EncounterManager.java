@@ -339,4 +339,9 @@ public final class EncounterManager
 	{
 		return _items;
 	}
+	
+	public int getPoints()
+	{
+		return _points;
+	}
 }

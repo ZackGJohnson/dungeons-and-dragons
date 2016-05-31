@@ -34,7 +34,7 @@ public class PlayScreen extends A_GameScreen
 		super(game);
 		A_Ranger testRanger = new Red();
 		LinkedList<A_Ranger> rangers = new LinkedList<A_Ranger>();
-		_map = MapGenerator.getInstance().generateMap(5, 5, 15, 3);
+		_map = MapGenerator.getInstance().generateMap(8, 8, 20, 15);
 		rangers.add(testRanger);
 		_party = new Party(rangers, _map.getRoom(0, 0));
 		// Camera is adjusted to be centered on rooms.
