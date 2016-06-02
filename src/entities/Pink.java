@@ -1,8 +1,17 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class Pink extends A_Ranger
 {
+	public static Texture _pinkRangerTexture;
 
+	public Pink()
+	{
+		super();
+		_texture = _pinkRangerTexture;
+	}
+	
 	public int getHealth() 
 	{
 		return 12;
@@ -37,5 +46,4 @@ public class Pink extends A_Ranger
 	{
 		return 14;
 	}
-
 }

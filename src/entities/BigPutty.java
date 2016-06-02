@@ -1,7 +1,16 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class BigPutty extends A_Villain
 {
+	public static Texture _bigPuttyTexture;
+	
+	public BigPutty()
+	{
+		super();
+		_texture = _bigPuttyTexture;
+	}
 	
 	public int getHealth() 
 	{		

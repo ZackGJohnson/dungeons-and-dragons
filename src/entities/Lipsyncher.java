@@ -1,11 +1,15 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class Lipsyncher extends A_BadGuyDecorator
 {
+	public static Texture _lipsyncherTexture;
 
 	protected Lipsyncher(A_Villain v) 
 	{
 		super(v);
+		_texture = _lipsyncherTexture;
 	}
 	
 	public int getHealth() 

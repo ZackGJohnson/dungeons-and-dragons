@@ -6,6 +6,12 @@ public class SmallPutty extends A_Villain
 {
 	public static Texture _smallPuttyTexture;
 	
+	public SmallPutty()
+	{
+		super();
+		_texture = _smallPuttyTexture;
+	}
+	
 	public int getHealth() 
 	{		
 		return 10;
@@ -39,11 +45,6 @@ public class SmallPutty extends A_Villain
 	public int getArmorClass() 
 	{		
 		return 14;
-	}
-	
-	public Texture getTexture()
-	{
-		return _smallPuttyTexture;
 	}
 
 }

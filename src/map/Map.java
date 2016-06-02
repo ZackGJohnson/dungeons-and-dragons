@@ -2,7 +2,7 @@ package map;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import entities.Party;
+import encounter.EncounterManager;
 import gui.DungeonGame;
 
 public class Map
@@ -90,31 +90,31 @@ public class Map
 	 * then it moves the party to the target room.
 	 * Return true if the target room was a valid move.
 	 */
-	public boolean moveParty(float mouseX, float mouseY, Party party)
+	public boolean moveParty(float mouseX, float mouseY)
 	{
-		Room currentRoom = party.getCurrentRoom();
+		Room currentRoom = EncounterManager.getInstance().getCurrentRoom();
 		float roomX = mouseX / ROOM_SPACE;
 		float roomY = mouseY / ROOM_SPACE;
 		if (roomX >= 0 && roomY >= 0 && roomX < _rooms.length && roomY < _rooms[(int)roomX].length && _rooms[(int)roomX][(int)roomY] != null)
 		{
 			if (_rooms[(int)roomX][(int)roomY].getUpExit() && _rooms[(int)roomX][(int)roomY-1] == currentRoom)
 			{
-				party.setCurrentRoom(_rooms[(int)roomX][(int)roomY]);
+				EncounterManager.getInstance().setCurrentRoom(_rooms[(int)roomX][(int)roomY]);
 				return true;
 			}
 			if (_rooms[(int)roomX][(int)roomY].getDownExit() && _rooms[(int)roomX][(int)roomY+1] == currentRoom)
 			{
-				party.setCurrentRoom(_rooms[(int)roomX][(int)roomY]);
+				EncounterManager.getInstance().setCurrentRoom(_rooms[(int)roomX][(int)roomY]);
 				return true;
 			}
 			if (_rooms[(int)roomX][(int)roomY].getLeftExit() && _rooms[(int)roomX-1][(int)roomY] == currentRoom)
 			{
-				party.setCurrentRoom(_rooms[(int)roomX][(int)roomY]);
+				EncounterManager.getInstance().setCurrentRoom(_rooms[(int)roomX][(int)roomY]);
 				return true;
 			}
 			if (_rooms[(int)roomX][(int)roomY].getRightExit() && _rooms[(int)roomX+1][(int)roomY] == currentRoom)
 			{
-				party.setCurrentRoom(_rooms[(int)roomX][(int)roomY]);
+				EncounterManager.getInstance().setCurrentRoom(_rooms[(int)roomX][(int)roomY]);
 				return true;
 			}
 		}

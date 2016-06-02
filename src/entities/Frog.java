@@ -3,7 +3,7 @@ package entities;
 public class Frog extends A_RangerDecorator
 {
 
-	protected Frog(A_Ranger r) 
+	public Frog(A_Ranger r) 
 	{
 		super(r);
 	}

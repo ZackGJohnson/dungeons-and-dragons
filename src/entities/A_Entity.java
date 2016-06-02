@@ -17,6 +17,7 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	protected int init;
 	protected String _name;
 	protected int _point;
+	protected Texture _texture;
 	
 	public String getType()
 	{
@@ -127,9 +128,13 @@ public abstract class A_Entity implements Comparable<A_Entity>
 		return this.getInit() - target.getInit();
 	}
 
-	// Return a default texture. This method should be overrided and should return the proper texture for that entity.
-		public Texture getTexture()
+	public Texture getTexture()
+	{
+		if (_texture == null)
 		{
+			System.out.println("NULL TEXTURE FOR " + this.getName());
 			return Red._redRangerTexture;
 		}
+		return _texture;
+	}
 }

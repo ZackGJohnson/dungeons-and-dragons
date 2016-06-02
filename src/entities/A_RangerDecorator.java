@@ -1,5 +1,7 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public abstract class A_RangerDecorator extends A_Ranger
 {
 	protected A_Ranger ranger;
@@ -15,4 +17,10 @@ public abstract class A_RangerDecorator extends A_Ranger
 	public abstract String getDmgDice();
 	public abstract int getDmgReduction();
 	public abstract int getArmorClass();
+	
+	@Override
+	public Texture getTexture()
+	{
+		return ranger.getTexture();
+	}
 }

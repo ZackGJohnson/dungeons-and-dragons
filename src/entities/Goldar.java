@@ -1,11 +1,15 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class Goldar extends A_BadGuyDecorator
 {
+	public static Texture _goldarTexture;
 
 	public Goldar(A_Villain v) 
 	{
 		super(v);
+		_texture = _goldarTexture;
 	}
 	
 	public int getHealth() 
@@ -42,6 +46,5 @@ public class Goldar extends A_BadGuyDecorator
 	{		
 		return 3 + villain.getArmorClass();
 	}
-
 }
 

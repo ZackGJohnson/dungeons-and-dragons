@@ -1,11 +1,15 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class LordZed extends A_BadGuyDecorator
 {
+	public static Texture _lordZedTexture;
 
 	protected LordZed(A_Villain v) 
 	{
 		super(v);
+		_texture = _lordZedTexture;
 	}
 	
 	public int getHealth() 

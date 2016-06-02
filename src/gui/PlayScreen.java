@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import entities.A_Ranger;
 import entities.A_Villain;
 import entities.BigPutty;
-import entities.Party;
 import entities.Red;
 import map.Map;
 import map.MapGenerator;
@@ -22,7 +21,6 @@ import encounter.EncounterManager;
 public class PlayScreen extends A_GameScreen
 {
 	private Map _map;
-	private Party _party;
 	Table _playScreenUI;
 	TextArea _textBox;
 	// The total amount of lines the textBox will store
@@ -32,11 +30,8 @@ public class PlayScreen extends A_GameScreen
 	public PlayScreen(DungeonGame game)
 	{
 		super(game);
-		A_Ranger testRanger = new Red();
-		LinkedList<A_Ranger> rangers = new LinkedList<A_Ranger>();
 		_map = MapGenerator.getInstance().generateMap(8, 8, 20, 15);
-		rangers.add(testRanger);
-		_party = new Party(rangers, _map.getRoom(0, 0));
+		EncounterManager.getInstance().setCurrentRoom(_map.getRoom(0, 0));
 		// Camera is adjusted to be centered on rooms.
 		_camera.position.set(Map.ROOM_SPACE / 2, Map.ROOM_SPACE / 2,0);
 		
@@ -80,16 +75,16 @@ public class PlayScreen extends A_GameScreen
 	 */
 	public void click(int mouseX, int mouseY)
 	{
-		if (_map.moveParty(mouseX, mouseY, _party))
+		if (_map.moveParty(mouseX, mouseY))
 		{
 			_camera.translate(-_camera.position.x + (Map.ROOM_SPACE / 2), -_camera.position.y + (Map.ROOM_SPACE / 2));
 			_camera.translate((mouseX / Map.ROOM_SPACE) * Map.ROOM_SPACE, (mouseY / Map.ROOM_SPACE) * Map.ROOM_SPACE, 0);
 		}
 		
-		if (_party.getCurrentRoom().hasEncounter())
+		if (EncounterManager.getInstance().getCurrentRoom().hasEncounter())
 		{
 			
-			_game.switchScreens(new BattleScreen(_game, _party, _party.getCurrentRoom().getEnemies(), this));
+			_game.switchScreens(new BattleScreen(_game, this));
 			
 		}
 
@@ -100,10 +95,6 @@ public class PlayScreen extends A_GameScreen
 	public void printStats()
 	{//Prints the stats to text box, attach this to a button  ###
 		appendLineToTextBox(EncounterManager.getInstance().stats());
-	}
-	public void createNewParty(LinkedList<A_Ranger> rangers)
-	{
-		_party = new Party(rangers, _map.getRoom(0, 0));
 	}
 	
 	public void appendLineToTextBox(String string)

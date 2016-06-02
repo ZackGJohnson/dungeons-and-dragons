@@ -1,11 +1,15 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class Rito extends A_BadGuyDecorator
 {
+	public static Texture _ritoTexture;
 
 	public Rito(A_Villain v) 
 	{
 		super(v);
+		_texture = _ritoTexture;
 	}
 	
 	public int getHealth() 

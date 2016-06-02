@@ -71,7 +71,7 @@ public class CharacterSelectScreen extends A_GameScreen
 		_characterSelectionWindow.row();
 		_characterOneNameLabel = new Label("Name:" , _skin);
 		_characterSelectionWindow.add(_characterOneNameLabel).left();
-		_characterOneNameField = new TextField("", _skin);
+		_characterOneNameField = new TextField("Eins", _skin);
 		_characterSelectionWindow.add(_characterOneNameField).left();
 		_characterSelectionWindow.row();
 		_characterOneColorLabel = new Label("Color:", _skin);
@@ -94,7 +94,7 @@ public class CharacterSelectScreen extends A_GameScreen
 		_characterSelectionWindow.row();
 		_characterTwoNameLabel = new Label("Name:" , _skin);
 		_characterSelectionWindow.add(_characterTwoNameLabel).left();
-		_characterTwoNameField = new TextField("", _skin);
+		_characterTwoNameField = new TextField("Zwei", _skin);
 		_characterSelectionWindow.add(_characterTwoNameField).left();
 		_characterSelectionWindow.row();
 		_characterTwoColorLabel = new Label("Color:", _skin);
@@ -117,7 +117,7 @@ public class CharacterSelectScreen extends A_GameScreen
 		_characterSelectionWindow.row();
 		_characterThreeNameLabel = new Label("Name:" , _skin);
 		_characterSelectionWindow.add(_characterThreeNameLabel).left();
-		_characterThreeNameField = new TextField("", _skin);
+		_characterThreeNameField = new TextField("Drei", _skin);
 		_characterSelectionWindow.add(_characterThreeNameField).left();
 		_characterSelectionWindow.row();
 		_characterThreeColorLabel = new Label("Color:", _skin);
@@ -140,7 +140,7 @@ public class CharacterSelectScreen extends A_GameScreen
 		_characterSelectionWindow.row();
 		_characterFourNameLabel = new Label("Name:" , _skin);
 		_characterSelectionWindow.add(_characterFourNameLabel).left();
-		_characterFourNameField = new TextField("", _skin);
+		_characterFourNameField = new TextField("Vier", _skin);
 		_characterSelectionWindow.add(_characterFourNameField).left();
 		_characterSelectionWindow.row();
 		_characterFourColorLabel = new Label("Color:", _skin);
@@ -167,204 +167,204 @@ public class CharacterSelectScreen extends A_GameScreen
 					{
 						LinkedList<A_Ranger> rangers = new LinkedList<A_Ranger>();
 						A_Ranger rangerOne = new Red();
-						if (_characterOneColorSelectBox.equals("Red"))
+						if (_characterOneColorSelectBox.getSelected().equals("Red"))
 						{
 							rangerOne = new Red();
 						}
-						else if (_characterOneColorSelectBox.equals("Blue"))
+						else if (_characterOneColorSelectBox.getSelected().equals("Blue"))
 						{
 							rangerOne = new Blue();
 						}
-						else if (_characterOneColorSelectBox.equals("Pink"))
+						else if (_characterOneColorSelectBox.getSelected().equals("Pink"))
 						{
 							rangerOne = new Pink();
 						}
-						else if (_characterOneColorSelectBox.equals("Yellow"))
+						else if (_characterOneColorSelectBox.getSelected().equals("Yellow"))
 						{
 							rangerOne = new Yellow();
 						}
-						else if (_characterOneColorSelectBox.equals("Black"))
+						else if (_characterOneColorSelectBox.getSelected().equals("Black"))
 						{
 							rangerOne = new Black();
 						}
-						else if (_characterOneColorSelectBox.equals("White"))
+						else if (_characterOneColorSelectBox.getSelected().equals("White"))
 						{
 							rangerOne = new White();
 						}
-						if (_characterOneZordSelectBox.equals("Ape"))
+						if (_characterOneZordSelectBox.getSelected().equals("Ape"))
 						{
-							//rangerOne = new Ape(rangerOne);
+							rangerOne = new Ape(rangerOne);
 						}
-						else if (_characterOneZordSelectBox.equals("Bear"))
+						else if (_characterOneZordSelectBox.getSelected().equals("Bear"))
 						{
-							//rangerOne = new Bear(rangerOne);
+							rangerOne = new Bear(rangerOne);
 						}
-						else if (_characterOneZordSelectBox.equals("Crane"))
+						else if (_characterOneZordSelectBox.getSelected().equals("Crane"))
 						{
-							//rangerOne = new Crane(rangerOne);
+							rangerOne = new Crane(rangerOne);
 						}
-						else if (_characterOneZordSelectBox.equals("Falcon"))
+						else if (_characterOneZordSelectBox.getSelected().equals("Falcon"))
 						{
-							//rangerOne = new Falcon(rangerOne);
+							rangerOne = new Falcon(rangerOne);
 						}
-						else if (_characterOneZordSelectBox.equals("Frog"))
+						else if (_characterOneZordSelectBox.getSelected().equals("Frog"))
 						{
-							//rangerOne = new Frog(rangerOne);
+							rangerOne = new Frog(rangerOne);
 						}
-						else if (_characterOneZordSelectBox.equals("Wolf"))
+						else if (_characterOneZordSelectBox.getSelected().equals("Wolf"))
 						{
 							rangerOne = new Wolf(rangerOne);
 						}
 						rangerOne.setName(_characterOneNameField.getText());
 						
 						A_Ranger rangerTwo = new Red();
-						if (_characterTwoColorSelectBox.equals("Red"))
+						if (_characterTwoColorSelectBox.getSelected().equals("Red"))
 						{
 							rangerTwo = new Red();
 						}
-						else if (_characterTwoColorSelectBox.equals("Blue"))
+						else if (_characterTwoColorSelectBox.getSelected().equals("Blue"))
 						{
 							rangerTwo = new Blue();
 						}
-						else if (_characterTwoColorSelectBox.equals("Pink"))
+						else if (_characterTwoColorSelectBox.getSelected().equals("Pink"))
 						{
 							rangerTwo = new Pink();
 						}
-						else if (_characterTwoColorSelectBox.equals("Yellow"))
+						else if (_characterTwoColorSelectBox.getSelected().equals("Yellow"))
 						{
 							rangerTwo = new Yellow();
 						}
-						else if (_characterTwoColorSelectBox.equals("Black"))
+						else if (_characterTwoColorSelectBox.getSelected().equals("Black"))
 						{
 							rangerTwo = new Black();
 						}
-						else if (_characterTwoColorSelectBox.equals("White"))
+						else if (_characterTwoColorSelectBox.getSelected().equals("White"))
 						{
 							rangerTwo = new White();
 						}
-						if (_characterTwoZordSelectBox.equals("Ape"))
+						if (_characterTwoZordSelectBox.getSelected().equals("Ape"))
 						{
-							//rangerTwo = new Ape(rangerTwo);
+							rangerTwo = new Ape(rangerTwo);
 						}
-						else if (_characterTwoZordSelectBox.equals("Bear"))
+						else if (_characterTwoZordSelectBox.getSelected().equals("Bear"))
 						{
-							//rangerTwo = new Bear(rangerTwo);
+							rangerTwo = new Bear(rangerTwo);
 						}
-						else if (_characterTwoZordSelectBox.equals("Crane"))
+						else if (_characterTwoZordSelectBox.getSelected().equals("Crane"))
 						{
-							//rangerTwo = new Crane(rangerTwo);
+							rangerTwo = new Crane(rangerTwo);
 						}
-						else if (_characterTwoZordSelectBox.equals("Falcon"))
+						else if (_characterTwoZordSelectBox.getSelected().equals("Falcon"))
 						{
-							//rangerTwo = new Falcon(rangerTwo);
+							rangerTwo = new Falcon(rangerTwo);
 						}
-						else if (_characterTwoZordSelectBox.equals("Frog"))
+						else if (_characterTwoZordSelectBox.getSelected().equals("Frog"))
 						{
-							//rangerTwo = new Frog(rangerTwo);
+							rangerTwo = new Frog(rangerTwo);
 						}
-						else if (_characterTwoZordSelectBox.equals("Wolf"))
+						else if (_characterTwoZordSelectBox.getSelected().equals("Wolf"))
 						{
 							rangerTwo = new Wolf(rangerTwo);
 						}
 						rangerTwo.setName(_characterTwoNameField.getText());
 						
 						A_Ranger rangerThree = new Red();
-						if (_characterThreeColorSelectBox.equals("Red"))
+						if (_characterThreeColorSelectBox.getSelected().equals("Red"))
 						{
 							rangerThree = new Red();
 						}
-						else if (_characterThreeColorSelectBox.equals("Blue"))
+						else if (_characterThreeColorSelectBox.getSelected().equals("Blue"))
 						{
 							rangerThree = new Blue();
 						}
-						else if (_characterThreeColorSelectBox.equals("Pink"))
+						else if (_characterThreeColorSelectBox.getSelected().equals("Pink"))
 						{
 							rangerThree = new Pink();
 						}
-						else if (_characterThreeColorSelectBox.equals("Yellow"))
+						else if (_characterThreeColorSelectBox.getSelected().equals("Yellow"))
 						{
 							rangerThree = new Yellow();
 						}
-						else if (_characterThreeColorSelectBox.equals("Black"))
+						else if (_characterThreeColorSelectBox.getSelected().equals("Black"))
 						{
 							rangerThree = new Black();
 						}
-						else if (_characterThreeColorSelectBox.equals("White"))
+						else if (_characterThreeColorSelectBox.getSelected().equals("White"))
 						{
 							rangerThree = new White();
 						}
-						if (_characterThreeZordSelectBox.equals("Ape"))
+						if (_characterThreeZordSelectBox.getSelected().equals("Ape"))
 						{
-							//rangerThree = new Ape(rangerThree);
+							rangerThree = new Ape(rangerThree);
 						}
-						else if (_characterThreeZordSelectBox.equals("Bear"))
+						else if (_characterThreeZordSelectBox.getSelected().equals("Bear"))
 						{
-							//rangerThree = new Bear(rangerThree);
+							rangerThree = new Bear(rangerThree);
 						}
-						else if (_characterThreeZordSelectBox.equals("Crane"))
+						else if (_characterThreeZordSelectBox.getSelected().equals("Crane"))
 						{
-							//rangerThree = new Crane(rangerThree);
+							rangerThree = new Crane(rangerThree);
 						}
-						else if (_characterThreeZordSelectBox.equals("Falcon"))
+						else if (_characterThreeZordSelectBox.getSelected().equals("Falcon"))
 						{
-							//rangerThree = new Falcon(rangerThree);
+							rangerThree = new Falcon(rangerThree);
 						}
-						else if (_characterThreeZordSelectBox.equals("Frog"))
+						else if (_characterThreeZordSelectBox.getSelected().equals("Frog"))
 						{
-							//rangerThree = new Frog(rangerThree);
+							rangerThree = new Frog(rangerThree);
 						}
-						else if (_characterThreeZordSelectBox.equals("Wolf"))
+						else if (_characterThreeZordSelectBox.getSelected().equals("Wolf"))
 						{
 							rangerThree = new Wolf(rangerThree);
 						}
 						rangerThree.setName(_characterThreeNameField.getText());
 						
 						A_Ranger rangerFour = new Red();
-						if (_characterFourColorSelectBox.equals("Red"))
+						if (_characterFourColorSelectBox.getSelected().equals("Red"))
 						{
 							rangerFour = new Red();
 						}
-						else if (_characterFourColorSelectBox.equals("Blue"))
+						else if (_characterFourColorSelectBox.getSelected().equals("Blue"))
 						{
 							rangerFour = new Blue();
 						}
-						else if (_characterFourColorSelectBox.equals("Pink"))
+						else if (_characterFourColorSelectBox.getSelected().equals("Pink"))
 						{
 							rangerFour = new Pink();
 						}
-						else if (_characterFourColorSelectBox.equals("Yellow"))
+						else if (_characterFourColorSelectBox.getSelected().equals("Yellow"))
 						{
 							rangerFour = new Yellow();
 						}
-						else if (_characterFourColorSelectBox.equals("Black"))
+						else if (_characterFourColorSelectBox.getSelected().equals("Black"))
 						{
 							rangerFour = new Black();
 						}
-						else if (_characterFourColorSelectBox.equals("White"))
+						else if (_characterFourColorSelectBox.getSelected().equals("White"))
 						{
 							rangerFour = new White();
 						}
-						if (_characterFourZordSelectBox.equals("Ape"))
+						if (_characterFourZordSelectBox.getSelected().equals("Ape"))
 						{
-							//rangerFour = new Ape(rangerFour);
+							rangerFour = new Ape(rangerFour);
 						}
-						else if (_characterFourZordSelectBox.equals("Bear"))
+						else if (_characterFourZordSelectBox.getSelected().equals("Bear"))
 						{
-							//rangerFour = new Bear(rangerFour);
+							rangerFour = new Bear(rangerFour);
 						}
-						else if (_characterFourZordSelectBox.equals("Crane"))
+						else if (_characterFourZordSelectBox.getSelected().equals("Crane"))
 						{
-							//rangerFour = new Crane(rangerFour);
+							rangerFour = new Crane(rangerFour);
 						}
-						else if (_characterFourZordSelectBox.equals("Falcon"))
+						else if (_characterFourZordSelectBox.getSelected().equals("Falcon"))
 						{
-							//rangerFour = new Falcon(rangerFour);
+							rangerFour = new Falcon(rangerFour);
 						}
-						else if (_characterFourZordSelectBox.equals("Frog"))
+						else if (_characterFourZordSelectBox.getSelected().equals("Frog"))
 						{
-							//rangerFour = new Frog(rangerFour);
+							rangerFour = new Frog(rangerFour);
 						}
-						else if (_characterFourZordSelectBox.equals("Wolf"))
+						else if (_characterFourZordSelectBox.getSelected().equals("Wolf"))
 						{
 							rangerFour = new Wolf(rangerFour);
 						}
@@ -379,7 +379,6 @@ public class CharacterSelectScreen extends A_GameScreen
 						EncounterManager.getInstance().addRangers(rangers);
 						
 						PlayScreen playScreen = new PlayScreen(_game);
-						playScreen.createNewParty(rangers);
 						_game.switchScreens(playScreen);
 					}
 				});

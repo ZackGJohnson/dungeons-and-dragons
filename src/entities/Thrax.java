@@ -1,11 +1,15 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class Thrax extends A_BadGuyDecorator
 {
+	public static Texture _thraxTexture;
 
 	protected Thrax(A_Villain v) 
 	{
 		super(v);
+		_texture = _thraxTexture;
 	}
 	
 	public int getHealth() 

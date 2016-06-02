@@ -6,6 +6,12 @@ public class Red extends A_Ranger
 {
 	public static Texture _redRangerTexture;
 	
+	public Red()
+	{
+		super();
+		_texture = _redRangerTexture;
+	}
+	
 	public int getHealth() 
 	{		
 		return 13;
@@ -39,10 +45,5 @@ public class Red extends A_Ranger
 	public int getArmorClass() 
 	{		
 		return 14;
-	}
-
-	public Texture getTexture()
-	{
-		return _redRangerTexture;
 	}
 }

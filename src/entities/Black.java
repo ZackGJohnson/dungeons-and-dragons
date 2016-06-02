@@ -4,7 +4,13 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Black extends A_Ranger
 {
-	public static Texture blackRangerTexture;
+	public static Texture _blackRangerTexture;
+	
+	public Black()
+	{
+		super();
+		_texture = _blackRangerTexture;
+	}
 	
 	public int getHealth() 
 	{		
@@ -40,5 +46,4 @@ public class Black extends A_Ranger
 	{		
 		return 14;
 	}
-
 }

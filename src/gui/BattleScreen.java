@@ -25,13 +25,11 @@ import entities.A_Entity;
 import entities.A_Ranger;
 import entities.A_RangerDecorator;
 import entities.A_Villain;
-import entities.Party;
 import entities.Red;
 
 public class BattleScreen extends A_GameScreen
 {
 	public static Texture _battleBackground;
-	Party _party;
 	LinkedList<A_Villain> _enemies;
 	A_GameScreen _previousScreen;
 
@@ -47,21 +45,20 @@ public class BattleScreen extends A_GameScreen
 
 	boolean _usingItem = false;
 
-	public BattleScreen(DungeonGame game, Party party, LinkedList<A_Villain> enemies, A_GameScreen previousScreen)
+	public BattleScreen(DungeonGame game, A_GameScreen previousScreen)
 	{
 		super(game);
-		_party = party;
-		_enemies = enemies;
+		_enemies = EncounterManager.getInstance().getCurrentRoom().getEnemies();
 		_previousScreen = previousScreen;
 
-		EncounterManager.getInstance().addEncounter(enemies);
+		EncounterManager.getInstance().addEncounter(_enemies);
 		EncounterManager.getInstance().initiative();
 
 		_battleScreenUI = new Table();
 		_battleScreenUI.setFillParent(true);
 		_stage.addActor(_battleScreenUI);
 		_itemSelectBox = new SelectBox<String>(_skin);
-		_itemSelectBox.setItems(_party.getItemsAsArray());
+		_itemSelectBox.setItems(EncounterManager.getInstance().getItemsAsArray());
 		_battleScreenUI.add(_itemSelectBox).padBottom(_stage.getHeight() / 5);
 		;
 		_useItemButton = new TextButton("Use Item", _skin);
@@ -76,10 +73,10 @@ public class BattleScreen extends A_GameScreen
 		_battleScreenUI.add(_useItemButton).padBottom(_stage.getHeight() / 5);
 		_battleScreenUI.row();
 		_rangerButtons = new ArrayList<ImageButton>();
-		for (int i = 0; i < _party.getRangers().size(); i++)
+		for (int i = 0; i < EncounterManager.getInstance().getRangers().size(); i++)
 		{
 			final int _rangerNumber = i;
-			ImageButton _tempRangerButton = new ImageButton(new SpriteDrawable(new Sprite(party.getRangers().get(i).getTexture())));
+			ImageButton _tempRangerButton = new ImageButton(new SpriteDrawable(new Sprite(EncounterManager.getInstance().getRangers().get(i).getTexture())));
 			_tempRangerButton.addListener(new ChangeListener()
 			{
 				@Override
@@ -88,14 +85,14 @@ public class BattleScreen extends A_GameScreen
 					if (_usingItem)
 					{
 						EncounterManager.getInstance().giveItem(_rangerNumber, _itemSelectBox.getSelected());
-						appendLineToTextBox("Used " + _itemSelectBox.getSelected() + " on " + _party.getRangers().get(_rangerNumber).getName() + ".");
+						appendLineToTextBox("Used " + _itemSelectBox.getSelected() + " on " + EncounterManager.getInstance().getRangers().get(_rangerNumber).getName() + ".");
 						enemyTurn();
 						_usingItem = false;
 						// Remove the item from the list
 						// TODO: Item needs to be removed from the encounter
 						// manager item list.
 						_itemSelectBox.clearItems();
-						_itemSelectBox.setItems(_party.getItemsAsArray());
+						_itemSelectBox.setItems(EncounterManager.getInstance().getItemsAsArray());
 					}
 				}
 			});
@@ -103,10 +100,10 @@ public class BattleScreen extends A_GameScreen
 		}
 		_battleScreenUI.row();
 		_enemyButtons = new ArrayList<ImageButton>();
-		for (int i = 0; i < enemies.size(); i++)
+		for (int i = 0; i < _enemies.size(); i++)
 		{
 			final int _enemyNumber = i;
-			ImageButton _tempEnemyButton = new ImageButton(new SpriteDrawable(new Sprite(enemies.get(_enemyNumber).getTexture())));
+			ImageButton _tempEnemyButton = new ImageButton(new SpriteDrawable(new Sprite(_enemies.get(_enemyNumber).getTexture())));
 			_tempEnemyButton.addListener(new ChangeListener()
 			{
 				@Override
@@ -179,11 +176,9 @@ public class BattleScreen extends A_GameScreen
 		_stage.act(delta);
 		_stage.draw();
 
-		// We really shouldn't be using two separate lists of rangers
-		_party.setRangers(EncounterManager.getInstance().getRangers());
-
 		if (!EncounterManager.getInstance().enemiesAreAlive())
 		{
+			LinkedList<A_Ranger> testRangers = EncounterManager.getInstance().getRangers();
 			_game.switchScreens(_previousScreen);
 		}
 
@@ -203,7 +198,7 @@ public class BattleScreen extends A_GameScreen
 		{
 			for (int j = 0; j < _rangerButtons.size(); j++)
 			{
-				if (!_party.getRangers().get(j).isAlive())
+				if (!EncounterManager.getInstance().getRangers().get(j).isAlive())
 				{
 					_rangerButtons.get(j).setVisible(false);
 				}

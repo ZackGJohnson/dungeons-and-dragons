@@ -7,6 +7,7 @@
 package encounter;
 
 import items.*;
+import map.Room;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,6 +31,7 @@ public final class EncounterManager
 	private TextArea _textBox;
 	private ScrollPane _textScroll;
 	private int _points = 0;
+	private Room _currentRoom;
 
 	private EncounterManager()
 	{
@@ -340,8 +342,35 @@ public final class EncounterManager
 		return _items;
 	}
 	
+	public String[] getItemsAsArray()
+	{
+		String[] temp = new String[EncounterManager.getInstance().getItems().size()];
+		for (int i = 0; i < EncounterManager.getInstance().getItems().size(); i++)
+		{
+			temp[i] = EncounterManager.getInstance().getItems().get(i);
+		}
+		
+		return temp;
+	}
+	
 	public int getPoints()
 	{
 		return _points;
+	}
+	
+	public void setCurrentRoom(Room room)
+	{
+		// Give the old room an empty party list.
+		if (_currentRoom != null)
+		{
+			_currentRoom.setParty(new LinkedList<A_Ranger>());
+		}
+		_currentRoom = room;
+		_currentRoom.setParty(_rangers);
+	}
+	
+	public Room getCurrentRoom()
+	{
+		return _currentRoom;
 	}
 }

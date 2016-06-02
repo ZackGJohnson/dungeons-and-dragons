@@ -14,9 +14,7 @@ import encounter.RollManager;
 
 public abstract class A_Ranger extends A_Entity
 {
-	protected Texture _texture;
-	
-	
+
 	public String getType()
 	{
 		return "Ranger";

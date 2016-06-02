@@ -1,5 +1,7 @@
 package entities;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public abstract class A_BadGuyDecorator extends A_Villain
 {
 	protected A_Villain villain;
@@ -15,4 +17,10 @@ public abstract class A_BadGuyDecorator extends A_Villain
 	public abstract String getDmgDice();
 	public abstract int getDmgReduction();
 	public abstract int getArmorClass();
+	
+	@Override
+	public Texture getTexture()
+	{
+		return villain.getTexture();
+	}
 }
