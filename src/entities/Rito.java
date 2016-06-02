@@ -9,6 +9,7 @@ public class Rito extends A_BadGuyDecorator
 	public Rito(A_Villain v) 
 	{
 		super(v);
+		v._texture = _ritoTexture;
 		_texture = _ritoTexture;
 	}
 	

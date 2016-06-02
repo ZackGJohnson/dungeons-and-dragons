@@ -9,6 +9,7 @@ public class IvanOoze extends A_BadGuyDecorator
 	public IvanOoze(A_Villain v) 
 	{
 		super(v);
+		v._texture = _ivanOozeTexture;
 		_texture = _ivanOozeTexture;
 	}
 	

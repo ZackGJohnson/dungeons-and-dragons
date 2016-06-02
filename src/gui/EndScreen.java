@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import db.DataBaseRead;
 import encounter.EncounterManager;
 
 public class EndScreen extends A_GameScreen
@@ -52,6 +53,8 @@ public class EndScreen extends A_GameScreen
 			@Override
 			public void changed(ChangeEvent event, Actor actor)
 			{
+				DataBaseRead db = new DataBaseRead();
+				db.insertScore(_nameField.getText(), EncounterManager.getInstance().getPoints());
 				_game.switchScreens(new MainMenuScreen(_game));
 			}
 		});

@@ -9,6 +9,7 @@ public class Goldar extends A_BadGuyDecorator
 	public Goldar(A_Villain v) 
 	{
 		super(v);
+		v._texture = _goldarTexture;
 		_texture = _goldarTexture;
 	}
 	

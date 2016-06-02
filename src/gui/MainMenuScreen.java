@@ -9,6 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import db.DataBaseRead;
+
 public class MainMenuScreen extends A_GameScreen
 {
 	Table _mainMenuTable;
@@ -51,6 +53,8 @@ public class MainMenuScreen extends A_GameScreen
 			public void changed(ChangeEvent event, Actor actor)
 			{
 				// Highscores
+				DataBaseRead db = new DataBaseRead();
+				System.out.println(db.toString());
 			}
 		});
 		_mainMenuTable.add(_highscoresButton).fillX().padBottom(_buttonPadding);

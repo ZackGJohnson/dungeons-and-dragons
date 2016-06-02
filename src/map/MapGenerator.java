@@ -187,7 +187,8 @@ public class MapGenerator
     	for (int i = 0; i < numEncounters; i++)
     	{
     		LinkedList<A_Villain> enemies = new LinkedList<A_Villain>();
-        	A_Villain v1 = new BigPutty();
+    		A_Villain v1 = new Boss();
+        	v1 = new Goldar(v1);
         	A_Villain v2 = new SmallPutty();
         	A_Villain v3 = new SmallPutty();
         	A_Villain v4 = new BigPutty();
