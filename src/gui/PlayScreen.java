@@ -5,11 +5,18 @@ import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 
+import db.DataBaseRead;
 import entities.A_Ranger;
 import entities.A_Villain;
 import entities.BigPutty;
@@ -22,10 +29,15 @@ public class PlayScreen extends A_GameScreen
 {
 	private Map _map;
 	Table _playScreenUI;
+	TextButton _statsButton;
 	TextArea _textBox;
 	// The total amount of lines the textBox will store
 	int _textBoxMaxLines = 10;
 	ScrollPane _textScroll;
+	
+	Dialog _statsDialog;
+	Label _statsLabel;
+	TextButton _statsCloseButton;
 	
 	public PlayScreen(DungeonGame game)
 	{
@@ -38,6 +50,38 @@ public class PlayScreen extends A_GameScreen
 		_playScreenUI = new Table();
 		_playScreenUI.setFillParent(true);
 		_stage.addActor(_playScreenUI);
+		
+		_statsButton = new TextButton("Stats", _skin);
+		_statsButton.addListener(new ChangeListener()
+		{
+			@Override
+			public void changed(ChangeEvent event, Actor actor)
+			{
+				_statsDialog.setVisible(!_statsDialog.isVisible());
+			}
+		});
+		_playScreenUI.add(_statsButton).left();
+		_playScreenUI.row();
+		_statsDialog = new Dialog("Character Stats", _skin);
+		_playScreenUI.add(_statsDialog);
+		_statsDialog.setModal(false);
+		_statsDialog.setVisible(false);
+		_statsDialog.clearChildren();
+		_statsLabel = new Label(EncounterManager.getInstance().stats(), _skin);
+		_statsDialog.add(_statsLabel);
+		_statsDialog.row();
+		_statsCloseButton = new TextButton("Close", _skin);
+		_statsCloseButton.addListener(new ChangeListener()
+		{
+			@Override
+			public void changed(ChangeEvent event, Actor actor)
+			{
+				_statsDialog.setVisible(false);
+			}
+		});
+		_statsDialog.add(_statsCloseButton);
+		
+		_playScreenUI.row();
 		_textBox = new TextArea("", _skin);
 		_textBox.setPrefRows(_textBoxMaxLines);
 		_textBox.clearListeners();

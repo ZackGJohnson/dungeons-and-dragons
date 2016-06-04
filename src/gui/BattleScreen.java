@@ -132,7 +132,7 @@ public class BattleScreen extends A_GameScreen
 			_enemyButtons.add(_tempEnemyButton);
 		}
 
-		// Do a "merge sort" and add rangers/enemy buttons with rangers on the
+		// Add rangers/enemy buttons with rangers on the
 		// left and enemies on the right.
 		int _rangerNumber = 0;
 		int _enemyNumber = 0;
@@ -233,7 +233,7 @@ public class BattleScreen extends A_GameScreen
 
 	public void appendLineToTextBox(String string)
 	{
-		_textBox.appendText("\n" + string);
+		_textBox.appendText(string);
 		_textScroll.setScrollPercentY(100);
 	}
 
