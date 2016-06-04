@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -41,7 +42,9 @@ public class BattleScreen extends A_GameScreen
 	int _textBoxMaxLines = 10;
 	ScrollPane _textScroll;
 	ArrayList<ImageButton> _rangerButtons;
+	ArrayList<Label> _rangerHealthLabels;
 	ArrayList<ImageButton> _enemyButtons;
+	ArrayList<Label> _enemyHealthLabels;
 
 	boolean _usingItem = false;
 
@@ -73,6 +76,7 @@ public class BattleScreen extends A_GameScreen
 		_battleScreenUI.add(_useItemButton).padBottom(_stage.getHeight() / 5);
 		_battleScreenUI.row();
 		_rangerButtons = new ArrayList<ImageButton>();
+		_rangerHealthLabels = new ArrayList<Label>();
 		for (int i = 0; i < EncounterManager.getInstance().getRangers().size(); i++)
 		{
 			final int _rangerNumber = i;
@@ -97,9 +101,11 @@ public class BattleScreen extends A_GameScreen
 				}
 			});
 			_rangerButtons.add(_tempRangerButton);
+			_rangerHealthLabels.add(new Label(EncounterManager.getInstance().getRangers().get(_rangerNumber).getHealth() + "/" + EncounterManager.getInstance().getRangers().get(_rangerNumber).getMaxHealth(), _skin));
 		}
 		_battleScreenUI.row();
 		_enemyButtons = new ArrayList<ImageButton>();
+		_enemyHealthLabels = new ArrayList<Label>();
 		for (int i = 0; i < _enemies.size(); i++)
 		{
 			final int _enemyNumber = i;
@@ -130,6 +136,7 @@ public class BattleScreen extends A_GameScreen
 				}
 			});
 			_enemyButtons.add(_tempEnemyButton);
+			_enemyHealthLabels.add(new Label(EncounterManager.getInstance().getEnemies().get(_enemyNumber).getHealth() + "/" + EncounterManager.getInstance().getEnemies().get(_enemyNumber).getMaxHealth(), _skin));
 		}
 
 		// Add rangers/enemy buttons with rangers on the
@@ -140,12 +147,14 @@ public class BattleScreen extends A_GameScreen
 		{
 			if (_rangerNumber < _rangerButtons.size())
 			{
-				_battleScreenUI.add(_rangerButtons.get(_rangerNumber));
+				_battleScreenUI.add(_rangerHealthLabels.get(_rangerNumber)).right();
+				_battleScreenUI.add(_rangerButtons.get(_rangerNumber)).left();
 				_rangerNumber++;
 			}
 			if (_enemyNumber < _enemyButtons.size())
 			{
-				_battleScreenUI.add(_enemyButtons.get(_enemyNumber));
+				_battleScreenUI.add(_enemyButtons.get(_enemyNumber)).right();
+				_battleScreenUI.add(_enemyHealthLabels.get(_enemyNumber)).left();
 				_enemyNumber++;
 			}
 			_battleScreenUI.row();
@@ -159,7 +168,7 @@ public class BattleScreen extends A_GameScreen
 		_textScroll.setFadeScrollBars(false);
 		// Calculates the height of 3 lines of text
 		float _textBoxHeight = _textBox.getStyle().font.getLineHeight() * 3 + _textBox.getStyle().background.getBottomHeight() * 6;
-		_battleScreenUI.add(_textScroll).expand().fillX().maxHeight(_textBoxHeight).bottom().colspan(2);
+		_battleScreenUI.add(_textScroll).expand().fillX().maxHeight(_textBoxHeight).bottom().colspan(4);
 		// Makes the text box start printing from the bottom instead of the top
 		for (int i = 0; i < _textBoxMaxLines; i++)
 		{
@@ -187,6 +196,7 @@ public class BattleScreen extends A_GameScreen
 			if (!_enemies.get(j).isAlive())
 			{
 				_enemyButtons.get(j).setVisible(false);
+				_enemyHealthLabels.get(j).setVisible(false);
 			}
 		}
 
@@ -201,6 +211,7 @@ public class BattleScreen extends A_GameScreen
 				if (!EncounterManager.getInstance().getRangers().get(j).isAlive())
 				{
 					_rangerButtons.get(j).setVisible(false);
+					_rangerHealthLabels.get(j).setVisible(false);
 				}
 			}
 		}
@@ -228,6 +239,16 @@ public class BattleScreen extends A_GameScreen
 					enemyTurn();
 				}
 			}
+		}
+		
+		// Update health labels
+		for (int i = 0; i < _rangerHealthLabels.size(); i++)
+		{
+			_rangerHealthLabels.get(i).setText(EncounterManager.getInstance().getRangers().get(i).getHealth() + "/" + EncounterManager.getInstance().getRangers().get(i).getMaxHealth());
+		}
+		for (int i = 0; i < _enemyHealthLabels.size(); i++)
+		{
+			_enemyHealthLabels.get(i).setText(EncounterManager.getInstance().getEnemies().get(i).getHealth() + "/" + EncounterManager.getInstance().getEnemies().get(i).getMaxHealth());
 		}
 	}
 
