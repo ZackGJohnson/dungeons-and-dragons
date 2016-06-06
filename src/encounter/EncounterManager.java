@@ -302,6 +302,22 @@ public final class EncounterManager
 		return result;
 	}
 	
+	
+	public String rangerStats()
+	{
+		String result = "";
+		if (_rangers != null)
+		{
+			for (A_Ranger ranger : _rangers)
+			{
+				result = result + ranger.getStats() + "\n";
+			}
+		}
+
+		return result;
+	}
+	
+	
 	public LinkedList<String> getItems()
 	{
 		return _items;

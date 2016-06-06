@@ -57,6 +57,7 @@ public class PlayScreen extends A_GameScreen
 			@Override
 			public void changed(ChangeEvent event, Actor actor)
 			{
+				_statsLabel.setText(EncounterManager.getInstance().rangerStats());
 				_statsDialog.setVisible(!_statsDialog.isVisible());
 			}
 		});
@@ -67,7 +68,7 @@ public class PlayScreen extends A_GameScreen
 		_statsDialog.setModal(false);
 		_statsDialog.setVisible(false);
 		_statsDialog.clearChildren();
-		_statsLabel = new Label(EncounterManager.getInstance().stats(), _skin);
+		_statsLabel = new Label(EncounterManager.getInstance().rangerStats(), _skin);
 		_statsDialog.add(_statsLabel);
 		_statsDialog.row();
 		_statsCloseButton = new TextButton("Close", _skin);
