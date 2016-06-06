@@ -38,6 +38,9 @@ public class DungeonGame extends Game
 		White._whiteRangerTexture = new Texture("whiteRangerTexture.png");
 		Yellow._yellowRangerTexture = new Texture("yellowRangerTexture.png");
 		// Load villain Textures
+		Mordant._mordantTexture = new Texture("mordantTexture.png");
+		Finster._finsterTexture = new Texture("finsterTexture.png");
+		Scorpina._scorpinaTexture = new Texture("scorpinaTexture.png");
 		Goldar._goldarTexture = new Texture("goldarTexture.png");
 		IvanOoze._ivanOozeTexture = new Texture("ivanOozeTexture.png");
 		LordZed._lordZedTexture = new Texture("lordZeddTexture.png");

@@ -1,14 +1,19 @@
 package entities.bosses;
+import com.badlogic.gdx.graphics.Texture;
+
 import encounter.EncounterManager;
 import entities.*;
 public class Finster extends A_BadGuyDecorator
 {
+	public static Texture _finsterTexture;
 
 	public Finster(A_Villain v) 
 	{
 		super(v);
 		_name = "Finster";
 		setLoot("Finster's Monocle");
+		v._texture = _finsterTexture;
+		_texture = _finsterTexture;
 	}
 	
 	public int getHealth() 

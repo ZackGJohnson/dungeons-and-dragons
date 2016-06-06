@@ -70,11 +70,11 @@ public class Room
 		// Draws a red ranger sprite near the center of the room if the party is at this location.
 		if (!_party.isEmpty())
 		{
-			batch.draw(Red._redRangerTexture, startX + (Map.ROOM_SIZE / 2), startY + (Map.ROOM_SIZE / 2));
+			batch.draw(EncounterManager.getInstance().getRangers().getFirst().getTexture(), startX + (Map.ROOM_SIZE / 2), startY + (Map.ROOM_SIZE / 2));
 		}
 		if (this.hasEncounter())
 		{
-			batch.draw(SmallPutty._smallPuttyTexture, startX + (Map.ROOM_SIZE / 2), startY + (Map.ROOM_SIZE / 2));
+			batch.draw(_enemies.getFirst().getTexture(), startX + (Map.ROOM_SIZE / 2), startY + (Map.ROOM_SIZE / 2));
 		}
 	}
 	

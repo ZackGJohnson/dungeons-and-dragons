@@ -1,14 +1,19 @@
 package entities.bosses;
+import com.badlogic.gdx.graphics.Texture;
+
 import encounter.EncounterManager;
 import entities.*;
 public class Mordant extends A_BadGuyDecorator
 {
+	public static Texture _mordantTexture;
 
 	public Mordant(A_Villain v) 
 	{
 		super(v);
 		setLoot("Mordant's Plate");
 		_name = "Mordant";
+		v._texture = _mordantTexture;
+		_texture = _mordantTexture;
 	}
 	
 	public int getHealth() 
