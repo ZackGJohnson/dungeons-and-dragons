@@ -3,7 +3,7 @@ import entities.*;
 public class MordantsPlate extends A_RangerDecorator
 {
 
-	protected MordantsPlate(A_Ranger r) 
+	public MordantsPlate(A_Ranger r) 
 	{
 		super(r);
 	}

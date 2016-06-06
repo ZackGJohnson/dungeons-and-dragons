@@ -1,5 +1,7 @@
 package entities.bosses;
+import encounter.EncounterManager;
 import entities.*;
+
 import com.badlogic.gdx.graphics.Texture;
 
 public class LordZed extends A_BadGuyDecorator
@@ -9,6 +11,7 @@ public class LordZed extends A_BadGuyDecorator
 	public LordZed(A_Villain v) 
 	{
 		super(v);
+		setName("Lord Zed");
 		v._texture = _lordZedTexture;
 		_texture = _lordZedTexture;
 	}

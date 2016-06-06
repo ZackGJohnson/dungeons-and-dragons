@@ -29,8 +29,6 @@ public class HurtEnemy extends A_BadGuyDecorator
 
 	public int getHealth() 
 	{		
-		if(villain.getHealth() - _damage  < 0)
-			villain.die();
 		return villain.getHealth() - _damage;
 	}
 	

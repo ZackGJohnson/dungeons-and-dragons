@@ -53,6 +53,7 @@ public abstract class A_Ranger extends A_Entity
 					EncounterManager.getInstance().replaceEnemy(enemy, damagedEnemy);
 					if (!EncounterManager.getInstance().getEnemies().get(target).isAlive())
 					{
+						EncounterManager.getInstance().getEnemies().get(target).die();
 						EncounterManager.getInstance().removeEnemyAt(target);
 					}
 				

@@ -1,4 +1,5 @@
 package entities.bosses;
+import encounter.EncounterManager;
 import entities.*;
 public class Finster extends A_BadGuyDecorator
 {
@@ -7,6 +8,7 @@ public class Finster extends A_BadGuyDecorator
 	{
 		super(v);
 		_name = "Finster";
+		setLoot("Finster's Monocle");
 	}
 	
 	public int getHealth() 
@@ -44,5 +46,6 @@ public class Finster extends A_BadGuyDecorator
 		return villain.getArmorClass() - 1;
 	}
 
+	
 }
 

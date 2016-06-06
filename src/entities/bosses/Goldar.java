@@ -1,5 +1,7 @@
 package entities.bosses;
+import encounter.EncounterManager;
 import entities.*;
+
 import com.badlogic.gdx.graphics.Texture;
 
 public class Goldar extends A_BadGuyDecorator
@@ -10,9 +12,11 @@ public class Goldar extends A_BadGuyDecorator
 	{
 		super(v);
 		setName("Goldar");
+		setLoot("Goldar's Blade");
 		v._texture = _goldarTexture;
 		_texture = _goldarTexture;
 	}
+	
 	
 	public int getHealth() 
 	{		

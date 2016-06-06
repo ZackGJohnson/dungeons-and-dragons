@@ -27,8 +27,6 @@ public class HurtRanger extends A_RangerDecorator
 
 	public int getHealth() 
 	{		
-		if(ranger.getHealth() - _damage  < 0)
-			ranger.die();
 		return ranger.getHealth() - _damage;
 	}
 	

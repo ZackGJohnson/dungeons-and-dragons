@@ -3,7 +3,7 @@ import entities.*;
 public class ScorpinasBoomerang extends A_RangerDecorator
 {
 
-	protected ScorpinasBoomerang(A_Ranger r) 
+	public ScorpinasBoomerang(A_Ranger r) 
 	{
 		super(r);
 	}

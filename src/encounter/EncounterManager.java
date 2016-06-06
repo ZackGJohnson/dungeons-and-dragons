@@ -7,6 +7,7 @@
 package encounter;
 
 import items.*;
+import items.boss.*;
 import map.Room;
 
 import java.io.BufferedReader;
@@ -91,6 +92,8 @@ public final class EncounterManager
 	public void replaceEnemy(A_Villain old, A_Villain replacement)
 	{
 		replacement.setName(old.getName());
+		replacement.setLoot(old.getLoot());
+		
 		int initiative = _init.indexOf(old);
 		int order = _enemies.indexOf(old);
 		_enemies.remove(old);
@@ -191,6 +194,55 @@ public final class EncounterManager
 				EncounterManager.getInstance().replaceRanger(ranger, modified);
 				break;
 			}
+			case "finster's monacle":
+			{
+				modified = new FinstersMonocle(ranger);
+				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
+			}
+			case "goldar's blade":
+			{
+				modified = new GoldarsBlade(ranger);
+				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
+			}
+			case "lipsyncher's kris":
+			{
+				modified = new LipsynchersKris(ranger);
+				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
+			}
+			case "mordant's plate":
+			{
+				modified = new MordantsPlate(ranger);
+				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
+			}
+			case "rita's staff":
+			{
+				modified = new RitasStaff(ranger);
+				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
+			}
+			case "rito's sword":
+			{
+				modified = new RitosSword(ranger);
+				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
+			}
+			case "scorpina's boomerang":
+			{
+				modified = new ScorpinasBoomerang(ranger);
+				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
+			}
+			case "thrax's staff":
+			{
+				modified = new ThraxsStaff(ranger);
+				EncounterManager.getInstance().replaceRanger(ranger, modified);
+				break;
+			}
+			
 			default:
 			{
 				appendLineToTextBox("Invalid item name, please check");

@@ -2,13 +2,13 @@ package entities;
 
 import com.badlogic.gdx.graphics.Texture;
 
+import encounter.EncounterManager;
 import encounter.RollManager;
 
 public abstract class A_Entity implements Comparable<A_Entity>
 {
 	protected int health;
 	protected int maxHealth;
-	protected boolean isAlive = true;
 	protected int attackMod;
 	protected int dmgMod;
 	protected String dmgDice;
@@ -18,6 +18,7 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	protected String _name;
 	protected int _point;
 	public Texture _texture;
+	private String _loot = "Bandage";
 	
 	public String getType()
 	{
@@ -64,9 +65,18 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	
 	public void die()
 	{
-		isAlive = false;
+		EncounterManager.getInstance().addItem(_loot);
 	}
 
+	public void setLoot(String loot)
+	{
+		_loot = loot;
+	}
+	
+	public String getLoot()
+	{
+		return _loot;
+	}
 	public int getInit()
 	{
 		return RollManager.getInstance().roll("1d20+0");

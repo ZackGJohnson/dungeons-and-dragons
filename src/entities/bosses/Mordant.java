@@ -1,4 +1,5 @@
 package entities.bosses;
+import encounter.EncounterManager;
 import entities.*;
 public class Mordant extends A_BadGuyDecorator
 {
@@ -6,6 +7,7 @@ public class Mordant extends A_BadGuyDecorator
 	public Mordant(A_Villain v) 
 	{
 		super(v);
+		setLoot("Mordant's Plate");
 		_name = "Mordant";
 	}
 	

@@ -4,7 +4,7 @@ import entities.*;
 public class ThraxsStaff extends A_RangerDecorator
 {
 
-	protected ThraxsStaff(A_Ranger r) 
+	public ThraxsStaff(A_Ranger r) 
 	{
 		super(r);
 	}

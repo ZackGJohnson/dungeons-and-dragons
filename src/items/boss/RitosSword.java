@@ -3,7 +3,7 @@ import entities.*;
 public class RitosSword extends A_RangerDecorator
 {
 
-	protected RitosSword(A_Ranger r) 
+	public RitosSword(A_Ranger r) 
 	{
 		super(r);
 	}

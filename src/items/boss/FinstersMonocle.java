@@ -3,7 +3,7 @@ import entities.*;
 public class FinstersMonocle extends A_RangerDecorator
 {
 
-	protected FinstersMonocle(A_Ranger r) 
+	public FinstersMonocle(A_Ranger r) 
 	{
 		super(r);
 	}

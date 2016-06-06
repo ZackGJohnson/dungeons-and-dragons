@@ -1,4 +1,5 @@
 package entities.bosses;
+import encounter.EncounterManager;
 import entities.*;
 public class Scorpina extends A_BadGuyDecorator
 {
@@ -6,9 +7,9 @@ public class Scorpina extends A_BadGuyDecorator
 	public Scorpina(A_Villain v) 
 	{
 		super(v);
+		setLoot("Scorpina's Boomerang");
 		_name = "Scorpina";
 	}
-	
 	public int getHealth() 
 	{		
 		return 2 + villain.getHealth();

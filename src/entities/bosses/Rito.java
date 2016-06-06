@@ -1,4 +1,5 @@
 package entities.bosses;
+import encounter.EncounterManager;
 import entities.*;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -11,6 +12,7 @@ public class Rito extends A_BadGuyDecorator
 	{
 		super(v);
 		_name = "Rito";
+		setLoot("Rito's Sword");
 		v._texture = _ritoTexture;
 		_texture = _ritoTexture;
 	}

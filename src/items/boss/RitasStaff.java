@@ -3,7 +3,7 @@ import entities.*;
 public class RitasStaff extends A_RangerDecorator
 {
 
-	protected RitasStaff(A_Ranger r) 
+	public RitasStaff(A_Ranger r) 
 	{
 		super(r);
 	}

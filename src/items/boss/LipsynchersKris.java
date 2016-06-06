@@ -3,7 +3,7 @@ import entities.*;
 public class LipsynchersKris extends A_RangerDecorator
 {
 
-	protected LipsynchersKris(A_Ranger r) 
+	public LipsynchersKris(A_Ranger r) 
 	{
 		super(r);
 	}

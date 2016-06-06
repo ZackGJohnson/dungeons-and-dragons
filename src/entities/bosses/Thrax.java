@@ -1,4 +1,5 @@
 package entities.bosses;
+import encounter.EncounterManager;
 import entities.*;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -11,10 +12,10 @@ public class Thrax extends A_BadGuyDecorator
 	{
 		super(v);
 		_name = "Thrax";
+		setLoot("Thrax's Staff");
 		v._texture = _thraxTexture;
 		_texture = _thraxTexture;
 	}
-	
 	public int getHealth() 
 	{		
 		return 3 + villain.getHealth();

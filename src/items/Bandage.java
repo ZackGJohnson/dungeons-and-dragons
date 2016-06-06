@@ -12,10 +12,10 @@ public class Bandage extends A_RangerDecorator
 
 	public int getHealth() 
 	{		
-		if(ranger.getHealth() + 10 > ranger.getMaxHealth())
+		if(ranger.getHealth() + 2 > ranger.getMaxHealth())
 			return ranger.getMaxHealth();
 		else
-			return ranger.getHealth() + 10;
+			return ranger.getHealth() + 2;
 	}
 	
 	public int getMaxHealth()

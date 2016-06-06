@@ -1,5 +1,7 @@
 package entities.bosses;
+import encounter.EncounterManager;
 import entities.*;
+
 import com.badlogic.gdx.graphics.Texture;
 
 public class Lipsyncher extends A_BadGuyDecorator
@@ -10,6 +12,7 @@ public class Lipsyncher extends A_BadGuyDecorator
 	{
 		super(v);
 		_name = "Lip Syncher";
+		setLoot("Lipsyncher's Kris");
 		v._texture = _lipsyncherTexture;
 		_texture = _lipsyncherTexture;
 	}
