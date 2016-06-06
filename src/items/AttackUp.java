@@ -22,7 +22,7 @@ public class AttackUp extends A_RangerDecorator
 	
 	public int getAtkMod() 
 	{		
-		return ranger.getAtkMod() + 1;
+		return ranger.getAtkMod() + 4;
 	}
 	
 	public int getDmgMod() 

@@ -33,7 +33,7 @@ public final class EncounterManager
 	private ScrollPane _textScroll;
 	private int _points = 0;
 	private Room _currentRoom;
-	private String[] _itemList = {"ArmorUp", "AttackUp", "Bandage", "DamageUp", "DRUp", "HealthUp", "InitUp"};
+	private String[] _itemList = { "ArmorUp", "AttackUp", "Bandage", "DamageUp", "DRUp", "HealthUp", "InitUp" };
 
 	private EncounterManager()
 	{
@@ -67,13 +67,13 @@ public final class EncounterManager
 		A_Ranger deadRanger = EncounterManager.getInstance().getRangers().get(index);
 		_init.remove(deadRanger);
 	}
-	
+
 	public void removeEnemyAt(int index)
 	{
 		A_Villain deadEnemy = EncounterManager.getInstance().getEnemies().get(index);
 		_init.remove(deadEnemy);
 	}
-	
+
 	public void replaceRanger(A_Ranger old, A_Ranger replacement)
 	{
 		replacement.setName(old.getName());
@@ -82,10 +82,10 @@ public final class EncounterManager
 		_rangers.remove(old);
 		_rangers.add(order, replacement);
 
-		if(initiative >= 0)
+		if (initiative >= 0)
 		{
-		_init.remove(initiative);
-		_init.add(initiative, replacement);
+			_init.remove(initiative);
+			_init.add(initiative, replacement);
 		}
 	}
 
@@ -93,7 +93,7 @@ public final class EncounterManager
 	{
 		replacement.setName(old.getName());
 		replacement.setLoot(old.getLoot());
-		
+
 		int initiative = _init.indexOf(old);
 		int order = _enemies.indexOf(old);
 		_enemies.remove(old);
@@ -117,13 +117,13 @@ public final class EncounterManager
 	{
 		addItem(_itemList[(RollManager.getInstance().roll("1d" + _itemList.length + "+0"))]);
 	}
-	
+
 	public void addEncounter(LinkedList<A_Ranger> rangers, LinkedList<A_Villain> enemies)
 	{
 		_rangers = rangers;
 		_enemies = enemies;
 	}
-	
+
 	public void addRangers(LinkedList<A_Ranger> rangers)
 	{
 		_rangers = rangers;
@@ -136,129 +136,131 @@ public final class EncounterManager
 
 	public String addItem(String itemName)
 	{
-		//If you want to print out to textbox use the return to get the name maybe
-		//appendLineToTextBox("You found:" + itemName);
+		// If you want to print out to textbox use the return to get the name
+		// maybe
+		// appendLineToTextBox("You found:" + itemName);
 		_items.add(itemName);
 		return itemName;
 	}
 
 	public void giveItem(int index, String itemName)
 	{
-		A_Ranger ranger = EncounterManager.getInstance().getRangers().get(index);
-		A_Ranger modified = EncounterManager.getInstance().getRangers().get(index);
-		_items.remove(itemName);
-		itemName = itemName.toLowerCase();
-		itemName = itemName.trim();
-		
-		switch (itemName)
+		if (itemName != null)
 		{
-			case "armorup":
-			{
-				modified = new ArmorUp(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "attackup":
-			{
-				modified = new AttackUp(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "damageup":
-			{
-				modified = new DamageUp(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "drup":
-			{
-				modified = new DRUp(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "healthup":
-			{
-				modified = new HealthUp(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "initup":
-			{
-				modified = new InitUp(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "bandage":
-			{
-				modified = new Bandage(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "finster's monocle":
-			{
-				modified = new FinstersMonocle(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "goldar's blade":
-			{
-				modified = new GoldarsBlade(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "lipsyncher's kris":
-			{
-				modified = new LipsynchersKris(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "mordant's plate":
-			{
-				modified = new MordantsPlate(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "rita's staff":
-			{
-				modified = new RitasStaff(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "rito's sword":
-			{
-				modified = new RitosSword(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "scorpina's boomerang":
-			{
-				modified = new ScorpinasBoomerang(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			case "thrax's staff":
-			{
-				modified = new ThraxsStaff(ranger);
-				EncounterManager.getInstance().replaceRanger(ranger, modified);
-				break;
-			}
-			
-			default:
-			{
-				appendLineToTextBox("Invalid item name, please check");
-			}
-			
+			A_Ranger ranger = EncounterManager.getInstance().getRangers().get(index);
+			A_Ranger modified = EncounterManager.getInstance().getRangers().get(index);
+			_items.remove(itemName);
+			itemName = itemName.toLowerCase();
+			itemName = itemName.trim();
 
+			switch (itemName)
+			{
+				case "armorup":
+				{
+					modified = new ArmorUp(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "attackup":
+				{
+					modified = new AttackUp(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "damageup":
+				{
+					modified = new DamageUp(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "drup":
+				{
+					modified = new DRUp(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "healthup":
+				{
+					modified = new HealthUp(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "initup":
+				{
+					modified = new InitUp(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "bandage":
+				{
+					modified = new Bandage(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "finster's monocle":
+				{
+					modified = new FinstersMonocle(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "goldar's blade":
+				{
+					modified = new GoldarsBlade(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "lipsyncher's kris":
+				{
+					modified = new LipsynchersKris(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "mordant's plate":
+				{
+					modified = new MordantsPlate(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "rita's staff":
+				{
+					modified = new RitasStaff(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "rito's sword":
+				{
+					modified = new RitosSword(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "scorpina's boomerang":
+				{
+					modified = new ScorpinasBoomerang(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+				case "thrax's staff":
+				{
+					modified = new ThraxsStaff(ranger);
+					EncounterManager.getInstance().replaceRanger(ranger, modified);
+					break;
+				}
+
+				default:
+				{
+					
+				}
+
+			}
 		}
 	}
-
 
 	public void appendLineToTextBox(String string)
 	{
 		_textBox.appendText("\n" + string);
 		_textScroll.setScrollPercentY(100);
 	}
-	
+
 	public void initiative()
 	{
 		_init.clear();
@@ -268,28 +270,25 @@ public final class EncounterManager
 			_init.add(villain);
 		Collections.sort(_init);
 		_curr = _init.getFirst();
-			
-			
-		
+
 	}
-	
+
 	public A_Entity getCurr()
 	{
 		return _curr;
 	}
-	
+
 	public A_Entity nextEntity()
 	{
 		int i = _init.indexOf(_curr);
-		if(i >= _init.size() - 1)
+		if (i >= _init.size() - 1)
 			i = 0;
-		if(_init.size() > 1)
-			_curr =  _init.get(i + 1);
-		
+		if (_init.size() > 1)
+			_curr = _init.get(i + 1);
+
 		return _curr;
-		
+
 	}
-	
 
 	public LinkedList<A_Villain> getEnemies()
 	{
@@ -308,13 +307,12 @@ public final class EncounterManager
 			if (enemy.getHealth() > 0)
 				return true;
 		}
-		//Encounter win, add points
+		// Encounter win, add points
 		for (A_Villain enemy : _enemies)
 		{
 			_points += enemy.getPoint();
 		}
-		
-		
+
 		return false;
 	}
 
@@ -343,18 +341,15 @@ public final class EncounterManager
 		{
 			for (A_Villain enemy : _enemies)
 			{
-				if(enemy != null)
+				if (enemy != null)
 					result = result + enemy.getStats() + "\n";
-				else
-					result = result + "Enemy is null";
+				else result = result + "Enemy is null";
 			}
 		}
-		else
-			result = result + "_enemies is null, were the rooms properly initilized?\n";
+		else result = result + "_enemies is null, were the rooms properly initilized?\n";
 		return result;
 	}
-	
-	
+
 	public String rangerStats()
 	{
 		String result = "";
@@ -368,13 +363,12 @@ public final class EncounterManager
 
 		return result;
 	}
-	
-	
+
 	public LinkedList<String> getItems()
 	{
 		return _items;
 	}
-	
+
 	public String[] getItemsAsArray()
 	{
 		String[] temp = new String[EncounterManager.getInstance().getItems().size()];
@@ -382,15 +376,15 @@ public final class EncounterManager
 		{
 			temp[i] = EncounterManager.getInstance().getItems().get(i);
 		}
-		
+
 		return temp;
 	}
-	
+
 	public int getPoints()
 	{
 		return _points;
 	}
-	
+
 	public void setCurrentRoom(Room room)
 	{
 		// Give the old room an empty party list.
@@ -401,7 +395,7 @@ public final class EncounterManager
 		_currentRoom = room;
 		_currentRoom.setParty(_rangers);
 	}
-	
+
 	public Room getCurrentRoom()
 	{
 		return _currentRoom;

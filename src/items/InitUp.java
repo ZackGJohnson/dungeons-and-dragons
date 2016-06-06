@@ -46,6 +46,6 @@ public class InitUp extends A_RangerDecorator
 	}
 	public int getInit()
 	{
-		return ranger.getInit() + 1;
+		return ranger.getInit() + 5;
 	}
 }

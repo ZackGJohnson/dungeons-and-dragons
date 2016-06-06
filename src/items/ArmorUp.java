@@ -42,6 +42,6 @@ public class ArmorUp extends A_RangerDecorator
 	
 	public int getArmorClass() 
 	{		
-		return ranger.getArmorClass() + 1;
+		return ranger.getArmorClass() + 2;
 	}
 }

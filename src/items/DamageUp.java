@@ -27,7 +27,7 @@ public class DamageUp extends A_RangerDecorator
 	
 	public int getDmgMod() 
 	{		
-		return ranger.getDmgMod() + 1;
+		return ranger.getDmgMod() + 4;
 	}
 	
 	public String getDmgDice() 
