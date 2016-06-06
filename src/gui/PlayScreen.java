@@ -123,6 +123,7 @@ public class PlayScreen extends A_GameScreen
 		{
 			_camera.translate(-_camera.position.x + (Map.ROOM_SPACE / 2), -_camera.position.y + (Map.ROOM_SPACE / 2));
 			_camera.translate((mouseX / Map.ROOM_SPACE) * Map.ROOM_SPACE, (mouseY / Map.ROOM_SPACE) * Map.ROOM_SPACE, 0);
+			EncounterManager.getInstance().loot();
 		}
 		
 		if (EncounterManager.getInstance().getCurrentRoom().hasEncounter())
@@ -132,7 +133,7 @@ public class PlayScreen extends A_GameScreen
 			
 		}
 
-		printStats();
+		//printStats();
 		
 	}
 	

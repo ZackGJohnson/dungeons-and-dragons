@@ -110,26 +110,23 @@ public final class EncounterManager
 
 	public void loot()
 	{
-		addItem(_itemList[(RollManager.getInstance().roll("1d" + _itemList.length + "+0") - 1)]);
+		addItem(_itemList[(RollManager.getInstance().roll("1d" + _itemList.length + "+0"))]);
 	}
 	
 	public void addEncounter(LinkedList<A_Ranger> rangers, LinkedList<A_Villain> enemies)
 	{
 		_rangers = rangers;
 		_enemies = enemies;
-		loot();
 	}
 	
 	public void addRangers(LinkedList<A_Ranger> rangers)
 	{
 		_rangers = rangers;
-		loot();
 	}
 
 	public void addEncounter(LinkedList<A_Villain> enemies)
 	{
 		_enemies = enemies;
-		loot();
 	}
 
 	public String addItem(String itemName)
@@ -253,12 +250,12 @@ public final class EncounterManager
 	
 	public void initiative()
 	{
+		_init.clear();
 		for (A_Ranger ranger : _rangers)
 			_init.add(ranger);
 		for (A_Villain villain : _enemies)
 			_init.add(villain);
 		Collections.sort(_init);
-		Collections.sort(_rangers);
 		_curr = _init.getFirst();
 			
 			

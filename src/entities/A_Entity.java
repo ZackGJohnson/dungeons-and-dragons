@@ -121,7 +121,6 @@ public abstract class A_Entity implements Comparable<A_Entity>
 					
 	}
 
-	public abstract void turn();
 	
 	public int compareTo(A_Entity target)
 	{
