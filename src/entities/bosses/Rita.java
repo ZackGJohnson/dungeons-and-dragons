@@ -1,17 +1,17 @@
-package entities;
-
+package entities.bosses;
+import entities.*;
 import com.badlogic.gdx.graphics.Texture;
 
-public class Thrax extends A_BadGuyDecorator
+public class Rita extends A_BadGuyDecorator
 {
-	public static Texture _thraxTexture;
+	public static Texture _ritaTexture;
 
-	protected Thrax(A_Villain v) 
+	public Rita(A_Villain v) 
 	{
 		super(v);
-		_name = "Thrax";
-		v._texture = _thraxTexture;
-		_texture = _thraxTexture;
+		_name = "Rita";
+		v._texture = _ritaTexture;
+		_texture = _ritaTexture;
 	}
 	
 	public int getHealth() 

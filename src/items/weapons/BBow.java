@@ -1,9 +1,9 @@
-package entities;
-
-public class BBlaster extends A_RangerDecorator
+package items.weapons;
+import entities.*;
+public class BBow extends A_RangerDecorator
 {
 
-	protected BBlaster(A_Ranger r) 
+	protected BBow(A_Ranger r) 
 	{
 		super(r);
 	}
@@ -44,7 +44,3 @@ public class BBlaster extends A_RangerDecorator
 	}
 
 }
-
-
-
-

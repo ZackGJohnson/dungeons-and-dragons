@@ -2,6 +2,7 @@
 
 import items.*;
 import entities.*;
+import entities.bosses.*;
 
 
 public class BenTester 

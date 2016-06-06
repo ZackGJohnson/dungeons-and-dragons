@@ -1,27 +1,27 @@
-package entities;
-
+package entities.bosses;
+import entities.*;
 import com.badlogic.gdx.graphics.Texture;
 
-public class Goldar extends A_BadGuyDecorator
+public class IvanOoze extends A_BadGuyDecorator
 {
-	public static Texture _goldarTexture;
+	public static Texture _ivanOozeTexture;
 
-	public Goldar(A_Villain v) 
+	public IvanOoze(A_Villain v) 
 	{
 		super(v);
-		setName("Goldar");
-		v._texture = _goldarTexture;
-		_texture = _goldarTexture;
+		setName("Ivan Ooze");
+		v._texture = _ivanOozeTexture;
+		_texture = _ivanOozeTexture;
 	}
 	
 	public int getHealth() 
 	{		
-		return 5 + villain.getHealth();
+		return 15 + villain.getHealth();
 	}
 	
 	public int getMaxHealth()
 	{
-		return 5 + villain.getMaxHealth();
+		return 15 + villain.getMaxHealth();
 	}
 	
 	public int getAtkMod() 
@@ -48,5 +48,6 @@ public class Goldar extends A_BadGuyDecorator
 	{		
 		return 3 + villain.getArmorClass();
 	}
+
 }
 

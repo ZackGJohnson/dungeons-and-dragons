@@ -1,12 +1,12 @@
-package entities;
-
+package entities.bosses;
+import entities.*;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Lipsyncher extends A_BadGuyDecorator
 {
 	public static Texture _lipsyncherTexture;
 
-	protected Lipsyncher(A_Villain v) 
+	public Lipsyncher(A_Villain v) 
 	{
 		super(v);
 		_name = "Lip Syncher";

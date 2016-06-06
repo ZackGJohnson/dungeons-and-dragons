@@ -1,9 +1,9 @@
-package entities;
-
-public class MordantsPlate extends A_RangerDecorator
+package items.boss;
+import entities.*;
+public class GoldarsBlade extends A_RangerDecorator
 {
 
-	protected MordantsPlate(A_Ranger r) 
+	protected GoldarsBlade(A_Ranger r) 
 	{
 		super(r);
 	}
@@ -20,12 +20,12 @@ public class MordantsPlate extends A_RangerDecorator
 	
 	public int getAtkMod() 
 	{		
-		return ranger.getAtkMod();
+		return ranger.getAtkMod() + 1;
 	}
 	
 	public int getDmgMod() 
 	{		
-		return ranger.getDmgMod();
+		return ranger.getDmgMod() + 2;
 	}
 	
 	public String getDmgDice() 
@@ -40,7 +40,7 @@ public class MordantsPlate extends A_RangerDecorator
 	
 	public int getArmorClass() 
 	{		
-		return ranger.getArmorClass() + 2;
+		return ranger.getArmorClass() + 1;
 	}
 
 }

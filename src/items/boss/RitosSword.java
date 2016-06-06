@@ -1,5 +1,5 @@
-package entities;
-
+package items.boss;
+import entities.*;
 public class RitosSword extends A_RangerDecorator
 {
 

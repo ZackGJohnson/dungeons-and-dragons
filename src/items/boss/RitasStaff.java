@@ -1,31 +1,31 @@
-package entities;
-
-public class BDaggers extends A_RangerDecorator
+package items.boss;
+import entities.*;
+public class RitasStaff extends A_RangerDecorator
 {
 
-	protected BDaggers(A_Ranger r) 
+	protected RitasStaff(A_Ranger r) 
 	{
 		super(r);
 	}
 	
 	public int getHealth() 
 	{		
-		return ranger.getHealth();
+		return ranger.getHealth() + 3;
 	}
 	
 	public int getMaxHealth() 
 	{
-		return ranger.getMaxHealth();
+		return ranger.getMaxHealth() + 3;
 	}
 	
 	public int getAtkMod() 
 	{		
-		return ranger.getAtkMod();
+		return ranger.getAtkMod() + 1;
 	}
 	
 	public int getDmgMod() 
 	{		
-		return ranger.getDmgMod();
+		return ranger.getDmgMod() + 2;
 	}
 	
 	public String getDmgDice() 
@@ -35,13 +35,12 @@ public class BDaggers extends A_RangerDecorator
 	
 	public int getDmgReduction() 
 	{		
-		return ranger.getDmgReduction();
+		return ranger.getDmgReduction() + 1;
 	}
 	
 	public int getArmorClass() 
 	{		
 		return ranger.getArmorClass();
 	}
-
 
 }

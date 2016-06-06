@@ -1,16 +1,18 @@
-package entities;
+package entities.bosses;
+import entities.*;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class LordZed extends A_BadGuyDecorator
+public class Rito extends A_BadGuyDecorator
 {
-	public static Texture _lordZedTexture;
+	public static Texture _ritoTexture;
 
-	protected LordZed(A_Villain v) 
+	public Rito(A_Villain v) 
 	{
 		super(v);
-		v._texture = _lordZedTexture;
-		_texture = _lordZedTexture;
+		_name = "Rito";
+		v._texture = _ritoTexture;
+		_texture = _ritoTexture;
 	}
 	
 	public int getHealth() 
@@ -49,4 +51,3 @@ public class LordZed extends A_BadGuyDecorator
 	}
 
 }
-

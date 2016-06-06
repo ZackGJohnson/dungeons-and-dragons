@@ -1,7 +1,7 @@
 package encounter;
 import items.*;
-
 import entities.*;
+import entities.bosses.*;
 
 public class EncounterTester
 {

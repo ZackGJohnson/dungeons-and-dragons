@@ -1,21 +1,22 @@
-package entities;
+package items.boss;
+import entities.*;
 
-public class GoldarsBlade extends A_RangerDecorator
+public class ThraxsStaff extends A_RangerDecorator
 {
 
-	protected GoldarsBlade(A_Ranger r) 
+	protected ThraxsStaff(A_Ranger r) 
 	{
 		super(r);
 	}
 	
 	public int getHealth() 
 	{		
-		return ranger.getHealth() + 2;
+		return ranger.getHealth() + 3;
 	}
 	
 	public int getMaxHealth() 
 	{
-		return ranger.getMaxHealth() + 2;
+		return ranger.getMaxHealth() + 3;
 	}
 	
 	public int getAtkMod() 
@@ -40,7 +41,7 @@ public class GoldarsBlade extends A_RangerDecorator
 	
 	public int getArmorClass() 
 	{		
-		return ranger.getArmorClass() + 1;
+		return ranger.getArmorClass();
 	}
 
 }

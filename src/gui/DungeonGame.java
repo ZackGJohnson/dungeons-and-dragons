@@ -8,21 +8,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import entities.BigPutty;
-import entities.Black;
-import entities.Blue;
-import entities.Goldar;
-import entities.IvanOoze;
-import entities.Lipsyncher;
-import entities.LordZed;
-import entities.Pink;
-import entities.Red;
-import entities.Rita;
-import entities.Rito;
-import entities.SmallPutty;
-import entities.Thrax;
-import entities.White;
-import entities.Yellow;
+import entities.*;
+import entities.bosses.*;
 import map.Room;
 
 public class DungeonGame extends Game

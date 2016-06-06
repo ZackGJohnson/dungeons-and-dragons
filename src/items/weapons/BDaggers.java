@@ -1,9 +1,10 @@
-package entities;
+package items.weapons;
+import entities.*;
 
-public class BAxe extends A_RangerDecorator
+public class BDaggers extends A_RangerDecorator
 {
 
-	protected BAxe(A_Ranger r) 
+	protected BDaggers(A_Ranger r) 
 	{
 		super(r);
 	}
@@ -42,5 +43,6 @@ public class BAxe extends A_RangerDecorator
 	{		
 		return ranger.getArmorClass();
 	}
+
 
 }

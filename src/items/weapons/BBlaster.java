@@ -1,31 +1,31 @@
-package entities;
-
-public class ScorpinasBoomerang extends A_RangerDecorator
+package items.weapons;
+import entities.*;
+public class BBlaster extends A_RangerDecorator
 {
 
-	protected ScorpinasBoomerang(A_Ranger r) 
+	protected BBlaster(A_Ranger r) 
 	{
 		super(r);
 	}
 	
 	public int getHealth() 
 	{		
-		return ranger.getHealth() + 1;
+		return ranger.getHealth();
 	}
 	
 	public int getMaxHealth() 
 	{
-		return ranger.getMaxHealth() + 1;
+		return ranger.getMaxHealth();
 	}
 	
 	public int getAtkMod() 
 	{		
-		return ranger.getAtkMod() + 3;
+		return ranger.getAtkMod();
 	}
 	
 	public int getDmgMod() 
 	{		
-		return ranger.getDmgMod() + 1;
+		return ranger.getDmgMod();
 	}
 	
 	public String getDmgDice() 
@@ -40,7 +40,11 @@ public class ScorpinasBoomerang extends A_RangerDecorator
 	
 	public int getArmorClass() 
 	{		
-		return ranger.getArmorClass() + 2;
+		return ranger.getArmorClass();
 	}
 
 }
+
+
+
+

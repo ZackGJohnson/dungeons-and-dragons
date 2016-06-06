@@ -17,7 +17,7 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	protected int init;
 	protected String _name;
 	protected int _point;
-	protected Texture _texture;
+	public Texture _texture;
 	
 	public String getType()
 	{

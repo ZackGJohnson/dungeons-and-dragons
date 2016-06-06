@@ -29,15 +29,6 @@ public class Room
 	 * are in the room, and then when the player moves into that room it will add
 	 * the enemies to the encounter manager and proceed with the encounter.
 	 */
-	public void doEncounter()
-	{
-		for (int i = 0; i < _enemies.size(); i++)
-		{
-			//EncounterManager.getInstance().addEnemy(_enemies.get(i));
-		}
-
-		//EncounterManager.getInstance().round();
-	}
 	
 	/*
 	 * Draws the room with startX and startY being the top left corner.

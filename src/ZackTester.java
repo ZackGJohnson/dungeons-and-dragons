@@ -1,5 +1,6 @@
-import entities.*;
 
+import entities.*;
+import entities.bosses.*;
 
 
 public class ZackTester 

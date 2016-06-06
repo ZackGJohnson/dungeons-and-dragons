@@ -1,9 +1,9 @@
-package entities;
-
-public class LipsynchersKris extends A_RangerDecorator
+package items.boss;
+import entities.*;
+public class ScorpinasBoomerang extends A_RangerDecorator
 {
 
-	protected LipsynchersKris(A_Ranger r) 
+	protected ScorpinasBoomerang(A_Ranger r) 
 	{
 		super(r);
 	}
@@ -44,4 +44,3 @@ public class LipsynchersKris extends A_RangerDecorator
 	}
 
 }
-

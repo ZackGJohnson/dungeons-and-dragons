@@ -1,9 +1,9 @@
-package entities;
-
+package entities.bosses;
+import entities.*;
 public class Mordant extends A_BadGuyDecorator
 {
 
-	protected Mordant(A_Villain v) 
+	public Mordant(A_Villain v) 
 	{
 		super(v);
 		_name = "Mordant";

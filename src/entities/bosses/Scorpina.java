@@ -1,9 +1,9 @@
-package entities;
-
+package entities.bosses;
+import entities.*;
 public class Scorpina extends A_BadGuyDecorator
 {
 
-	protected Scorpina(A_Villain v) 
+	public Scorpina(A_Villain v) 
 	{
 		super(v);
 		_name = "Scorpina";

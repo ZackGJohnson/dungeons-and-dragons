@@ -1,31 +1,31 @@
-package entities;
-
-public class ThraxsStaff extends A_RangerDecorator
+package items.boss;
+import entities.*;
+public class MordantsPlate extends A_RangerDecorator
 {
 
-	protected ThraxsStaff(A_Ranger r) 
+	protected MordantsPlate(A_Ranger r) 
 	{
 		super(r);
 	}
 	
 	public int getHealth() 
 	{		
-		return ranger.getHealth() + 3;
+		return ranger.getHealth() + 2;
 	}
 	
 	public int getMaxHealth() 
 	{
-		return ranger.getMaxHealth() + 3;
+		return ranger.getMaxHealth() + 2;
 	}
 	
 	public int getAtkMod() 
 	{		
-		return ranger.getAtkMod() + 1;
+		return ranger.getAtkMod();
 	}
 	
 	public int getDmgMod() 
 	{		
-		return ranger.getDmgMod() + 2;
+		return ranger.getDmgMod();
 	}
 	
 	public String getDmgDice() 
@@ -40,7 +40,7 @@ public class ThraxsStaff extends A_RangerDecorator
 	
 	public int getArmorClass() 
 	{		
-		return ranger.getArmorClass();
+		return ranger.getArmorClass() + 2;
 	}
 
 }

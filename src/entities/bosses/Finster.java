@@ -1,9 +1,9 @@
-package entities;
-
+package entities.bosses;
+import entities.*;
 public class Finster extends A_BadGuyDecorator
 {
 
-	protected Finster(A_Villain v) 
+	public Finster(A_Villain v) 
 	{
 		super(v);
 		_name = "Finster";
