@@ -75,6 +75,7 @@ public final class EncounterManager
 	
 	public void replaceRanger(A_Ranger old, A_Ranger replacement)
 	{
+		replacement.setName(old.getName());
 		int initiative = _init.indexOf(old);
 		int order = _rangers.indexOf(old);
 		_rangers.remove(old);
@@ -89,6 +90,7 @@ public final class EncounterManager
 
 	public void replaceEnemy(A_Villain old, A_Villain replacement)
 	{
+		replacement.setName(old.getName());
 		int initiative = _init.indexOf(old);
 		int order = _enemies.indexOf(old);
 		_enemies.remove(old);
@@ -141,8 +143,10 @@ public final class EncounterManager
 	{
 		A_Ranger ranger = EncounterManager.getInstance().getRangers().get(index);
 		A_Ranger modified = EncounterManager.getInstance().getRangers().get(index);
+		_items.remove(itemName);
 		itemName = itemName.toLowerCase();
 		itemName = itemName.trim();
+		
 		switch (itemName)
 		{
 			case "armorup":
@@ -191,56 +195,11 @@ public final class EncounterManager
 			{
 				appendLineToTextBox("Invalid item name, please check");
 			}
-			_items.remove(itemName);
+			
 
 		}
 	}
 
-	public void useItem()
-	{//Replace with buttons, this will probably be moved to PlayScreen? ###
-		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-		int itemIndex = 0;
-		int rangerIndex = 0;
-		
-		try
-		{
-			for (int i = 0; i < _items.size(); i++)
-			{
-				System.out.printf("Type %d to use %s on a ranger", i, _items.get(i));
-				//Any parseInt should be swapped with a button ###
-				itemIndex = (Integer.parseInt(input.readLine())) - 1;
-			}
-			
-			for (int i = 0; i < _rangers.size(); i++)
-			{
-				System.out.printf("Type %d to use %s on ranger %s", i, _items.get(itemIndex), _rangers.get(i).getName());
-				//Any parseInt should be swapped with a button ###
-				rangerIndex = (Integer.parseInt(input.readLine())) - 1;
-			}
-			giveItem(rangerIndex, _items.get(itemIndex));
-			
-		}
-		catch (NumberFormatException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try
-		{
-			input.close();
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	public void appendLineToTextBox(String string)
 	{
