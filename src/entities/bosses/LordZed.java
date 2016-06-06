@@ -6,7 +6,7 @@ public class LordZed extends A_BadGuyDecorator
 {
 	public static Texture _lordZedTexture;
 
-	protected LordZed(A_Villain v) 
+	public LordZed(A_Villain v) 
 	{
 		super(v);
 		v._texture = _lordZedTexture;

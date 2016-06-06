@@ -6,6 +6,7 @@ import entities.bosses.*;
 
 public class MapGenerator
 {
+	int _maxBosses = 7;
 	public static MapGenerator _instance = null;
 
 	private MapGenerator()
@@ -185,10 +186,6 @@ public class MapGenerator
 			int bossQuantity = 0;
 			LinkedList<A_Villain> enemies = new LinkedList<A_Villain>();
 			enemies = randomEncounter(bossQuantity);
-			/*A_Villain v1 = new Boss(); v1 = new Goldar(v1); A_Villain v2 = new
-			 * SmallPutty(); A_Villain v3 = new SmallPutty(); A_Villain v4 = new
-			 * BigPutty(); enemies.add(v1); enemies.add(v2); enemies.add(v3);
-			 * enemies.add(v4); */
 
 			randomIndex = rand.nextInt(rooms.size());
 			rooms.get(randomIndex).setEnemies(enemies);
@@ -201,11 +198,11 @@ public class MapGenerator
 		LinkedList<A_Villain> enemies = new LinkedList<A_Villain>();
 
 		Random random = new Random();
-		int type = random.nextInt(4);
+		int type = random.nextInt(12);
 
-		if (type >= 0 && type < 10)
+		if (type >= 0 && type < 8 || bossQuantity >= _maxBosses)
 		{// Encounter: all small putties
-			// Rarity: Common
+			// Rarity: 8 in 10: Common
 			for (int i = 1; i < 5; i++)
 			{
 				A_Villain temp = new SmallPutty();
@@ -213,9 +210,27 @@ public class MapGenerator
 				enemies.add(temp);
 			}
 		}
-		else if (type == 10)
+		else if (type >= 8 && type < 10)
+		{//Encounter: Boss battle with 2 big putties and 2 small putties
+		 //Rarity: 2 in 10: Uncommon
+			for (int i = 1; i < 3; i++)
+			{
+				A_Villain temp = new SmallPutty();
+				temp.setName("Putty:" + i);
+				enemies.add(temp);
+			}
+			for (int i = 1; i < 3; i++)
+			{
+				A_Villain temp = new BigPutty();
+				temp.setName("Big Putty:" + i);
+				enemies.add(temp);
+			}
+			
+		}
+		else if (type >= 10)
 		{// Encounter: Boss Battle with 3 putties
-			// Rarity: Uncommon
+			// Rarity: 1 in 10: Rare
+			enemies.add(randomBoss());
 			for (int i = 1; i < 4; i++)
 			{
 				A_Villain temp = new SmallPutty();
@@ -233,7 +248,7 @@ public class MapGenerator
 		A_Villain boss = new Boss(); 
 		
 		
-		int type = random.nextInt(4);
+		int type = random.nextInt(9);
 		if(type == 0)
 		{
 			boss = new Goldar(boss);
@@ -272,7 +287,11 @@ public class MapGenerator
 		}
 		else if(type == 9)
 		{
-			boss = new Goldar(boss);
+			boss = new LordZed(boss);
+		}
+		else
+		{
+			return randomBoss();
 		}
 		
 		return boss;
