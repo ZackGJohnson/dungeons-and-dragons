@@ -52,9 +52,7 @@ public class MainMenuScreen extends A_GameScreen
 			@Override
 			public void changed(ChangeEvent event, Actor actor)
 			{
-				// Highscores
-				DataBaseRead db = new DataBaseRead();
-				System.out.println(db.toString());
+				_game.switchScreens(new HighScoresScreen(_game));
 			}
 		});
 		_mainMenuTable.add(_highscoresButton).fillX().padBottom(_buttonPadding);
