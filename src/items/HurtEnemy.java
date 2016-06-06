@@ -16,7 +16,14 @@ public class HurtEnemy extends A_BadGuyDecorator
 	public HurtEnemy(A_Villain r, int damage) 
 	{
 		super(r);
-		_damage = damage - getDmgReduction();
+		if(damage - getDmgReduction() < 0)
+		{
+			_damage = 0;
+		}
+		else
+		{
+			_damage = damage - getDmgReduction();
+		}
 	}
 
 	public int getHealth() 

@@ -14,5 +14,6 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/Sawyer/Github/dungeons-and-dragons/libs/gdx-natives.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Sawyer/Github/dungeons-and-dragons/libs/gdx-setup.jar"/>
 	<classpathentry kind="lib" path="resources"/>
+	<classpathentry kind="lib" path="libs/sqlite-jdbc-3.8.11.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

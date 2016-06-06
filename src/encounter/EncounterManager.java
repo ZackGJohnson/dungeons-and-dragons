@@ -32,6 +32,7 @@ public final class EncounterManager
 	private ScrollPane _textScroll;
 	private int _points = 0;
 	private Room _currentRoom;
+	private String[] _itemList = {"ArmorUp", "AttackUp", "Bandage", "DamageUp", "DRUp", "HealthUp", "InitUp"};
 
 	private EncounterManager()
 	{
@@ -107,20 +108,28 @@ public final class EncounterManager
 		_enemies.remove(creature);
 	}
 
+	public void loot()
+	{
+		addItem(_itemList[(RollManager.getInstance().roll("1d" + _itemList.length + "+0") - 1)]);
+	}
+	
 	public void addEncounter(LinkedList<A_Ranger> rangers, LinkedList<A_Villain> enemies)
 	{
 		_rangers = rangers;
 		_enemies = enemies;
+		loot();
 	}
 	
 	public void addRangers(LinkedList<A_Ranger> rangers)
 	{
 		_rangers = rangers;
+		loot();
 	}
 
 	public void addEncounter(LinkedList<A_Villain> enemies)
 	{
 		_enemies = enemies;
+		loot();
 	}
 
 	public String addItem(String itemName)
