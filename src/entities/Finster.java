@@ -6,6 +6,7 @@ public class Finster extends A_BadGuyDecorator
 	protected Finster(A_Villain v) 
 	{
 		super(v);
+		_name = "Finster";
 	}
 	
 	public int getHealth() 

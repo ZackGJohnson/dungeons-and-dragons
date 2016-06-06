@@ -24,6 +24,7 @@ public class HurtEnemy extends A_BadGuyDecorator
 		{
 			_damage = damage - getDmgReduction();
 		}
+		setName(r.getName());
 	}
 
 	public int getHealth() 

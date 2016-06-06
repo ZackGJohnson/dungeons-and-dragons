@@ -22,6 +22,7 @@ public class HurtRanger extends A_RangerDecorator
 		{
 			_damage = damage - getDmgReduction();
 		}
+		setName(r.getName());
 	}
 
 	public int getHealth() 

@@ -6,6 +6,7 @@ public class Mordant extends A_BadGuyDecorator
 	protected Mordant(A_Villain v) 
 	{
 		super(v);
+		_name = "Mordant";
 	}
 	
 	public int getHealth() 

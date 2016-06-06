@@ -59,14 +59,14 @@ public abstract class A_Ranger extends A_Entity
 			}
 			EncounterManager.getInstance().nextEntity();
 
-			return ("You hit " + enemy.getName() + " with a(n) " + attackRoll + ", dealing " + damageRoll + " damage!\n");
+			return (getName() + " hit " + enemy.getName() + " with a(n) " + attackRoll + ", dealing " + damageRoll + " damage!\n");
 
 			
 		}
 		else
 		{
 			EncounterManager.getInstance().nextEntity();
-			return ("You miss " + enemy.getName() + " with a(n) " + attackRoll + ", dealing 0 damage!\n");
+			return (getName() + " missed " + enemy.getName() + " with a(n) " + attackRoll + ", dealing 0 damage!\n");
 		}
 
 	}

@@ -6,6 +6,7 @@ public class Scorpina extends A_BadGuyDecorator
 	protected Scorpina(A_Villain v) 
 	{
 		super(v);
+		_name = "Scorpina";
 	}
 	
 	public int getHealth() 

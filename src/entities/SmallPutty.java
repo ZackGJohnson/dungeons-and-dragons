@@ -9,6 +9,7 @@ public class SmallPutty extends A_Villain
 	public SmallPutty()
 	{
 		super();
+		setName("Putty");
 		_texture = _smallPuttyTexture;
 	}
 	

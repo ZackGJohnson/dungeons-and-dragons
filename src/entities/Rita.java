@@ -9,6 +9,7 @@ public class Rita extends A_BadGuyDecorator
 	protected Rita(A_Villain v) 
 	{
 		super(v);
+		_name = "Rita";
 		v._texture = _ritaTexture;
 		_texture = _ritaTexture;
 	}

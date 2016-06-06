@@ -9,6 +9,7 @@ public class Thrax extends A_BadGuyDecorator
 	protected Thrax(A_Villain v) 
 	{
 		super(v);
+		_name = "Thrax";
 		v._texture = _thraxTexture;
 		_texture = _thraxTexture;
 	}

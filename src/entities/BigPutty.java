@@ -9,6 +9,7 @@ public class BigPutty extends A_Villain
 	public BigPutty()
 	{
 		super();
+		setName("Big Putty");
 		_texture = _bigPuttyTexture;
 	}
 	

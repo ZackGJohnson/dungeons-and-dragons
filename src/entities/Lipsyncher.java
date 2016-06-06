@@ -9,6 +9,7 @@ public class Lipsyncher extends A_BadGuyDecorator
 	protected Lipsyncher(A_Villain v) 
 	{
 		super(v);
+		_name = "Lip Syncher";
 		v._texture = _lipsyncherTexture;
 		_texture = _lipsyncherTexture;
 	}
