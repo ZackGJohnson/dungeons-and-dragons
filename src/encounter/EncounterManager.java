@@ -194,7 +194,7 @@ public final class EncounterManager
 				EncounterManager.getInstance().replaceRanger(ranger, modified);
 				break;
 			}
-			case "finster's monacle":
+			case "finster's monocle":
 			{
 				modified = new FinstersMonocle(ranger);
 				EncounterManager.getInstance().replaceRanger(ranger, modified);

@@ -17,11 +17,13 @@ public class Room
 	private LinkedList<A_Villain> _enemies;
 	public static Texture _wallTexture;
 	public static Texture _floorTexture;
+	private boolean _loot;
 	
 	public Room()
 	{
 		_enemies = new LinkedList<A_Villain>();
 		_party = new LinkedList<A_Ranger>();
+		_loot = true;
 	}
 
 	/*
@@ -135,6 +137,16 @@ public class Room
 	
 	// Returns true if there is both enemies in the room and at least one of them
 	// is alive.
+	
+	public void loot()
+	{
+		if(_loot)
+		{
+			EncounterManager.getInstance().loot();
+			_loot = false;
+		}
+	}
+	
 	public boolean hasEncounter()
 	{
 		for (int i = 0; i < _enemies.size(); i++)
