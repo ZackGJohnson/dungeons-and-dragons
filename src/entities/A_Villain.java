@@ -50,9 +50,9 @@ public abstract class A_Villain extends A_Entity
 
 				damagedEnemy = new HurtRanger(damagedEnemy, damageRoll);
 				EncounterManager.getInstance().replaceRanger(enemy, damagedEnemy);
-				if (!EncounterManager.getInstance().getEnemies().get(target).isAlive())
+				if (!EncounterManager.getInstance().getRangers().get(target).isAlive())
 				{
-					EncounterManager.getInstance().removeEnemyAt(target);
+					EncounterManager.getInstance().removeRangerAt(target);
 				}
 			}
 			EncounterManager.getInstance().nextEntity();
