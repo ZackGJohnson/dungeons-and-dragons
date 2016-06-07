@@ -21,12 +21,9 @@ public abstract class A_Entity implements Comparable<A_Entity>
 	protected int _point;
 	public Texture _texture;
 	private String _loot = "Bandage";
-
-	public String getType()
-	{
-		return "Entity";
-	}
-
+	
+	public abstract String getType();
+	
 	public int getPoint()
 	{
 		return 1;
@@ -65,12 +62,20 @@ public abstract class A_Entity implements Comparable<A_Entity>
 
 	public void die()
 	{
+		//Bandage Drop
 		Random random = new Random();
 		boolean giveBandage = random.nextBoolean();
 		if (giveBandage ||  !_loot.equalsIgnoreCase("bandage"))
 		{
 			EncounterManager.getInstance().addItem(_loot);
 		}
+		
+		//Check win condition
+		if(getType().equalsIgnoreCase("win"))
+		{
+			EncounterManager.getInstance().finalBoss();
+		}
+		
 	}
 
 	public void setLoot(String loot)

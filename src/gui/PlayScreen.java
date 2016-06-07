@@ -111,6 +111,12 @@ public class PlayScreen extends A_GameScreen
     	_game.getBatch().end();
     	_stage.act(delta);
     	_stage.draw();
+    	
+    	if(EncounterManager.getInstance().defeatedFinalBoss())
+    	{
+    		_game.switchScreens(new WinScreen(_game));
+    	}
+    	
 	}
 	
 	/*

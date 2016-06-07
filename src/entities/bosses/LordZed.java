@@ -12,6 +12,7 @@ public class LordZed extends A_BadGuyDecorator
 	{
 		super(v);
 		setName("Lord Zed");
+		setType("win");
 		v._texture = _lordZedTexture;
 		_texture = _lordZedTexture;
 	}

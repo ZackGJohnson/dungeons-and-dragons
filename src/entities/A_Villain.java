@@ -8,11 +8,17 @@ import encounter.RollManager;
 public abstract class A_Villain extends A_Entity
 {
 
+	private String _type = "Enemy";
+
 	public String getType()
 	{
-		return "Enemy";
+		return _type;
 	}
 
+	public void setType(String type)
+	{
+		_type = type;
+	}
 	public String attack(int target)
 	{
 		A_Ranger enemy = EncounterManager.getInstance().getRangers().get(target);

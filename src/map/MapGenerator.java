@@ -7,6 +7,7 @@ import entities.bosses.*;
 public class MapGenerator
 {
 	int _maxBosses = 7;
+	int _bossQuantity = 0;
 	public static MapGenerator _instance = null;
 
 	private MapGenerator()
@@ -183,9 +184,8 @@ public class MapGenerator
 
 		for (int i = 0; i < numEncounters; i++)
 		{
-			int bossQuantity = 0;
 			LinkedList<A_Villain> enemies = new LinkedList<A_Villain>();
-			enemies = randomEncounter(bossQuantity);
+			enemies = randomEncounter();
 
 			randomIndex = rand.nextInt(rooms.size());
 			rooms.get(randomIndex).setEnemies(enemies);
@@ -193,14 +193,14 @@ public class MapGenerator
 		}
 	}
 
-	public LinkedList<A_Villain> randomEncounter(int bossQuantity)
+	public LinkedList<A_Villain> randomEncounter()
 	{
 		LinkedList<A_Villain> enemies = new LinkedList<A_Villain>();
 
 		Random random = new Random();
 		int type = random.nextInt(12);
 
-		if (type >= 0 && type < 8 || bossQuantity >= _maxBosses)
+		if (type >= 0 && type < 8 || _bossQuantity >= _maxBosses)
 		{// Encounter: all small putties
 			// Rarity: 8 in 10: Common
 			for (int i = 1; i < 5; i++)
@@ -247,8 +247,23 @@ public class MapGenerator
 	
 		A_Villain boss = new Boss(); 
 		
+		if(_bossQuantity == 0)
+		{
+			_bossQuantity++;
+			boolean finalBoss = random.nextBoolean();
+			if(finalBoss)
+			{
+				boss = new LordZed(boss);
+				return boss;
+			}
+			else
+			{
+				boss = new IvanOoze(boss);	
+				return boss;
+			}
+		}
 		
-		int type = random.nextInt(9);
+		int type = random.nextInt(8);
 		if(type == 0)
 		{
 			boss = new Goldar(boss);
@@ -281,19 +296,11 @@ public class MapGenerator
 		{
 			boss = new Thrax(boss);
 		}
-		else if(type == 8)
-		{
-			boss = new IvanOoze(boss);
-		}
-		else if(type == 9)
-		{
-			boss = new LordZed(boss);
-		}
 		else
 		{
 			return randomBoss();
 		}
-		
+		_bossQuantity++;
 		return boss;
 		
 	}

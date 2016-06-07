@@ -187,14 +187,6 @@ public class BattleScreen extends A_GameScreen
 
 		if (!EncounterManager.getInstance().enemiesAreAlive())
 		{
-			LinkedList<A_Ranger> testRangers = EncounterManager.getInstance().getRangers();
-			for (int i = 0; i < EncounterManager.getInstance().getEnemies().size(); i++)
-			{
-				if (EncounterManager.getInstance().getEnemies().get(i).getName().equals("Lord Zed") || EncounterManager.getInstance().getEnemies().get(i).getName().equals("Ivan Ooze"))
-				{
-					_game.switchScreens(new WinScreen(_game));
-				}
-			}
 			_game.switchScreens(_previousScreen);
 		}
 

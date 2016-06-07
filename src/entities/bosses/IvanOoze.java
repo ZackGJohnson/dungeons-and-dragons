@@ -10,6 +10,7 @@ public class IvanOoze extends A_BadGuyDecorator
 	{
 		super(v);
 		setName("Ivan Ooze");
+		setType("win");
 		v._texture = _ivanOozeTexture;
 		_texture = _ivanOozeTexture;
 	}

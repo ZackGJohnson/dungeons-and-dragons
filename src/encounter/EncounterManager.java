@@ -34,6 +34,7 @@ public final class EncounterManager
 	private int _points = 0;
 	private Room _currentRoom;
 	private String[] _itemList = { "ArmorUp", "AttackUp", "Bandage", "DamageUp", "DRUp", "HealthUp", "InitUp" };
+	private boolean _defeatedFinalBoss = false;
 
 	private EncounterManager()
 	{
@@ -93,6 +94,7 @@ public final class EncounterManager
 	{
 		replacement.setName(old.getName());
 		replacement.setLoot(old.getLoot());
+		replacement.setType(old.getType());
 
 		int initiative = _init.indexOf(old);
 		int order = _enemies.indexOf(old);
@@ -399,5 +401,15 @@ public final class EncounterManager
 	public Room getCurrentRoom()
 	{
 		return _currentRoom;
+	}
+	
+	public boolean defeatedFinalBoss()
+	{
+		return _defeatedFinalBoss;
+	}
+	
+	public void finalBoss()
+	{
+		_defeatedFinalBoss = true;
 	}
 }
