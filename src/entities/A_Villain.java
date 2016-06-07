@@ -57,7 +57,7 @@ public abstract class A_Villain extends A_Entity
 			}
 			EncounterManager.getInstance().nextEntity();
 
-			return (getName() + " hits " + enemy.getName() + " with a(n) " + attackRoll + ", dealing " + damageRoll + " damage!\n");
+			return (getName() + " hits " + enemy.getName() + " with a(n) " + attackRoll + ", dealing " + (damageRoll - enemy.getDmgReduction()) + " damage!\n");
 
 		}
 		else
