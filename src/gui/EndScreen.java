@@ -55,6 +55,7 @@ public class EndScreen extends A_GameScreen
 			{
 				DataBaseRead db = new DataBaseRead();
 				db.insertScore(_nameField.getText(), EncounterManager.getInstance().getPoints());
+				EncounterManager.getInstance().clearItems();
 				_game.switchScreens(new MainMenuScreen(_game));
 			}
 		});

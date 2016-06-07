@@ -119,8 +119,25 @@ public class BattleScreen extends A_GameScreen
 
 					if (test != null)
 					{
-						String printStuff = test.attack(_enemyNumber);
-						appendLineToTextBox(printStuff);
+						if (test.isAlive())
+						{
+							String printStuff = test.attack(_enemyNumber);
+							appendLineToTextBox(printStuff);
+						}
+						else
+						{
+							int i = 0;
+							while(!test.isAlive())
+							{
+								//appendLineToTextBox("Ranger is dead");
+								EncounterManager.getInstance().nextEntity();
+								test = EncounterManager.getInstance().getRangers().get(i);
+								String printStuff = test.attack(_enemyNumber);
+								appendLineToTextBox(printStuff);
+							}
+							
+							
+						}
 						enemyTurn();
 
 						// This doesn't work, maybe due to size of textbox?
@@ -221,25 +238,25 @@ public class BattleScreen extends A_GameScreen
 		A_Entity curr = EncounterManager.getInstance().getCurr();
 		if (EncounterManager.getInstance().rangersAreAlive())
 		{
-			if (curr.getType().equalsIgnoreCase("Enemy"))
+			if (!curr.getType().equalsIgnoreCase("ranger"))
 			{
 				int target = RollManager.getInstance().roll("1d" + EncounterManager.getInstance().getRangers().size() + "+0");
-				while(!EncounterManager.getInstance().getRangers().get(target).isAlive())
+				while (!EncounterManager.getInstance().getRangers().get(target).isAlive())
 				{
 					target = RollManager.getInstance().roll("1d" + EncounterManager.getInstance().getRangers().size() + "+0");
 				}
-				
+
 				String attackResult = curr.attack(target);
 				// String attackResult = "Enemy Attack";
 				appendLineToTextBox(attackResult);
 				EncounterManager.getInstance().nextEntity();
-				if (curr.getType().equalsIgnoreCase("Enemy"))
+				if (!curr.getType().equalsIgnoreCase("ranger"))
 				{// Scary recursion
 					enemyTurn();
 				}
 			}
 		}
-		
+
 		// Update health labels
 		for (int i = 0; i < _rangerHealthLabels.size(); i++)
 		{

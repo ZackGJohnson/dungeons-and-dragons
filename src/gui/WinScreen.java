@@ -55,7 +55,8 @@ public class WinScreen extends A_GameScreen
 			public void changed(ChangeEvent event, Actor actor)
 			{
 				DataBaseRead db = new DataBaseRead();
-				db.insertScore(_nameField.getText(), EncounterManager.getInstance().getPoints());
+				db.insertScore(_nameField.getText(), EncounterManager.getInstance().getPoints() + 100);
+				EncounterManager.getInstance().clearItems();
 				_game.switchScreens(new MainMenuScreen(_game));
 			}
 		});

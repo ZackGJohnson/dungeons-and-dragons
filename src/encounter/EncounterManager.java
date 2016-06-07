@@ -275,6 +275,10 @@ public final class EncounterManager
 
 	public A_Entity getCurr()
 	{
+		if(_curr == null)
+		{ 
+			_curr = EncounterManager.getInstance().getRangers().getFirst();
+		}
 		return _curr;
 	}
 
@@ -369,6 +373,11 @@ public final class EncounterManager
 		return _items;
 	}
 
+	public void clearItems()
+	{
+		_items.clear();
+	}
+	
 	public String[] getItemsAsArray()
 	{
 		String[] temp = new String[EncounterManager.getInstance().getItems().size()];
