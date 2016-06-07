@@ -167,6 +167,7 @@ public class MapGenerator
 	 * selected twice. */
 	private void generateEncounters(Map map, int numEncounters)
 	{
+		_bossQuantity = 0;
 		ArrayList<Room> rooms = new ArrayList<Room>();
 		Random rand = new Random();
 		int randomIndex;
