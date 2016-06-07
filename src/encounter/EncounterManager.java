@@ -36,9 +36,7 @@ public final class EncounterManager
 	private String[] _itemList = { "ArmorUp", "AttackUp", "Bandage", "DamageUp", "DRUp", "HealthUp", "InitUp" };
 	private boolean _defeatedFinalBoss = false;
 
-	private EncounterManager()
-	{
-	}
+	private EncounterManager(){}//Singleton Lock
 
 	public static synchronized EncounterManager getInstance()
 	{
@@ -47,7 +45,7 @@ public final class EncounterManager
 			_instance = new EncounterManager();
 			_rangers = new LinkedList<A_Ranger>();
 			_enemies = new LinkedList<A_Villain>();
-			_init = new LinkedList();
+			_init = new LinkedList<A_Entity>();
 			_items = new LinkedList<String>();
 		}
 		return _instance;

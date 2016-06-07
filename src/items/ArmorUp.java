@@ -4,7 +4,7 @@ import entities.A_Ranger;
 import entities.A_RangerDecorator;
 
 public class ArmorUp extends A_RangerDecorator
-{//Only increases max health, not current
+{
 	public ArmorUp(A_Ranger r) 
 	{
 		super(r);
