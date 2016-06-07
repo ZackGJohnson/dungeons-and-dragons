@@ -15,7 +15,7 @@ public class Bear extends A_RangerDecorator
 	
 	public int getMaxHealth()
 	{
-		return ranger.getMaxHealth();
+		return ranger.getMaxHealth() + 2;
 	}
 	
 	public int getAtkMod() 
