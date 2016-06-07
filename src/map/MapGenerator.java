@@ -198,7 +198,7 @@ public class MapGenerator
 		LinkedList<A_Villain> enemies = new LinkedList<A_Villain>();
 
 		Random random = new Random();
-		int type = random.nextInt(12);
+		int type = random.nextInt(50);
 
 		if (type >= 0 && type < 8 || _bossQuantity >= _maxBosses)
 		{// Encounter: all small putties
